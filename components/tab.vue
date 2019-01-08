@@ -172,7 +172,7 @@ export default {
   },
   mounted() {
     let ha = Number(document.getElementsByClassName('header')[0].clientHeight)
-    this.he = 328 - ha
+    this.he = 368 - ha
   }
 }
 </script>
@@ -182,9 +182,9 @@ export default {
 .box {
   width: 841px;
   margin-left: 17px;
-  height: 325px;
+  height: 370px;
   border-top: 5px solid #60b0f4;
-  border-bottom: 1px dashed #ddd;
+  border-bottom: 5px solid #60b0f4;
 }
 .header {
   width: 100%;
@@ -277,7 +277,7 @@ p {
   color: #fff;
   background: #1e649f;
   text-align: center;
-  line-height: 1.8em;
+  /* line-height: 1.8em; */
 }
 .m {
   width: 100%;

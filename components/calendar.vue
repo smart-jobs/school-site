@@ -26,9 +26,6 @@
         @mouseenter="enter(item[0])"
       >
         {{item[0]}}
-        <!-- <div v-show="show1" class="week2txtbox">
-                {{txt}}
-        </div>-->
       </span>
     </div>
   </div>
@@ -133,7 +130,7 @@ export default {
 <style scoped>
 .box {
   width: 340px;
-  height: 330px;
+  height: 380px;
   border: 1px solid #ddd;
 }
 .left,

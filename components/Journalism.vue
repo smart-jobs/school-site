@@ -91,7 +91,6 @@ export default {
 li {
   display: block;
   line-height: 30px;
-  height: 30px;
   padding: 10px 0 9px 0px;
   border-bottom: 1px dashed #ddd;
   color: #60b0f4;
