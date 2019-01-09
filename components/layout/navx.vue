@@ -1,38 +1,20 @@
 <template>
   <div class="box">
     <div class="btn" :class="{a1:this.$store.state.b1}" @click="btn1('1')">首页</div>
-    <div
-      class="btn"
-      :class="{a1:this.$store.state.b2}"
-      @click="btn1('2')"
-      @mouseenter="enter('1')"
-      @mouseleave="leave"
-    >就业服务
+    <div class="btn" :class="{a1:this.$store.state.b2}" @click="btn1('2')" @mouseenter="enter('1')" @mouseleave="leave">就业服务
       <div class="Submenu" v-show="this.$store.state.show1">
         <div :class="{a2:this.$store.state.b21}" @click="btn2('1')">就业指导</div>
         <div :class="{a2:this.$store.state.b22}" @click="btn2('2')">政策文件</div>
         <div :class="{a2:this.$store.state.b23}" @click="btn2('3')">常见问题</div>
       </div>
     </div>
-    <div
-      class="btn"
-      :class="{a1:this.$store.state.b3}"
-      @click="btn1('3')"
-      @mouseenter="enter('2')"
-      @mouseleave="leave"
-    >新闻公告
+    <div class="btn" :class="{a1:this.$store.state.b3}" @click="btn1('3')" @mouseenter="enter('2')" @mouseleave="leave">新闻公告
       <div class="Submenu" v-show="this.$store.state.show2">
         <div :class="{a2:this.$store.state.b31}" @click="btn2('4')">焦点新闻</div>
         <div :class="{a2:this.$store.state.b32}" @click="btn2('5')">就业快讯</div>
       </div>
     </div>
-    <div
-      class="btn"
-      :class="{a1:this.$store.state.b4}"
-      @click="btn1('4')"
-      @mouseenter="enter('3')"
-      @mouseleave="leave"
-    >招聘信息
+    <div class="btn" :class="{a1:this.$store.state.b4}" @click="btn1('4')" @mouseenter="enter('3')" @mouseleave="leave">招聘信息
       <div class="Submenu" v-show="this.$store.state.show3">
         <div :class="{a2:this.$store.state.b41}" @click="btn2('6')">校内宣讲</div>
         <div :class="{a2:this.$store.state.b42}" @click="btn2('7')">校外宣讲</div>
@@ -49,8 +31,7 @@
 export default {
   name: 'navx',
   data() {
-    return {
-    }
+    return {}
   },
   methods: {
     // 一级菜单点击
@@ -167,7 +148,7 @@ export default {
           this.$store.state.b44 = false
           // this.$router.push('/guidance')
           this.$router.push({
-            path:'/guidance',
+            path: '/guidance',
             query: {
               name: '1'
             }
@@ -187,7 +168,7 @@ export default {
           this.$store.state.b44 = false
           // this.$router.push('/guidance')
           this.$router.push({
-            path:'/guidance',
+            path: '/guidance',
             query: {
               name: index
             }
@@ -207,7 +188,7 @@ export default {
           this.$store.state.b44 = false
           // this.$router.push('/guidance')
           this.$router.push({
-            path:'/guidance',
+            path: '/guidance',
             query: {
               name: index
             }
@@ -227,7 +208,7 @@ export default {
           this.$store.state.b44 = false
           // this.$router.push('/Notice')
           this.$router.push({
-            path:'/Notice',
+            path: '/Notice',
             query: {
               name: index
             }
@@ -247,7 +228,7 @@ export default {
           this.$store.state.b44 = false
           // this.$router.push('/Notice')
           this.$router.push({
-            path:'/Notice',
+            path: '/Notice',
             query: {
               name: index
             }
@@ -266,7 +247,7 @@ export default {
           this.$store.state.b43 = false
           this.$store.state.b44 = false
           this.$router.push({
-            path:'/recruit',
+            path: '/recruit',
             query: {
               name: index
             }
@@ -286,7 +267,7 @@ export default {
           this.$store.state.b44 = false
           // this.$router.push('/recruit')
           this.$router.push({
-            path:'/recruit',
+            path: '/recruit',
             query: {
               name: index
             }
@@ -306,7 +287,7 @@ export default {
           this.$store.state.b44 = false
           // this.$router.push('/recruit')
           this.$router.push({
-            path:'/recruit',
+            path: '/recruit',
             query: {
               name: index
             }
@@ -326,7 +307,7 @@ export default {
           this.$store.state.b44 = true
           // this.$router.push('/recruit')
           this.$router.push({
-            path:'/recruit',
+            path: '/recruit',
             query: {
               name: index
             }

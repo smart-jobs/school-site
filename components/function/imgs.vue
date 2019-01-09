@@ -13,13 +13,7 @@
         <!-- <span>{{item.title}}</span> -->
       </li>
       <div class="fj number">
-        <em
-          class="fd1"
-          :class="{active: idx == index + 1}"
-          v-for="(item,index) in list"
-          :key="index"
-          @click="btn(index+1)"
-        >{{index+1}}</em>
+        <em class="fd1" :class="{active: idx == index + 1}" v-for="(item,index) in list" :key="index" @click="btn(index+1)">{{index+1}}</em>
       </div>
     </ul>
   </div>

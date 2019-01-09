@@ -1,17 +1,17 @@
 <template>
   <div>
-      <banner/>
-      <navx/>
-      <div class="fj xwbox">
-        <login class="fd1 login"/>
-        <imgs class="fd1 zon"/>
-        <journalism class="fd1 journalism"/>
-      </div>
-      <div class="databox fj">
-        <calendar class="fd1"/>
-        <tab class="fd2"/>
-      </div>
-      <feet/>
+    <banner />
+    <navx />
+    <div class="fj xwbox">
+      <login class="fd1 login" />
+      <imgs class="fd1 zon" />
+      <journalism class="fd1 journalism" />
+    </div>
+    <div class="databox fj">
+      <calendar class="fd1" />
+      <tab class="fd2" />
+    </div>
+    <feet />
   </div>
 </template>
 
@@ -26,9 +26,8 @@ import tab from '~/components/layout/tab'
 import feet from '~/components/layout/feet'
 export default {
   name: 'home',
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   components: {
     banner,
@@ -45,8 +44,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.xwbox{width: 1200px;margin: 0 auto;position: relative;margin-top: 2rem}
-.databox{width: 1200px;margin:4rem auto;position: relative;}
-.zon{margin:0 17px}
-.journalism, .login{height: 330px;}
+.xwbox {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 2rem;
+}
+.databox {
+  width: 1200px;
+  margin: 4rem auto;
+  position: relative;
+}
+.zon {
+  margin: 0 17px;
+}
+.journalism,
+.login {
+  height: 330px;
+}
 </style>

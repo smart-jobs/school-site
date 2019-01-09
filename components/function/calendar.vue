@@ -18,13 +18,8 @@
       <span>六</span>
     </div>
     <div class="week2 fj">
-      <span
-        class="fd1 yuan"
-        :class="{a1:item[3] == '今',a2:item[3] == '聘'}"
-        v-for="(item,index) in this.arr"
-        :key="index"
-        @mouseenter="enter(item[0])"
-      >
+      <span class="fd1 yuan" :class="{a1:item[3] == '今',a2:item[3] == '聘'}" v-for="(item,index) in this.arr" :key="index"
+            @mouseenter="enter(item[0])">
         {{item[0]}}
       </span>
     </div>
@@ -57,6 +52,7 @@ export default {
       this.k = x.getDate() // 所有日
       this.arr = []
       for (let i = 1; i <= this.k; i++) {
+        // eslint-disable-next-line no-unused-vars
         let z = this.date.setFullYear(this.y, this.m, i) // 星期
         let w = this.date.getDay() // 星期几
         this.arr.push([i, w, i])

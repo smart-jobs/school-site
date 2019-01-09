@@ -2,11 +2,11 @@
   <div class="box">
     <div class="txtbox">
       <div class="abox">
-          <a href="">首页</a>
-          <a href="">就业服务</a>
-          <a href="">新闻公告</a>
-          <a href="">招聘信息</a>
-          <a href="">联系我们</a>
+        <a href="">首页</a>
+        <a href="">就业服务</a>
+        <a href="">新闻公告</a>
+        <a href="">招聘信息</a>
+        <a href="">联系我们</a>
       </div>
       <div class="fj">
         <p class="">吉林省高等学校毕业生就业指导中心 版权所有 | 域名备案信息：吉ICP备xxxxxxxx号</p>
@@ -20,8 +20,7 @@
 export default {
   name: 'home',
   data() {
-    return {
-    }
+    return {}
   }
 }
 </script>
@@ -38,22 +37,22 @@ export default {
   margin: 0 auto;
   color: #686666;
 }
-.abox{
+.abox {
   text-align: center;
-  width: 100%
+  width: 100%;
 }
-a{
+a {
   color: #686666;
   width: 8%;
   cursor: pointer;
-  display: inline-block
+  display: inline-block;
 }
 .fj {
   width: 100%;
 }
 p {
   line-height: 1.8em;
-  text-align: center
+  text-align: center;
 }
 span {
   width: 100%;
