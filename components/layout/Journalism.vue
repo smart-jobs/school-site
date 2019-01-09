@@ -6,7 +6,7 @@
         <div class="fd2 txt">
           MORE
           <img 
-            src="../assets/z1.jpg" 
+            src="/img/z1.jpg" 
             class="icon">
         </div>
       </div>

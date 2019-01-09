@@ -16,14 +16,14 @@
 </template>
 
 <script>
-import banner from '~/components/banner'
-import navx from '~/components/navx'
-import Journalism from '~/components/Journalism'
-import login from '~/components/login'
-import imgs from '~/components/imgs'
-import calendar from '~/components/calendar'
-import tab from '~/components/tab'
-import feet from '~/components/feet'
+import banner from '~/components/layout/banner'
+import navx from '~/components/layout/navx'
+import Journalism from '~/components/layout/Journalism'
+import login from '~/components/function/login'
+import imgs from '~/components/function/imgs'
+import calendar from '~/components/function/calendar'
+import tab from '~/components/layout/tab'
+import feet from '~/components/layout/feet'
 export default {
   name: 'home',
   data () {

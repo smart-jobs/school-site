@@ -19,7 +19,7 @@
 
         <div class="fj">
           <div class="fd1 ma">
-            <img src="../assets/aa.png" class="bj" @click="qr">
+            <img src="/img/aa.png" class="bj" @click="qr">
           </div>
           <a class="fd2 zc" :href="href">{{txt}}</a>
         </div>

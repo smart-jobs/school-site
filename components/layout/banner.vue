@@ -15,9 +15,9 @@ export default {
   name: 'home',
   data() {
     return {
-      bj1: require('../assets/1477572201-3251.jpg'),
-      bj2: require('../assets/bg-shade.png'),
-      logo: require('../assets/logo.png')
+      bj1: '/img/1477572201-3251.jpg',
+      bj2: '/img/bg-shade.png',
+      logo: '/img/logo.png'
     }
   }
 }

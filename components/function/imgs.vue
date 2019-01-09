@@ -4,13 +4,13 @@
       <div class="fd1 title">焦点新闻</div>
       <div class="fd2 txt">
         MORE
-        <img src="../assets/z1.jpg" class="icon">
+        <img src="/img/z1.jpg" class="icon">
       </div>
     </div>
     <ul>
       <li :style="{top:top}" class="fd1" v-for="(item,index) in list" :key="index">
         <img :src="item.uri" class="bj img">
-        <span>{{item.title}}</span>
+        <!-- <span>{{item.title}}</span> -->
       </li>
       <div class="fj number">
         <em
@@ -34,23 +34,23 @@ export default {
       top: '',
       list: [
         {
-          uri: require('../assets/push_1.jpg'),
+          uri: '/img/push_1.jpg',
           title: '赢在广州”创业大赛我校夺魁 获十万创业资助1'
         },
         {
-          uri: require('../assets/push_2.jpg'),
+          uri: '/img/push_2.jpg',
           title: '赢在广州”创业大赛我校夺魁 获十万创业资助2'
         },
         {
-          uri: require('../assets/push_3.jpg'),
+          uri: '/img/push_3.jpg',
           title: '赢在广州”创业大赛我校夺魁 获十万创业资助3'
         },
         {
-          uri: require('../assets/push_4.jpg'),
+          uri: '/img/push_4.jpg',
           title: '赢在广州”创业大赛我校夺魁 获十万创业资助4'
         },
         {
-          uri: require('../assets/push_5.jpg'),
+          uri: '/img/push_5.jpg',
           title: '赢在广州”创业大赛我校夺魁 获十万创业资助5'
         }
       ]
@@ -72,7 +72,7 @@ export default {
     }
   },
   mounted() {
-    setInterval(this.set, 5000)
+    this.$store.state.val = setInterval(this.set, 5000)
   }
 }
 </script>

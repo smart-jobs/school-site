@@ -8,7 +8,7 @@
         <div class="btn" :class="{btnx:on4}" @mouseenter="btnshow('4')">校外宣讲会</div>
       </div>
       <div class="all fd2">
-        <img src="../assets/z1.jpg" class="icon fd2">
+        <img src="/img/z1.jpg" class="icon fd2">
         <span class="fd2">MORE</span>
       </div>
     </div>
@@ -62,7 +62,7 @@ export default {
       list: [
         // 招聘  宣讲 数据
         {
-          imgurl: require('../assets/logox.jpg'),
+          imgurl: '/img/logox.jpg',
           title: '共耀未来 · 海有你——海普瑞药业2018届校园招聘启动啦！',
           txt: '需求岗位：2018届校招生,应届毕业生，实习生。',
           date: '2017-05-18',
@@ -70,7 +70,7 @@ export default {
           m: '25'
         },
         {
-          imgurl: require('../assets/logox.jpg'),
+          imgurl: '/img/logox.jpg',
           title: '共耀未来 · 海有你——海普瑞药业2018届校园招聘启动啦！',
           txt: '需求岗位：2018届校招生,应届毕业生，实习生。',
           date: '2017-05-18',
@@ -78,7 +78,7 @@ export default {
           m: '25'
         },
         {
-          imgurl: require('../assets/logox.jpg'),
+          imgurl: '/img/logox.jpg',
           title: '共耀未来 · 海有你——海普瑞药业2018届校园招聘启动啦！',
           txt: '需求岗位：2018届校招生,应届毕业生，实习生。',
           date: '2017-05-18',
@@ -86,7 +86,7 @@ export default {
           m: '25'
         },
         {
-          imgurl: require('../assets/logox.jpg'),
+          imgurl: '/img/logox.jpg',
           title: '共耀未来 · 海有你——海普瑞药业2018届校园招聘启动啦！',
           txt: '需求岗位：2018届校招生,应届毕业生，实习生。',
           date: '2017-05-18',
@@ -94,7 +94,7 @@ export default {
           m: '25'
         },
         {
-          imgurl: require('../assets/logox.jpg'),
+          imgurl: '/img/logox.jpg',
           title: '共耀未来 · 海有你——海普瑞药业2018届校园招聘启动啦！',
           txt: '需求岗位：2018届校招生,应届毕业生，实习生。',
           date: '2017-05-18',
@@ -102,7 +102,7 @@ export default {
           m: '25'
         },
         {
-          imgurl: require('../assets/logox.jpg'),
+          imgurl: '/img/logox.jpg',
           title: '共耀未来 · 海有你——海普瑞药业2018届校园招聘启动啦！',
           txt: '需求岗位：2018届校招生,应届毕业生，实习生。',
           date: '2017-05-18',
