@@ -1,7 +1,5 @@
 <template>
   <div>
-    <banner />
-    <navx />
     <div class="boxone fj">
       <div class="fd1 tab">
         <div :class="{a1:on1}" @click="btn('1')">就业指导</div>
@@ -21,14 +19,10 @@
       </div>
     </div>
     <br>
-    <feet />
   </div>
 </template>
 
 <script>
-import banner from '~/components/layout/banner'
-import navx from '~/components/layout/navx'
-import feet from '~/components/layout/feet'
 export default {
   name: 'home',
   data() {
@@ -45,119 +39,114 @@ export default {
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '1'
+          id: '1',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '2'
+          id: '2',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '3'
+          id: '3',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '4'
+          id: '4',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '5'
+          id: '5',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '6'
+          id: '6',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '7'
+          id: '7',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '8'
+          id: '8',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '9'
+          id: '9',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '10'
-        }
-      ]
-    }
+          id: '10',
+        },
+      ],
+    };
   },
   methods: {
     btn(index) {
       // 选项卡点击
       switch (index) {
         case '1':
-          this.on1 = true
-          this.on2 = false
-          this.on3 = false
-          this.type = 1
-          break
+          this.on1 = true;
+          this.on2 = false;
+          this.on3 = false;
+          this.type = 1;
+          break;
 
         case '2':
-          this.on1 = false
-          this.on2 = true
-          this.on3 = false
-          this.type = 2
-          break
+          this.on1 = false;
+          this.on2 = true;
+          this.on3 = false;
+          this.type = 2;
+          break;
 
         case '3':
-          this.on1 = false
-          this.on2 = false
-          this.on3 = true
-          this.type = 3
-          break
+          this.on1 = false;
+          this.on2 = false;
+          this.on3 = true;
+          this.type = 3;
+          break;
       }
     },
     handleCurrentChange(val) {
-      console.log('当前是' + val + '页')
+      console.log('当前是' + val + '页');
     },
     Obtain(index) {
       // li点击取id
-      let id = this.list[index].id
-      console.log(id)
-    }
+      let id = this.list[index].id;
+      console.log(id);
+    },
   },
   mounted() {
-    console.log(this.$route)
+    console.log(this.$route);
     switch (this.$route.query.name) {
       case '1':
-        this.on1 = true
-        this.on2 = false
-        this.on3 = false
-        break
+        this.on1 = true;
+        this.on2 = false;
+        this.on3 = false;
+        break;
 
       case '2':
-        this.on1 = false
-        this.on2 = true
-        this.on3 = false
-        break
+        this.on1 = false;
+        this.on2 = true;
+        this.on3 = false;
+        break;
 
       case '3':
-        this.on1 = false
-        this.on2 = false
-        this.on3 = true
-        break
+        this.on1 = false;
+        this.on2 = false;
+        this.on3 = true;
+        break;
     }
   },
-  components: {
-    banner,
-    navx,
-    feet
-  }
-} // l轮播图宽度为424
+}; // l轮播图宽度为424
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

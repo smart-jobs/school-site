@@ -1,7 +1,5 @@
 <template>
   <div>
-    <banner />
-    <navx />
     <div class="boxone fj">
       <div class="fd1 tab">
         <div :class="{a1:on1}" @click="btn('1')">校内宣讲</div>
@@ -29,14 +27,10 @@
       </div>
     </div>
     <br>
-    <feet />
   </div>
 </template>
 
 <script>
-import banner from '~/components/layout/banner'
-import navx from '~/components/layout/navx'
-import feet from '~/components/layout/feet'
 export default {
   name: 'home',
   data() {
@@ -57,7 +51,7 @@ export default {
           id: '1',
           imgurl: '/img/logox.jpg',
           txt1: '华南理工大学',
-          txt2: '五山校区就业指导中心一号报告厅（1101室）'
+          txt2: '五山校区就业指导中心一号报告厅（1101室）',
         },
         {
           title: '网上创业能复制吗？给大学生创业的6点建议',
@@ -65,7 +59,7 @@ export default {
           id: '2',
           imgurl: '/img/logox.jpg',
           txt1: '华南理工大学',
-          txt2: '五山校区就业指导中心一号报告厅（1101室）'
+          txt2: '五山校区就业指导中心一号报告厅（1101室）',
         },
         {
           title: '网上创业能复制吗？给大学生创业的6点建议',
@@ -73,7 +67,7 @@ export default {
           id: '3',
           imgurl: '/img/logox.jpg',
           txt1: '华南理工大学',
-          txt2: '五山校区就业指导中心一号报告厅（1101室）'
+          txt2: '五山校区就业指导中心一号报告厅（1101室）',
         },
         {
           title: '网上创业能复制吗？给大学生创业的6点建议',
@@ -81,94 +75,89 @@ export default {
           id: '4',
           imgurl: '/img/logox.jpg',
           txt1: '华南理工大学',
-          txt2: '五山校区就业指导中心一号报告厅（1101室）'
-        }
-      ]
-    }
+          txt2: '五山校区就业指导中心一号报告厅（1101室）',
+        },
+      ],
+    };
   },
   methods: {
     btn(index) {
       // 选项卡点击
       switch (index) {
         case '1':
-          this.on1 = true
-          this.on2 = false
-          this.on3 = false
-          this.on4 = false
-          this.type = 1
-          break
+          this.on1 = true;
+          this.on2 = false;
+          this.on3 = false;
+          this.on4 = false;
+          this.type = 1;
+          break;
 
         case '2':
-          this.on1 = false
-          this.on2 = true
-          this.on3 = false
-          this.on4 = false
-          this.type = 2
-          break
+          this.on1 = false;
+          this.on2 = true;
+          this.on3 = false;
+          this.on4 = false;
+          this.type = 2;
+          break;
 
         case '3':
-          this.on1 = false
-          this.on2 = false
-          this.on3 = true
-          this.on4 = false
-          this.type = 3
-          break
+          this.on1 = false;
+          this.on2 = false;
+          this.on3 = true;
+          this.on4 = false;
+          this.type = 3;
+          break;
 
         case '4':
-          this.on1 = false
-          this.on2 = false
-          this.on3 = false
-          this.on4 = true
-          this.type = 4
-          break
+          this.on1 = false;
+          this.on2 = false;
+          this.on3 = false;
+          this.on4 = true;
+          this.type = 4;
+          break;
       }
     },
     handleCurrentChange(val) {
-      console.log('当前是' + val + '页')
+      console.log('当前是' + val + '页');
     },
     Obtain(index) {
       // li点击取id
-      let id = this.list[index].id
-      console.log(id)
-    }
+      let id = this.list[index].id;
+      console.log(id);
+    },
   },
   mounted() {
     switch (this.$route.query.id) {
       case '6':
-        this.on1 = true
-        this.on2 = false
-        this.on3 = false
-        this.on4 = false
-        break
+        this.on1 = true;
+        this.on2 = false;
+        this.on3 = false;
+        this.on4 = false;
+        break;
 
       case '7':
-        this.on1 = false
-        this.on2 = true
-        this.on3 = false
-        this.on4 = false
-        break
+        this.on1 = false;
+        this.on2 = true;
+        this.on3 = false;
+        this.on4 = false;
+        break;
 
       case '8':
-        this.on1 = false
-        this.on2 = false
-        this.on3 = true
-        this.on4 = false
-        break
+        this.on1 = false;
+        this.on2 = false;
+        this.on3 = true;
+        this.on4 = false;
+        break;
 
       case '9':
-        this.on1 = false
-        this.on2 = false
-        this.on3 = false
-        this.on4 = true
-        break
+        this.on1 = false;
+        this.on2 = false;
+        this.on3 = false;
+        this.on4 = true;
+        break;
     }
   },
-  components: {
-    banner,
-    navx,
-    feet
-  }
-} // l轮播图宽度为424
+}; // l轮播图宽度为424
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -1,8 +1,25 @@
 <template>
   <div>
+    <banner />
+    <navx />
     <nuxt />
+    <feet />
   </div>
 </template>
+
+<script>
+import banner from '~/components/layout/banner'
+import navx from '~/components/layout/navx'
+import feet from '~/components/layout/feet'
+
+export default {
+  components: {
+    banner,
+    navx,
+    feet
+  }
+}
+</script>
 
 <style>
 html {

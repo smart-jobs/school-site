@@ -1,7 +1,5 @@
 <template>
   <div>
-    <banner />
-    <navx />
     <div class="fj xwbox">
       <login class="fd1 login" />
       <imgs class="fd1 zon" />
@@ -11,33 +9,26 @@
       <calendar class="fd1" />
       <tab class="fd2" />
     </div>
-    <feet />
   </div>
 </template>
 
 <script>
-import banner from '~/components/layout/banner'
-import navx from '~/components/layout/navx'
 import Journalism from '~/components/layout/Journalism'
-import login from '~/components/function/login'
-import imgs from '~/components/function/imgs'
-import calendar from '~/components/function/calendar'
+import login from '~/components/utils/login'
+import imgs from '~/components/utils/imgs'
+import calendar from '~/components/utils/calendar'
 import tab from '~/components/layout/tab'
-import feet from '~/components/layout/feet'
 export default {
   name: 'home',
   data() {
     return {}
   },
   components: {
-    banner,
-    navx,
     Journalism,
     login,
     imgs,
     calendar,
     tab,
-    feet
   }
 } // l轮播图宽度为424
 </script>

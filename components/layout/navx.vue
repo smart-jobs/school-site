@@ -70,7 +70,7 @@ export default {
           break
 
         case '3':
-          this.$router.push('/Notice')
+          this.$router.push('/news/')
           this.$store.state.b1 = false
           this.$store.state.b2 = false
           this.$store.state.b3 = true
@@ -81,7 +81,7 @@ export default {
           break
 
         case '4':
-          this.$router.push('/recruit')
+          this.$router.push('/jobs/')
           this.$store.state.b1 = false
           this.$store.state.b2 = false
           this.$store.state.b3 = false
@@ -208,7 +208,7 @@ export default {
           this.$store.state.b44 = false
           // this.$router.push('/Notice')
           this.$router.push({
-            path: '/Notice',
+            path: '/news/',
             query: {
               name: index
             }
@@ -228,7 +228,7 @@ export default {
           this.$store.state.b44 = false
           // this.$router.push('/Notice')
           this.$router.push({
-            path: '/Notice',
+            path: '/news/',
             query: {
               name: index
             }
@@ -247,7 +247,7 @@ export default {
           this.$store.state.b43 = false
           this.$store.state.b44 = false
           this.$router.push({
-            path: '/recruit',
+            path: '/jobs/',
             query: {
               name: index
             }
@@ -267,7 +267,7 @@ export default {
           this.$store.state.b44 = false
           // this.$router.push('/recruit')
           this.$router.push({
-            path: '/recruit',
+            path: '/jobs/',
             query: {
               name: index
             }
@@ -287,7 +287,7 @@ export default {
           this.$store.state.b44 = false
           // this.$router.push('/recruit')
           this.$router.push({
-            path: '/recruit',
+            path: '/jobs/',
             query: {
               name: index
             }
@@ -307,7 +307,7 @@ export default {
           this.$store.state.b44 = true
           // this.$router.push('/recruit')
           this.$router.push({
-            path: '/recruit',
+            path: '/jobs/',
             query: {
               name: index
             }
