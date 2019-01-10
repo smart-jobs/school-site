@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import menu from './menu'
+
 Vue.use(Vuex)
 
 const store = () => new Vuex.Store({
-  state:{
+  state: {
+    menu,
     IsShow: false,
     val: '',
     // 导航
@@ -11,7 +14,7 @@ const store = () => new Vuex.Store({
     show1: false,
     show2: false,
     show3: false,
-    b1:true,
+    b1: true,
     b2: false,
     b3: false,
     b4: false,
