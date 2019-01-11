@@ -1,24 +1,14 @@
 <template>
-  <div>
-    <div class="boxone fj">
-      <div class="fd1 tab">
-        <div :class="{a1:on1}" @click="btn('1')">就业指导</div>
-        <div :class="{a1:on2}" @click="btn('2')">政策文件</div>
-        <div :class="{a1:on3}" @click="btn('3')">常见问题</div>
-      </div>
-      <div class="fd2 data">
-        <ul>
-          <li class="fj" v-for="(item,index) in list" :key="index">
-            <a class="fd1" @click="Obtain(index)">{{item.txt}}</a>
-            <span class="fd2 spandata">{{item.data}}</span>
-          </li>
-        </ul>
-        <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="pagesize"
-                       layout="prev, pager, next, jumper" :total="total">
-        </el-pagination>
-      </div>
-    </div>
-    <br>
+  <div class="fd2 data">
+    <ul>
+      <li class="fj" v-for="(item,index) in list" :key="index">
+        <a class="fd1" @click="Obtain(index)">{{item.txt}}</a>
+        <span class="fd2 spandata">{{item.data}}</span>
+      </li>
+    </ul>
+    <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="pagesize"
+                   layout="prev, pager, next, jumper" :total="total">
+    </el-pagination>
   </div>
 </template>
 

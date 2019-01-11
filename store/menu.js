@@ -4,7 +4,7 @@ const menu = [{
   key: 'home',
 }, {
   label: '就业服务',
-  link: '/service/',
+  link: '/service/guide',
   key: 'service',
   children: [{
     label: '就业指导',
@@ -34,7 +34,7 @@ const menu = [{
   }],
 }, {
   label: '招聘信息',
-  link: '/jobs/',
+  link: '/jobs/campus',
   key: 'jobs',
   children: [{
     label: '校内宣讲',

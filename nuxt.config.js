@@ -56,6 +56,14 @@ module.exports = {
   router: {
     middleware: 'column',
   },
+
+  loader: [
+    {
+      test: /\.less$/,
+      loaders: 'style-loader!css-loader!less-loader'
+    }
+  ],
+  
   /*
   ** Build configuration
   */

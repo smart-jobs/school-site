@@ -1,32 +1,21 @@
 <template>
-  <div>
-    <div class="boxone fj">
-      <div class="fd1 tab">
-        <div :class="{a1:on1}" @click="btn('1')">校内宣讲</div>
-        <div :class="{a1:on2}" @click="btn('2')">校外宣讲</div>
-        <div :class="{a1:on3}" @click="btn('3')">招聘会</div>
-        <div :class="{a1:on4}" @click="btn('4')">招聘信息</div>
-      </div>
-      <div class="fd2 data">
-        <ul>
-          <li class="fj" v-for="(item,index) in list" :key="index">
-            <div class="fd1 fj txtbox">
-              <img :src="item.imgurl" class="img fd1">
-              <div class="fd1 titbox">
-                <a @click="Obtain(index)">{{item.title}}</a>
-                <p>{{item.txt1}}</p>
-                <p>{{item.txt2}}</p>
-              </div>
-            </div>
-            <span class="fd2 spandata">{{item.data}}</span>
-          </li>
-        </ul>
-        <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="pagesize"
-                       layout="prev, pager, next, jumper" :total="total">
-        </el-pagination>
-      </div>
-    </div>
-    <br>
+  <div class="fd2 data">
+    <ul>
+      <li class="fj" v-for="(item,index) in list" :key="index">
+        <div class="fd1 fj txtbox">
+          <img :src="item.imgurl" class="img fd1">
+          <div class="fd1 titbox">
+            <a @click="Obtain(index)">{{item.title}}</a>
+            <p>{{item.txt1}}</p>
+            <p>{{item.txt2}}</p>
+          </div>
+        </div>
+        <span class="fd2 spandata">{{item.data}}</span>
+      </li>
+    </ul>
+    <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="pagesize"
+                   layout="prev, pager, next, jumper" :total="total">
+    </el-pagination>
   </div>
 </template>
 
