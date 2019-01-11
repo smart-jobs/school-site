@@ -14,7 +14,6 @@
 
 <script>
 export default {
-  name: 'Home',
   data() {
     return {
       type: '', // 选项卡类型
