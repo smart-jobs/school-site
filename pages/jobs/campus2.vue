@@ -9,6 +9,11 @@
             <p>{{item.txt1}}</p>
             <p>{{item.txt2}}</p>
           </div>
+          <div class="fd1 titbox">
+            <br>
+            <p>{{item.enterprise}}</p>
+            <p>{{item.type}}</p>
+          </div>
         </div>
         <span class="fd2 spandata">{{item.data}}</span>
       </li>
@@ -24,14 +29,9 @@ export default {
   name: 'home',
   data() {
     return {
-      type: '', // 选项卡类型
       page: 1, // 页数
       pagesize: 10, // 条数
       total: 100, // 总数
-      on1: true, // 选项卡样式1
-      on2: false, // 选项卡样式2
-      on3: false, // 选项卡样式3
-      on4: false, // 选项卡样式4
       list: [
         // 数据
         {
@@ -40,7 +40,9 @@ export default {
           id: '1',
           imgurl: '/img/logox.jpg',
           txt1: '华南理工大学',
-          txt2: '五山校区就业指导中心一号报告厅（1101室）',
+          txt2: '就业指导中心招聘室2',
+          type:'信息传输、软件和信息技术服务业',
+          enterprise:'三资企业'
         },
         {
           title: '网上创业能复制吗？给大学生创业的6点建议',
@@ -48,7 +50,9 @@ export default {
           id: '2',
           imgurl: '/img/logox.jpg',
           txt1: '华南理工大学',
-          txt2: '五山校区就业指导中心一号报告厅（1101室）',
+          txt2: '就业指导中心招聘室2',
+          type:'信息传输、软件和信息技术服务业',
+          enterprise:'三资企业'
         },
         {
           title: '网上创业能复制吗？给大学生创业的6点建议',
@@ -56,55 +60,24 @@ export default {
           id: '3',
           imgurl: '/img/logox.jpg',
           txt1: '华南理工大学',
-          txt2: '五山校区就业指导中心一号报告厅（1101室）',
+          txt2: '就业指导中心招聘室2',
+          type:'信息传输、软件和信息技术服务业',
+          enterprise:'三资企业'
         },
         {
           title: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
           id: '4',
           imgurl: '/img/logox.jpg',
-          txt1: '华南理工大学',
-          txt2: '五山校区就业指导中心一号报告厅（1101室）',
+          txt2: '就业指导中心招聘室2',
+          type:'信息传输、软件和信息技术服务业',
+          enterprise:'三资企业'
         },
       ],
     };
   },
   methods: {
     btn(index) {
-      // 选项卡点击
-      switch (index) {
-        case '1':
-          this.on1 = true;
-          this.on2 = false;
-          this.on3 = false;
-          this.on4 = false;
-          this.type = 1;
-          break;
-
-        case '2':
-          this.on1 = false;
-          this.on2 = true;
-          this.on3 = false;
-          this.on4 = false;
-          this.type = 2;
-          break;
-
-        case '3':
-          this.on1 = false;
-          this.on2 = false;
-          this.on3 = true;
-          this.on4 = false;
-          this.type = 3;
-          break;
-
-        case '4':
-          this.on1 = false;
-          this.on2 = false;
-          this.on3 = false;
-          this.on4 = true;
-          this.type = 4;
-          break;
-      }
     },
     handleCurrentChange(val) {
       console.log('当前是' + val + '页');
@@ -116,35 +89,7 @@ export default {
     },
   },
   mounted() {
-    switch (this.$route.query.id) {
-      case '6':
-        this.on1 = true;
-        this.on2 = false;
-        this.on3 = false;
-        this.on4 = false;
-        break;
-
-      case '7':
-        this.on1 = false;
-        this.on2 = true;
-        this.on3 = false;
-        this.on4 = false;
-        break;
-
-      case '8':
-        this.on1 = false;
-        this.on2 = false;
-        this.on3 = true;
-        this.on4 = false;
-        break;
-
-      case '9':
-        this.on1 = false;
-        this.on2 = false;
-        this.on3 = false;
-        this.on4 = true;
-        break;
-    }
+    
   },
 }; // l轮播图宽度为424
 </script>
@@ -191,6 +136,7 @@ a {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  display: block;
 }
 a:hover {
   color: #1e649f;
@@ -225,6 +171,6 @@ p {
   text-overflow: ellipsis;
 }
 .titbox {
-  width: 90%;
+  width: 40%;
 }
 </style>

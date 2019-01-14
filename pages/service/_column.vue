@@ -17,13 +17,9 @@ export default {
   name: 'home',
   data() {
     return {
-      type: '', // 选项卡类型
       page: 1, // 页数
       pagesize: 10, // 条数
       total: 100, // 总数
-      on1: true, // 选项卡样式1
-      on2: false, // 选项卡样式2
-      on3: false, // 选项卡样式3
       list: [
         // 数据
         {
@@ -80,31 +76,6 @@ export default {
     };
   },
   methods: {
-    btn(index) {
-      // 选项卡点击
-      switch (index) {
-        case '1':
-          this.on1 = true;
-          this.on2 = false;
-          this.on3 = false;
-          this.type = 1;
-          break;
-
-        case '2':
-          this.on1 = false;
-          this.on2 = true;
-          this.on3 = false;
-          this.type = 2;
-          break;
-
-        case '3':
-          this.on1 = false;
-          this.on2 = false;
-          this.on3 = true;
-          this.type = 3;
-          break;
-      }
-    },
     handleCurrentChange(val) {
       console.log('当前是' + val + '页');
     },
@@ -115,27 +86,7 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$route);
-    switch (this.$route.query.name) {
-      case '1':
-        this.on1 = true;
-        this.on2 = false;
-        this.on3 = false;
-        break;
-
-      case '2':
-        this.on1 = false;
-        this.on2 = true;
-        this.on3 = false;
-        break;
-
-      case '3':
-        this.on1 = false;
-        this.on2 = false;
-        this.on3 = true;
-        break;
-    }
-  },
+  }
 }; // l轮播图宽度为424
 </script>
 
