@@ -105,7 +105,7 @@ export default {
 }
 .tab {
   width: 20%;
-  background: rgb(240, 240, 240);
+  background: #f0f0f0;
   line-height: 2.5em;
   color: #000;
 }

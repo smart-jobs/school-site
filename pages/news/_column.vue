@@ -16,12 +16,9 @@
 export default {
   data() {
     return {
-      type: '', // 选项卡类型
       page: 1, // 页数
       pagesize: 10, // 条数
       total: 100, // 总数
-      on1: true, // 选项卡样式1
-      on2: false, // 选项卡样式2
       list: [
         // 数据
         {
@@ -78,37 +75,8 @@ export default {
     };
   },
   mounted() {
-    switch (this.$route.query.id) {
-      case '4':
-        this.on1 = true;
-        this.on2 = false;
-        break;
-
-      case '5':
-        this.on1 = false;
-        this.on2 = true;
-        break;
-    }
   },
   methods: {
-    btn(index) {
-      // 选项卡点击
-      switch (index) {
-        case '1':
-          this.on1 = true;
-          this.on2 = false;
-          this.on3 = false;
-          this.type = 1;
-          break;
-
-        case '2':
-          this.on1 = false;
-          this.on2 = true;
-          this.on3 = false;
-          this.type = 2;
-          break;
-      }
-    },
     handleCurrentChange(val) {
       console.log('当前是' + val + '页');
     },
