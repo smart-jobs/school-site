@@ -13,6 +13,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.2.5",
     "@nuxtjs/axios": "^5.3.6",
     "element-ui": "^2.4.11",
     "nuxt": "^2.3.4",
@@ -23,7 +24,11 @@
     "cross-env": "^5.2.0",
     "eslint": "^5.12.0",
     "eslint-loader": "^2.1.1",
+    "eslint-plugin-html": "^5.0.0",
+    "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-vue": "^5.1.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
     "nodemon": "^1.18.9"
   }
 }

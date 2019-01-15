@@ -20,9 +20,9 @@
 export default {
   name: 'home',
   data() {
-    return {}
-  }
-}
+    return {};
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

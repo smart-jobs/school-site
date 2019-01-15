@@ -1,145 +1,93 @@
 <template>
-  <div>
-    <banner />
-    <navx />
-    <div class="boxone fj">
-      <div class="fd1 tab">
-        <div :class="{ a1: on1 }" @click="btn('1')">焦点新闻</div>
-        <div :class="{ a1: on2 }" @click="btn('2')">就业快讯</div>
-      </div>
-      <div class="fd2 data">
-        <ul>
-          <li v-for="(item, index) in list" :key="index" class="fj">
-            <a class="fd1" @click="Obtain(index)"> {{ item.txt }} </a>
-            <span class="fd2 spandata"> {{ item.data }}
-            </span>
-          </li>
-        </ul>
-        <el-pagination class="pv" :current-page.sync="page" :page-size="pagesize" layout="prev, pager, next, jumper"
-                       :total="total" @current-change="handleCurrentChange" />
-      </div>
-    </div>
-    <br />
-    <feet />
+  <div class="fd2 data">
+    <ul>
+      <li class="fj" v-for="(item,index) in list" :key="index">
+        <a class="fd1" @click="Obtain(index)">{{item.txt}}</a>
+        <span class="fd2 spandata">{{item.data}}</span>
+      </li>
+    </ul>
+    <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="pagesize"
+                   layout="prev, pager, next, jumper" :total="total">
+    </el-pagination>
   </div>
 </template>
 
 <script>
-import banner from '~/components/layout/banner'
-import navx from '~/components/layout/navx'
-import feet from '~/components/layout/feet'
 export default {
-  name: 'Home',
-  components: {
-    banner,
-    navx,
-    feet
-  },
+  name: 'home',
   data() {
     return {
-      type: '', // 选项卡类型
       page: 1, // 页数
       pagesize: 10, // 条数
       total: 100, // 总数
-      on1: true, // 选项卡样式1
-      on2: false, // 选项卡样式2
       list: [
         // 数据
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '1'
+          id: '1',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '2'
+          id: '2',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '3'
+          id: '3',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '4'
+          id: '4',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '5'
+          id: '5',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '6'
+          id: '6',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '7'
+          id: '7',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '8'
+          id: '8',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '9'
+          id: '9',
         },
         {
           txt: '网上创业能复制吗？给大学生创业的6点建议',
           data: '2016-04-10',
-          id: '10'
-        }
-      ]
-    }
-  },
-  mounted() {
-    switch (this.$route.query.id) {
-      case '4':
-        this.on1 = true
-        this.on2 = false
-        break
-
-      case '5':
-        this.on1 = false
-        this.on2 = true
-        break
-    }
+          id: '10',
+        },
+      ],
+    };
   },
   methods: {
-    btn(index) {
-      // 选项卡点击
-      switch (index) {
-        case '1':
-          this.on1 = true
-          this.on2 = false
-          this.on3 = false
-          this.type = 1
-          break
-
-        case '2':
-          this.on1 = false
-          this.on2 = true
-          this.on3 = false
-          this.type = 2
-          break
-      }
-    },
     handleCurrentChange(val) {
-      console.log('当前是' + val + '页')
+      console.log('当前是' + val + '页');
     },
     Obtain(index) {
       // li点击取id
-      let id = this.list[index].id
-      console.log(id)
-    }
+      let id = this.list[index].id;
+      console.log(id);
+    },
+  },
+  mounted() {
   }
-} // l轮播图宽度为424
+}; // l轮播图宽度为424
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -2,7 +2,6 @@
   <div>
     <banner />
     <navx />
-    <nuxt />
     <feet />
   </div>
 </template>
@@ -17,7 +16,12 @@ export default {
     banner,
     navx,
     feet
-  }
+  },
+  data() {
+    return {
+      activated: 0,
+    };
+  },
 }
 </script>
 
