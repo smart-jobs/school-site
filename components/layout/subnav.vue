@@ -1,7 +1,8 @@
 <template>
   <div class="fd1 tab">
-    <div v-for="(item,index) in data" :key="index" :class="{ a1: item.key == activated }" 
-      @click="menuClick(item)">{{item.label}}</div>
+    <div class="tabs" v-for="(item,index) in data" :key="index" :class="{ a1: item.key == activated }">
+        <div class="tabx" @click="menuClick(item)">{{item.label}}</div>
+      </div>
   </div>
 </template>
 
@@ -25,14 +26,16 @@ export default {
 <style scoped>
 .tab {
   width: 20%;
-  background: rgb(240, 240, 240);
+  background:#ffffff;
   line-height: 2.5em;
   color: #000;
 }
-.tab div {
-  border-bottom: 1px solid #333;
+.tab .tabx {
+  border-bottom: 1px solid #e9e9e9;
   text-indent: 1em;
   cursor: pointer;
+  width: 90%;
+  margin: 0 auto;
 }
 .a1 {
   color: #1e649f;

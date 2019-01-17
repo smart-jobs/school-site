@@ -90,57 +90,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.boxone {
-  width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  margin-top: 2rem;
-}
-.tab {
-  width: 20%;
-  background: rgb(240, 240, 240);
-  line-height: 2.5em;
-  color: #000;
-}
-.tab div {
-  border-bottom: 1px solid #333;
-  text-indent: 1em;
-  cursor: pointer;
-}
-.data {
-  width: 75%;
-}
-.a1 {
-  color: #1e649f;
-  border-left: 3px solid #1e649f;
-}
-ul {
-  width: 100%;
-}
-li {
-  width: 100%;
-  line-height: 2.5em;
-  border-bottom: 1px dashed #999;
-  text-indent: 2em;
-  cursor: pointer;
-}
-a {
-  width: 50%;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-a:hover {
-  color: #1e649f;
-}
-.spandata {
-  margin-right: 3%;
-}
-.data {
-  background: rgb(243, 243, 243);
-}
-.pv {
-  margin-top: 2rem;
-}
+<style lang="less" scoped>
+@import '~@/assets/secondary.less';
 </style>
