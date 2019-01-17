@@ -51,7 +51,12 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    proxy: true,
+    prefix: '/www/api',
   },
+  proxy: [
+    'http://99991.smart.chinahuian.cn/www/api',
+  ],
 
   router: {
     middleware: 'column',
