@@ -15,18 +15,14 @@
     <div class="main" :style="{height:this.he+'px'}" v-if="sxshow">
       <div class="mbox fd1 fj" v-for="(item,index) in list" :key="index">
         <div class="imgbox fd1">
-          <img :src="item.imgurl" class="bj" v-if="show1">
-          <div class="setdate" v-else>
-            <div class="y">{{item.y}}月</div>
-            <div class="m">{{item.m}}</div>
-          </div>
+          <img :src="show1" class="bj">
         </div>
         <div class="txtbox fd1">
-          <p class="title">{{item.title}}</p>
-          <p class="txt">{{item.txt}}</p>
+          <p class="title">{{item.title || item.subject}}</p>
+          <p class="txt">{{item.corpname}}</p>
         </div>
         <div class="data fd2">
-          <span>{{item.date}}</span>
+          <span>{{item.meta.createdAt | capitalize}}</span>
         </div>
       </div>
     </div>
@@ -36,18 +32,17 @@
           <p class="txt2">招聘会</p>
         </div>
         <div class="fd1 titlebox">
-          <div class="title title2">{{item.title}}</div>
-          <p class="p">主办方：{{item.Company}}</p>
-          <p class="p">{{item.address}}</p>
-          <p class="p">参与企业{{item.num}}家</p>
+          <div class="title title2">{{item.subject}}</div>
+          <p class="p">参与企业{{item.unit}}家</p>
         </div>
-        <div class="fd1 right2">{{item.date}}</div>
+        <div class="fd1 right2">{{item.meta.createdAt | capitalize2}}</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'home',
   data() {
@@ -57,77 +52,10 @@ export default {
       on3: false,
       on4: false,
       he: '',
-      show1: true,
+      show1: '/img/logox.jpg',
       sxshow: true,
-      list: [
-        // 招聘  宣讲 数据
-        {
-          imgurl: '/img/logox.jpg',
-          title: '共耀未来 · 海有你——海普瑞药业2018届校园招聘启动啦！',
-          txt: '需求岗位：2018届校招生,应届毕业生，实习生。',
-          date: '2017-05-18',
-          y: '11',
-          m: '25'
-        },
-        {
-          imgurl: '/img/logox.jpg',
-          title: '共耀未来 · 海有你——海普瑞药业2018届校园招聘启动啦！',
-          txt: '需求岗位：2018届校招生,应届毕业生，实习生。',
-          date: '2017-05-18',
-          y: '11',
-          m: '25'
-        },
-        {
-          imgurl: '/img/logox.jpg',
-          title: '共耀未来 · 海有你——海普瑞药业2018届校园招聘启动啦！',
-          txt: '需求岗位：2018届校招生,应届毕业生，实习生。',
-          date: '2017-05-18',
-          y: '11',
-          m: '25'
-        },
-        {
-          imgurl: '/img/logox.jpg',
-          title: '共耀未来 · 海有你——海普瑞药业2018届校园招聘启动啦！',
-          txt: '需求岗位：2018届校招生,应届毕业生，实习生。',
-          date: '2017-05-18',
-          y: '11',
-          m: '25'
-        },
-        {
-          imgurl: '/img/logox.jpg',
-          title: '共耀未来 · 海有你——海普瑞药业2018届校园招聘启动啦！',
-          txt: '需求岗位：2018届校招生,应届毕业生，实习生。',
-          date: '2017-05-18',
-          y: '11',
-          m: '25'
-        },
-        {
-          imgurl: '/img/logox.jpg',
-          title: '共耀未来 · 海有你——海普瑞药业2018届校园招聘启动啦！',
-          txt: '需求岗位：2018届校招生,应届毕业生，实习生。',
-          date: '2017-05-18',
-          y: '1',
-          m: '2'
-        }
-      ],
-      list2: [
-        {
-          title:
-            '【12月28日】暨南大学2019届毕业生校董校友校市合作单位综合类专场招聘会',
-          Company: '暨南大学',
-          address: '金陵文化广场',
-          num: '100',
-          date: '2017-05-18/09:00'
-        },
-        {
-          title:
-            '【12月28日】暨南大学2019届毕业生校董校友校市合作单位综合类专场招聘会',
-          Company: '暨南大学',
-          address: '金陵文化广场',
-          num: '100',
-          date: '2017-05-18/09:00'
-        }
-      ]
+      list: [],
+      list2: []
     }
   },
   methods: {
@@ -140,6 +68,8 @@ export default {
           this.on4 = false
           this.show1 = true
           this.sxshow = true
+          this.query('jobinfo','6')
+          this.show1 = '/img/logox.jpg'
           break
 
         case '2':
@@ -148,6 +78,7 @@ export default {
           this.on3 = false
           this.on4 = false
           this.sxshow = false
+          this.query('jobfair','2')
           break
 
         case '3':
@@ -157,6 +88,8 @@ export default {
           this.on4 = false
           this.show1 = false
           this.sxshow = true
+          this.query('campus','6')
+          this.show1 = '/img/logo1.jpg'
           break
 
         case '4':
@@ -166,13 +99,45 @@ export default {
           this.on1 = false
           this.show1 = false
           this.sxshow = true
+          this.query('campus','6')
+          this.show1 = '/img/logo2.jpg'
           break
       }
+    },
+    query (uri,arr) {
+      let tache = this
+      axios.get('/www/api/jobs/'+uri+'/simple',{
+        params:{
+          skip: 0,
+          limit: arr,
+        }
+      })
+        .then((res) => {
+          if (res.status == 200) {
+            if (arr == '6') {
+              tache.list = res.data.data
+            }else {
+              tache.list2 = res.data.data
+            }
+          }
+          
+        }).catch((err) => {
+          console.log(err)
+        });
     }
   },
   mounted() {
     let ha = Number(document.getElementsByClassName('header')[0].clientHeight)
     this.he = 368 - ha
+    this.query('jobinfo','6')
+  },
+  filters: {
+    capitalize: function (value) {
+      return value.slice(0,10)
+    },
+    capitalize2: function (val) {
+      return val.slice(0,10)
+    }
   }
 }
 </script>

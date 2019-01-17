@@ -90,7 +90,7 @@ export default {
     },
   },
   mounted() {
-    
+    console.log(this.$router)
   },
 }; // l轮播图宽度为424
 </script>
