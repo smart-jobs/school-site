@@ -1,47 +1,47 @@
 <template>
-  <div class="box">
-    <div class="header fj">
-      <div class="btnbox fd1">
-        <div class="btn" :class="{btnx:on1}" @mouseenter="btnshow('1')">招聘信息</div>
-        <div class="btn" :class="{btnx:on2}" @mouseenter="btnshow('2')">招聘会</div>
-        <div class="btn" :class="{btnx:on3}" @mouseenter="btnshow('3')">校内宣讲会</div>
-        <div class="btn" :class="{btnx:on4}" @mouseenter="btnshow('4')">校外宣讲会</div>
+  <div class="zj_tab_box">
+    <div class="zj_tab_header fj">
+      <div class="zj_tab_btnbox fd1">
+        <div class="zj_tab_btn" :class="{zj_tab_btnx:on1}" @mouseenter="btnshow('1')">招聘信息</div>
+        <div class="zj_tab_btn" :class="{zj_tab_btnx:on2}" @mouseenter="btnshow('2')">招聘会</div>
+        <div class="zj_tab_btn" :class="{zj_tab_btnx:on3}" @mouseenter="btnshow('3')">校内宣讲会</div>
+        <div class="zj_tab_btn" :class="{zj_tab_btnx:on4}" @mouseenter="btnshow('4')">校外宣讲会</div>
       </div>
-      <div class="all fd2">
-        <img src="/img/z1.jpg" class="icon fd2">
+      <div class="zj_tab_all fd2">
+        <img src="/img/z1.jpg" class="zj_tab_icon fd2">
         <span class="fd2">MORE</span>
       </div>
     </div>
-    <div class="main" :style="{height:this.he+'px'}" v-if="sxshow">
-      <div class="mbox fd1 fj" v-for="(item,index) in list" :key="index">
-        <div class="imgbox fd1">
-          <img :src="item.imgurl" class="bj" v-if="show1">
-          <div class="setdate" v-else>
-            <div class="y">{{item.y}}月</div>
-            <div class="m">{{item.m}}</div>
+    <div class="zj_tab_main" :style="{height:this.he+'px'}" v-if="sxshow">
+      <div class="zj_tab_mbox fd1 fj" v-for="(item,index) in list" :key="index">
+        <div class="zj_tab_imgbox fd1">
+          <img :src="item.imgurl" class="zj_tab_bj" v-if="show1">
+          <div class="zj_tab_setdate" v-else>
+            <div class="zj_tab_y">{{item.y}}月</div>
+            <div class="zj_tab_m">{{item.m}}</div>
           </div>
         </div>
-        <div class="txtbox fd1">
-          <p class="title">{{item.title}}</p>
-          <p class="txt">{{item.txt}}</p>
+        <div class="zj_tab_txtbox fd1">
+          <p class="zj_tab_title">{{item.title}}</p>
+          <p class="zj_tab_txt">{{item.txt}}</p>
         </div>
-        <div class="data fd2">
+        <div class="zj_tab_data fd2">
           <span>{{item.date}}</span>
         </div>
       </div>
     </div>
-    <div class="main" :style="{height:this.he+'px'}" v-else>
-      <div class="m2box" v-for="(item,index) in list2" :key="index">
-        <div class="txtbox2 fd1">
-          <p class="txt2">招聘会</p>
+    <div class="zj_tab_main" :style="{height:this.he+'px'}" v-else>
+      <div class="zj_tab_m2box" v-for="(item,index) in list2" :key="index">
+        <div class="zj_tab_txtbox2 fd1">
+          <p class="zj_tab_txt2">招聘会</p>
         </div>
-        <div class="fd1 titlebox">
-          <div class="title title2">{{item.title}}</div>
-          <p class="p">主办方：{{item.Company}}</p>
-          <p class="p">{{item.address}}</p>
-          <p class="p">参与企业{{item.num}}家</p>
+        <div class="fd1 zj_tab_titlebox">
+          <div class="zj_tab_title zj_tab_title2">{{item.title}}</div>
+          <p class="zj_tab_p">主办方：{{item.Company}}</p>
+          <p class="zj_tab_p">{{item.address}}</p>
+          <p class="zj_tab_p">参与企业{{item.num}}家</p>
         </div>
-        <div class="fd1 right2">{{item.date}}</div>
+        <div class="fd1 zj_tab_right2">{{item.date}}</div>
       </div>
     </div>
   </div>
@@ -171,156 +171,13 @@ export default {
     }
   },
   mounted() {
-    let ha = Number(document.getElementsByClassName('header')[0].clientHeight)
+    let ha = Number(document.getElementsByClassName('zj_tab_header')[0].clientHeight)
     this.he = 368 - ha
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.box {
-  width: 841px;
-  margin-left: 17px;
-  height: 370px;
-  border-top: 5px solid #60b0f4;
-  border-bottom: 5px solid #60b0f4;
-}
-.header {
-  width: 100%;
-}
-.btnbox {
-  width: 60%;
-  border-left: 1px solid #ddd;
-  display: flex;
-}
-.btn {
-  width: 25%;
-  text-align: center;
-  font-size: 1.2em;
-  font-weight: 600;
-  line-height: 2.5em;
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-}
-.all {
-  width: 39.85%;
-  color: #60b0f4;
-  line-height: 2.5em;
-  border-bottom: 1px solid #ddd;
-  font-size: 1.2em;
-}
-.icon {
-  margin-top: 4%;
-  margin-left: 3%;
-  margin-right: 5%;
-}
-.btnx {
-  border-bottom: 1px solid #fff;
-  color: #60b0f4;
-}
-.main {
-  width: 100%;
-  border-left: 1px solid #ddd;
-}
-.mbox {
-  width: 48%;
-  height: 30%;
-  margin: 0.5% 1%;
-  border-bottom: 1px dashed #ddd;
-  cursor: pointer;
-}
-.imgbox {
-  width: 19%;
-  height: 90%;
-  border: 1px solid #ddd;
-}
-.bj {
-  width: 90%;
-  height: 90%;
-  margin: 5% auto;
-}
-.txtbox {
-  width: 40%;
-  margin: 0 5%;
-  height: 100%;
-}
-p {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.title {
-  font-size: 1.2em;
-  color: #1e649f;
-}
-.txt {
-  line-height: 3em;
-}
-.data {
-  width: 20%;
-  height: 100%;
-  text-align: right;
-  font-size: 0.8em;
-  color: #999;
-}
-.title:hover {
-  text-decoration: underline;
-}
-.setdate {
-  width: 100%;
-  height: 100%;
-}
-.y {
-  width: 100%;
-  height: 30%;
-  color: #fff;
-  background: #1e649f;
-  text-align: center;
-  /* line-height: 1.8em; */
-}
-.m {
-  width: 100%;
-  height: 60%;
-  line-height: 2em;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-.m2box {
-  width: 100%;
-  height: 50%;
-  border-bottom: 1px dashed #ddd;
-}
-.txtbox2 {
-  width: 10%;
-  border: 1px solid #ddd;
-  line-height: 4.5em;
-  font-size: 1.2em;
-  font-weight: 700;
-  text-align: center;
-  margin: 4% 0 0 2%;
-}
-.titlebox {
-  width: 60%;
-  margin: 0 3%;
-  height: 100%;
-}
-.p {
-  line-height: 1.8em;
-}
-.title2 {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  line-height: 3em;
-}
-.right2 {
-  color: #ff0000;
-  text-align: center;
-  width: 20%;
-  height: 100%;
-  line-height: 3.5em;
-}
+<style lang="less" scoped>
+@import '~@/assets/total.less';
 </style>

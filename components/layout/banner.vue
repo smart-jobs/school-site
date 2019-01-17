@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="box">
-      <img :src="bj1" class="bj">
-      <img :src="bj2" class="bottom">
+    <div class="zj_banner_box">
+      <img :src="bj1" class="zj_banner_bj">
+      <img :src="bj2" class="zj_banner_bottom">
     </div>
-    <div class="logobox">
-      <img :src="logo" class="logo">
+    <div class="zj_banner_logobox">
+      <img :src="logo" class="zj_banner_logo">
     </div>
   </div>
 </template>
@@ -24,28 +24,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.box {
-  min-width: 1200px;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-}
-.bj {
-  width: 100%;
-}
-.bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 200px;
-  width: 100%;
-}
-.logobox {
-  width: 1200px;
-  position: relative;
-  margin: 100px auto;
-}
+<style lang="less" scoped>
+@import '~@/assets/total.less';
 </style>

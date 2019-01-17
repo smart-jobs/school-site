@@ -1,14 +1,14 @@
 <template>
-  <div class="box">
-    <div class="fj btnbox">
-      <img src="/img/web_icon_left_dis.png" class="left fd1" @click="up">
-      <div class="fd1 data">
+  <div class="zj_calendar_box">
+    <div class="fj zj_calendar_btnbox">
+      <img src="/img/web_icon_left_dis.png" class="zj_calendar_left fd1" @click="up">
+      <div class="fd1 zj_calendar_data">
         <p>招聘日历</p>
         {{this.y}}年{{this.m+1}}月
       </div>
-      <img src="/img/web_icon_right_dis.png" class="right fd2" @click="dw">
+      <img src="/img/web_icon_right_dis.png" class="zj_calendar_right fd2" @click="dw">
     </div>
-    <div class="week">
+    <div class="zj_calendar_week">
       <span>日</span>
       <span>一</span>
       <span>二</span>
@@ -17,8 +17,8 @@
       <span>五</span>
       <span>六</span>
     </div>
-    <div class="week2 fj">
-      <span class="fd1 yuan" :class="{a1:item[3] == '今',a2:item[3] == '聘'}" v-for="(item,index) in this.arr" :key="index"
+    <div class="zj_calendar_week2 fj">
+      <span class="fd1 zj_calendar_yuan" :class="{zj_calendar_a1:item[3] == '今',zj_calendar_a2:item[3] == '聘'}" v-for="(item,index) in this.arr" :key="index"
             @mouseenter="enter(item[0])">
         {{item[0]}}
       </span>
@@ -123,70 +123,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.box {
-  width: 340px;
-  height: 380px;
-  border: 1px solid #ddd;
-}
-.left,
-.right {
-  width: 10%;
-}
-.btnbox {
-  width: 90%;
-  margin: 5% auto;
-}
-.data {
-  width: 80%;
-  text-align: center;
-  font-size: 1.2em;
-  font-weight: 700;
-}
-.week {
-  width: 100%;
-  display: flex;
-  background: #60b0f4;
-  color: #fff;
-  font-size: 1.2em;
-  font-weight: 600;
-  line-height: 2em;
-}
-.week span {
-  width: 14.28%;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 50%;
-}
-.week2 {
-  width: 100%;
-  color: #999;
-  font-size: 1.2em;
-  font-weight: 600;
-  line-height: 2em;
-}
-.week2 span {
-  width: 12%;
-  text-align: center;
-  margin: 0.5% 1.14%;
-  cursor: pointer;
-  border-radius: 50%;
-}
-.a1 {
-  background: #60b0f4;
-  color: #fff;
-}
-.a2 {
-  color: #fff;
-  background: #00d30b;
-}
-.yuan {
-  position: relative;
-}
-.week2txtbox {
-  position: absolute;
-  width: 20%;
-  top: -100%;
-  left: -10%;
-}
+<style lang="less" scoped>
+@import '~@/assets/total.less';
 </style>
+

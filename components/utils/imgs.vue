@@ -1,19 +1,19 @@
 <template>
-  <div class="box">
-    <div class="fj titlebox">
-      <div class="fd1 title">焦点新闻</div>
-      <div class="fd2 txt">
+  <div class="zj_imgs_box">
+    <div class="fj zj_imgs_titlebox">
+      <div class="fd1 zj_imgs_title">焦点新闻</div>
+      <div class="fd2 zj_imgs_txt">
         MORE
-        <img src="/img/z1.jpg" class="icon">
+        <img src="/img/z1.jpg" class="zj_imgs_icon">
       </div>
     </div>
     <ul>
       <li :style="{top:top}" class="fd1" v-for="(item,index) in list" :key="index">
-        <img :src="item.uri" class="bj img">
+        <img :src="item.uri" class="zj_imgs_bj zj_imgs_img">
         <!-- <span>{{item.title}}</span> -->
       </li>
-      <div class="fj number">
-        <em class="fd1" :class="{active: idx == index + 1}" v-for="(item,index) in list" :key="index" @click="btn(index+1)">{{index+1}}</em>
+      <div class="fj zj_imgs_number">
+        <em class="fd1" :class="{zj_imgs_active: idx == index + 1}" v-for="(item,index) in list" :key="index" @click="btn(index+1)">{{index+1}}</em>
       </div>
     </ul>
   </div>
@@ -57,7 +57,7 @@ export default {
       } else {
         this.idx++
       }
-      let he = document.getElementsByClassName('img')[0].height
+      let he = document.getElementsByClassName('zj_imgs_img')[0].height
       this.top = -(this.idx - 1) * he + 'px'
     },
     btn(index) {
@@ -72,82 +72,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.box {
-  width: 474px;
-  border: 1px solid rgb(196, 196, 196);
-  height: 330px;
-  overflow: hidden;
-  position: relative;
-}
-ul {
-  width: 100%;
-  height: 85%;
-  position: relative;
-  overflow: hidden;
-}
-li {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-.bj {
-  width: 100%;
-  height: 100%;
-}
-span {
-  width: 90%;
-  position: absolute;
-  top: 20%;
-  font-size: 1.2em;
-  color: #000;
-  left: 5%;
-}
-
-.icon {
-  display: inline;
-}
-.titlebox {
-  border-bottom: 1px solid #ddd;
-  width: 90%;
-  margin: 0 auto;
-}
-.title {
-  display: inline-block;
-  font-size: 16px;
-  vertical-align: middle;
-  position: relative;
-  margin-bottom: -1px;
-  padding: 0 0 8px;
-  font-weight: 700;
-  line-height: 3em;
-}
-.txt {
-  color: #1e649f;
-  position: relative;
-  line-height: 3em;
-  height: 3em;
-  top: 0;
-  right: 0;
-  z-index: 5;
-  cursor: pointer;
-}
-.number {
-  position: absolute;
-  bottom: 8%;
-  right: 5%;
-  display: flex;
-  width: 20%;
-}
-.number em {
-  display: block;
-  width: 20%;
-  border: 1px solid #ddd;
-  text-align: center;
-  background: #fff;
-  cursor: pointer;
-}
-.active {
-  background: #999 !important;
-}
+<style lang="less" scoped>
+@import '~@/assets/total.less';
 </style>
