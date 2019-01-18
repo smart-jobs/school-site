@@ -37,13 +37,9 @@ const menu = [{
   link: '/jobs/campus',
   key: 'jobs',
   children: [{
-    label: '校内宣讲',
+    label: '宣讲会',
     link: '/jobs/campus',
     key: 'campus',
-  }, {
-    label: '校外宣讲',
-    link: '/jobs/campus2',
-    key: 'campus2',
   }, {
     label: '招聘会',
     link: '/jobs/jobfair',

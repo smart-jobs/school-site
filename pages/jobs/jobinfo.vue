@@ -1,85 +1,67 @@
 <template>
   <div class="fd2 data">
     <ul>
-      <li class="fj" v-for="(item,index) in list" :key="index">
+      <li class="fj" v-for="(item,index) in items" :key="index"  @click="Obtain(index)">
         <div class="fd1 fj txtbox">
-          <img :src="item.imgurl" class="img fd1">
+          <img src="/img/logox.jpg" class="img fd1">
           <div class="fd1 titbox">
-            <a @click="Obtain(index)">{{item.title}}</a>
+            <a>{{item.title}}</a>
             <p>需求专业：{{item.txt1}}</p>
             <p>需求岗位：{{item.txt2}}</p>
           </div>
         </div>
-        <span class="fd2 spandata">{{item.data}}</span>
+        <span class="fd2 spandata">{{item.meta.updatedAt | date}}</span>
       </li>
     </ul>
     <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="pagesize"
-                   layout="prev, pager, next, jumper" :total="total">
+                   layout="prev, pager, next, jumper" :total="items.total">
     </el-pagination>
   </div>
 </template>
 
 <script>
+import moment from 'moment';
+import { createNamespacedHelpers } from 'vuex'
+
+const { mapActions, mapState } = createNamespacedHelpers('jobs/jobinfo');
+
 export default {
-  name: 'home',
+  name: 'TabItemJobinfo',
   data() {
     return {
       page: 1, // 页数
       pagesize: 10, // 条数
-      total: 100, // 总数
-      list: [
-        // 数据
-        {
-          title: '网上创业能复制吗？给大学生创业的6点建议',
-          data: '2016-04-10',
-          id: '1',
-          imgurl: '/img/logox.jpg',
-          txt1: '不限专业',
-          txt2: '知识产权储备干部，采购专员'
-        },
-        {
-          title: '网上创业能复制吗？给大学生创业的6点建议',
-          data: '2016-04-10',
-          id: '1',
-          imgurl: '/img/logox.jpg',
-          txt1: '不限专业',
-          txt2: '知识产权储备干部，采购专员'
-        },
-        {
-          title: '网上创业能复制吗？给大学生创业的6点建议',
-          data: '2016-04-10',
-          id: '1',
-          imgurl: '/img/logox.jpg',
-          txt1: '不限专业',
-          txt2: '知识产权储备干部，采购专员'
-        },
-        {
-          title: '网上创业能复制吗？给大学生创业的6点建议',
-          data: '2016-04-10',
-          id: '1',
-          imgurl: '/img/logox.jpg',
-          txt1: '不限专业',
-          txt2: '知识产权储备干部，采购专员'
-        },
-      ],
     };
   },
   methods: {
-    btn(index) {
-    },
+    ...mapActions(['query']),
     handleCurrentChange(val) {
-      console.log('当前是' + val + '页');
+      this.page = val
+      let page = this.page
+      let pageSize = val-1
+      this.query({paging:{page:page, pageSize:pageSize}});
     },
     Obtain(index) {
       // li点击取id
-      let id = this.list[index].id;
+      let id = this.items[index].id;
       console.log(id);
     },
   },
   mounted() {
-    
+    let page = this.page
+    let pageSize = this.pagesize
+    this.query({paging:{page:page, pageSize:pageSize}});
   },
-}; // l轮播图宽度为424
+  computed: {
+    ...mapState(['items']),
+  },
+  filters: {
+    date: function (value) {
+      if(value)
+        return moment(value).format('YYYY-MM-DD');
+    }
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

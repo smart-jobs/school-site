@@ -9,7 +9,7 @@
           <div class="title title2">{{item.subject}}</div>
           <p class="p">参与企业{{item.unit}}家</p>
         </div>
-        <div class="fd1 right2">{{item.meta.createdAt | capitalize}}</div>
+        <div class="fd1 right2">{{item.meta.createdAt | date}}</div>
       </div>
     </div>
   </div>
@@ -29,7 +29,7 @@ export default {
     ...mapActions(['top'])
   },
   mounted() {
-   this.top({ size: 2 });
+   this.top({ paging: 2 });
   },
   computed: {
     ...mapState(['tops']),

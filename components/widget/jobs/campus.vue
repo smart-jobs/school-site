@@ -33,7 +33,7 @@ export default {
     ...mapActions(['top']),
   },
   mounted() {
-    this.top({ size: 6 });
+    this.top({ paging: 6 });
   },
   computed: {
     ...mapState(['tops']),
