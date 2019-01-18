@@ -47,7 +47,7 @@ export const actions = {
 // mutations
 export const mutations = {
   [types.LOADED_TOP](state, { data }) {
-    state.top = data;
+    state.tops = data;
   },
   [types.LOADED_LIST](state, { data, total }) {
     state.items = data;
