@@ -2,45 +2,58 @@
   <div class="box">
     <div class="header fj">
       <div class="btnbox fd1">
-        <div class="btn" v-for="(item,index) in job" :key="index" :class="{btnx:index == key}" @mouseenter="btnshow(item)">{{item.label}}</div>
+        <div class="btn" v-for="(item,index) in tabs" :key="index" :class="{btnx:index == key}" @mouseenter="btnshow(item)">{{item.label}}</div>
       </div>
     </div>
-    <campus v-show="link == 'campus'"/>
-    <jobfair v-show="link == 'jobfair'"/>
-    <jobinfo v-show="link == 'jobinfo'"/>
+    <tab-item-campus v-show="link == 'campus'" />
+    <tab-item-jobfair v-show="link == 'jobfair'" />
+    <tab-item-jobinfo v-show="link == 'jobinfo'" />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import campus from './campus';
-import jobfair from './jobfair';
-import jobinfo from './jobinfo';
+import TabItemCampus from './campus';
+import TabItemJobfair from './jobfair';
+import TabItemJobinfo from './jobinfo';
+
 export default {
-  name: 'home',
+  name: 'JobsWidget',
+  components: {
+    TabItemCampus,
+    TabItemJobfair,
+    TabItemJobinfo,
+  },
   data() {
     return {
       key: 0,
-      link: 'jobinfo'
-    }
+      link: 'jobinfo',
+      tabs: [
+        {
+          label: '招聘信息',
+          link: 'jobinfo',
+          key: 0,
+        },
+        {
+          label: '招聘会',
+          link: 'jobfair',
+          key: 1,
+        },
+        {
+          label: '宣讲会',
+          link: 'campus',
+          key: 2,
+        },
+      ],
+    };
   },
   methods: {
     btnshow(item) {
-      this.key = item.key
-      this.link = item.link
-    }
+      this.key = item.key;
+      this.link = item.link;
+    },
   },
-  mounted() {
-  },
-  computed: {
-    ...mapState(['job'])
-  },
-  components: {
-    campus,
-    jobfair,
-    jobinfo
-  }
-}
+  mounted() {},
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

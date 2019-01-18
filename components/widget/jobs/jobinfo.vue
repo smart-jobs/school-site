@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="main" :style="{height:this.he+'px'}">
-      <div class="mbox fd1 fj" v-for="(item,index) in list" :key="index">
+    <div class="main">
+      <div class="mbox fd1 fj" v-for="(item,index) in tops" :key="index">
         <div class="imgbox fd1">
           <img :src="show1" class="bj">
         </div>
@@ -10,7 +10,7 @@
           <p class="txt">{{item.corpname}}</p>
         </div>
         <div class="data fd2">
-          <span>{{item.meta.createdAt | capitalize}}</span>
+          <span>{{item.meta.createdAt | date}}</span>
         </div>
       </div>
     </div>
@@ -18,43 +18,32 @@
 </template>
 
 <script>
-import axios from 'axios'
+import moment from 'moment';
+import { createNamespacedHelpers } from 'vuex'
+
+const { mapActions, mapState } = createNamespacedHelpers('jobs/jobinfo');
+
 export default {
-  name: 'home',
+  name: 'TabItemJobinfo',
   data() {
     return {
       he: '',
       show1: '/img/logox.jpg',
-      list: []
     }
   },
   methods: {
-    query (uri,arr) {
-      let tache = this
-      axios.get('/www/api/jobs/'+uri+'/simple',{
-        params:{
-          skip: 0,
-          limit: arr,
-        }
-      })
-        .then((res) => {
-          if (res.status == 200) {
-            tache.list = res.data.data
-          }
-          
-        }).catch((err) => {
-          console.log(err)
-        });
-    }
+    ...mapActions(['top']),
   },
   mounted() {
-    let ha = Number(document.getElementsByClassName('header')[0].clientHeight)
-    this.he = 368 - ha
-    this.query('jobinfo','6')
+    this.top({ size: 6 });
+  },
+  computed: {
+    ...mapState(['tops']),
   },
   filters: {
-    capitalize: function (value) {
-      return value.slice(0,10)
+    date: function (value) {
+      if(value)
+        return moment(value).format('YYYY-MM-DD');
     }
   }
 }
