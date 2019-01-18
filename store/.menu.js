@@ -58,4 +58,5 @@ const menu = [{
   link: '/about/contact',
   key: 'about',
 }];
+
 export default menu;
