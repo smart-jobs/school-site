@@ -28,7 +28,6 @@ export const actions = {
   async query({ commit }, { paging }) {
     const { page = paging.page, size = paging.pageSize } = paging;
     const skip = Math.max(0, (page - 1) * size);
-    console.log(skip)
     const params = { skip, limit: size };
     const res = await this.$axios.$get(api.query, { params });
     console.log(res)
