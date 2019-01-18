@@ -3,7 +3,7 @@
     <div class="main">
       <div class="mbox fd1 fj" v-for="(item,index) in tops" :key="index">
         <div class="imgbox fd1">
-          <img :src="show1" class="bj">
+          <img src="/img/logox.jpg" class="bj">
         </div>
         <div class="txtbox fd1">
           <p class="title">{{item.title || item.subject}}</p>
@@ -27,8 +27,6 @@ export default {
   name: 'TabItemJobinfo',
   data() {
     return {
-      he: '',
-      show1: '/img/logox.jpg',
     }
   },
   methods: {
