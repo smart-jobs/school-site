@@ -55,7 +55,7 @@ module.exports = {
     prefix: '/www/api',
   },
   proxy: [
-    'http://99991.smart.chinahuian.cn/www/api',
+    'http://99991.smart.jilinjobswx.cn/www/api',
   ],
 
   router: {
