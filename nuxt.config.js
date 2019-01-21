@@ -59,6 +59,7 @@ module.exports = {
   ],
 
   router: {
+    base: '/',
     middleware: 'column',
   },
 
