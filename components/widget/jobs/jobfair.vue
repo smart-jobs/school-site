@@ -29,7 +29,7 @@ export default {
     ...mapActions(['top'])
   },
   mounted() {
-   this.top({ paging: 2 });
+   this.top({ size: 2 });
   },
   computed: {
     ...mapState(['tops']),

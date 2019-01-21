@@ -35,7 +35,8 @@ export default {
   methods: {
     ...mapActions(['query']),
     handleCurrentChange(val) {
-      this.query({ paging: { page: this.page, size: this.size } });
+      this.page = val
+      this.query({ paging: { page: val-1, size: this.size } });
     },
     Obtain(index) {
       // li点击取id

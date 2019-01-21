@@ -15,8 +15,8 @@ export const state = () => ({
 
 // actions
 export const actions = {
-  async top({ commit }, { paging }) {
-    const size  = paging;
+  async top({ commit }, paging = {}) {
+    const { size = topSize } = paging;
     const params = { skip: 0, limit: size };
     const res = await this.$axios.$get(api.simple, { params });
     if (res.errcode === 0) {
@@ -24,11 +24,12 @@ export const actions = {
     }
     return res;
   },
-  async query({ commit }, { paging }) {
-    const { page = paging.page, size = paging.pageSize } = paging;
+  async query({ commit }, { paging = {} }) {
+    const { page = 1, size = pageSize } = paging;
     const skip = Math.max(0, (page - 1) * size);
     const params = { skip, limit: size };
     const res = await this.$axios.$get(api.query, { params });
+    console.log(res)
     if (res.errcode === 0) {
       commit(types.LOADED_LIST, res);
     }

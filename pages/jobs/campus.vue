@@ -18,7 +18,7 @@
         <span class="fd2 spandata">{{item.date}}</span>
       </li>
     </ul>
-    <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="pagesize"
+    <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="size"
                    layout="prev, pager, next, jumper" :total="items.total">
     </el-pagination>
   </div>
@@ -34,16 +34,14 @@ export default {
   data() {
     return {
       page: 1, // 页数
-      pagesize: 10, // 条数
+      size: 10, // 条数
     };
   },
   methods: {
    ...mapActions(['query']),
     handleCurrentChange(val) {
       this.page = val
-      let page = this.page
-      let pageSize = val-1
-      this.query({paging:{page:page, pageSize:pageSize}});
+      this.query({ paging: { page: val-1, size: this.size } });
     },
     Obtain(index) {
       // li点击取id
@@ -52,12 +50,10 @@ export default {
     },
   },
   mounted() {
-    let page = this.page
-    let pageSize = this.pagesize
-    this.query({paging:{page:page, pageSize:pageSize}});
+    this.query({ paging: { page: this.page, size: this.size } });
   },
   computed: {
-    ...mapState(['items']),
+    ...mapState(['items'])
   },
   filters: {
     date: function (value) {

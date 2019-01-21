@@ -28,6 +28,7 @@ export const actions = {
     return res;
   },
   async query({ commit }, { paging = {} }) {
+    console.log(paging)
     const { page = 1, size = pageSize } = paging;
     const skip = Math.max(0, (page - 1) * size);
     const params = { skip, limit: size };
