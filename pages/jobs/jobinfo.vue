@@ -1,7 +1,7 @@
 <template>
   <div class="fd2 data">
     <ul>
-      <li class="fj" v-for="(item,index) in items" :key="index"  @click="Obtain(index)">
+      <li class="fj" v-for="(item,index) in items" :key="index" @click="Obtain(index)">
         <div class="fd1 fj txtbox">
           <img src="/img/logox.jpg" class="img fd1">
           <div class="fd1 titbox">
@@ -13,7 +13,7 @@
         <span class="fd2 spandata">{{item.meta.updatedAt | date}}</span>
       </li>
     </ul>
-    <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="pagesize"
+    <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="size"
                    layout="prev, pager, next, jumper" :total="items.total">
     </el-pagination>
   </div>
@@ -21,7 +21,7 @@
 
 <script>
 import moment from 'moment';
-import { createNamespacedHelpers } from 'vuex'
+import { createNamespacedHelpers } from 'vuex';
 
 const { mapActions, mapState } = createNamespacedHelpers('jobs/jobinfo');
 
@@ -30,16 +30,13 @@ export default {
   data() {
     return {
       page: 1, // 页数
-      pagesize: 10, // 条数
+      size: 10, // 条数
     };
   },
   methods: {
     ...mapActions(['query']),
     handleCurrentChange(val) {
-      this.page = val
-      let page = this.page
-      let pageSize = val-1
-      this.query({paging:{page:page, pageSize:pageSize}});
+      this.query({ paging: { page: this.page, size: this.size } });
     },
     Obtain(index) {
       // li点击取id
@@ -48,19 +45,16 @@ export default {
     },
   },
   mounted() {
-    let page = this.page
-    let pageSize = this.pagesize
-    this.query({paging:{page:page, pageSize:pageSize}});
+    this.query({ paging: { page: this.page, size: this.size } });
   },
   computed: {
     ...mapState(['items']),
   },
   filters: {
-    date: function (value) {
-      if(value)
-        return moment(value).format('YYYY-MM-DD');
-    }
-  }
+    date: function(value) {
+      if (value) return moment(value).format('YYYY-MM-DD');
+    },
+  },
 };
 </script>
 
