@@ -47,8 +47,9 @@ export default {
     },
     Obtain(index) {
       // li点击取id
-      let id = this.items[index].id;
+      let id = this.items[index]._id;
       console.log(id);
+      this.$router.push('/recruit_detailed/jobinfo')
     },
   },
   mounted() {

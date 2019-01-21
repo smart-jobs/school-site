@@ -7,7 +7,7 @@
         </div>
         <div class="fd1 titlebox">
           <div class="title title2">{{item.subject}}</div>
-          <p class="p">参与企业{{item.unit}}家</p>
+          <p class="p">分站信息：{{item.unit}}</p>
         </div>
         <div class="fd1 right2">{{item.meta.createdAt | date}}</div>
       </div>
