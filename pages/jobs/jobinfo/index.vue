@@ -5,7 +5,7 @@
         <div class="fd1 fj txtbox">
           <img src="/img/logox.jpg" class="img fd1">
           <div class="fd1 titbox">
-            <nuxt-link :to="'/jobs/jobinfo/' + item._id ">{{item.title}}</nuxt-link>
+            <a @click="Obtain(index)">{{item.title}}</a>
             <p>工作性质：{{item.nature.name}}</p>
             <p>需求人数：{{item.count}}</p>
             <p>所在城市：{{item.city.name}}</p>
@@ -47,9 +47,9 @@ export default {
     },
     Obtain(index) {
       // li点击取id
-      let id = this.items[index]._id;
-      console.log(id);
-      this.$router.push('/recruit_detailed/jobinfo')
+      let _id = this.items[index]._id;
+      console.log(_id)
+      this.$router.push('/jobs/jobinfo/'+_id)
     },
   },
   mounted() {
