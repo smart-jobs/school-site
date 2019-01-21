@@ -36,19 +36,20 @@ const menu = [{
   label: '招聘信息',
   link: '/jobs/campus',
   key: 'jobs',
-  children: [{
-    label: '宣讲会',
-    link: '/jobs/campus',
-    key: 'campus',
-  }, {
-    label: '招聘会',
-    link: '/jobs/jobfair',
-    key: 'jobfair',
-  }, {
-    label: '招聘信息',
-    link: '/jobs/jobinfo',
-    key: 'jobinfo',
-  }],
+  children: [
+    {
+      label: '招聘信息',
+      link: '/jobs/jobinfo',
+      key: 'jobinfo',
+    }, {
+      label: '招聘会',
+      link: '/jobs/jobfair',
+      key: 'jobfair',
+    }, {
+      label: '宣讲会',
+      link: '/jobs/campus',
+      key: 'campus',
+    }],
 }, {
   label: '联系我们',
   link: '/about/contact',
