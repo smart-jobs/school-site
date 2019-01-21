@@ -5,7 +5,7 @@
         <div class="fd1 fj txtbox">
           <img src="/img/logox.jpg" class="img fd1">
           <div class="fd1 titbox">
-            <a>{{item.title}}</a>
+            <nuxt-link :to="'/jobs/jobinfo/' + item._id ">{{item.title}}</nuxt-link>
             <p>工作性质：{{item.nature.name}}</p>
             <p>需求人数：{{item.count}}</p>
             <p>所在城市：{{item.city.name}}</p>
