@@ -6,20 +6,15 @@
           <img src="/img/logo1.jpg" class="img fd1">
           <div class="fd1 titbox">
             <a>{{item.subject}}</a>
-            <p>{{item.corpname}}</p>
-            <p>{{item.address}}</p>
-          </div>
-          <div class="fd1 titbox">
-            <br>
-            <p>{{item.enterprise}}</p>
-            <p>{{item.jobs[0].requirement}}</p>
+            <p>举办时间：{{item.date}} {{item.time}}</p>
+            <p>举办地址：{{item.address}}</p>
+            <p>分站信息：{{item.unit}}</p>
           </div>
         </div>
-        <span class="fd2 spandata">{{item.date}}</span>
       </li>
     </ul>
     <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="size"
-                   layout="prev, pager, next, jumper" :total="items.total">
+                   layout="prev, pager, next, jumper" :total="total">
     </el-pagination>
   </div>
 </template>
@@ -41,7 +36,7 @@ export default {
    ...mapActions(['query']),
     handleCurrentChange(val) {
       this.page = val
-      this.query({ paging: { page: val-1, size: this.size } });
+      this.query({ paging: { page: val, size: this.size } });
     },
     Obtain(index) {
       // li点击取id
@@ -53,7 +48,7 @@ export default {
     this.query({ paging: { page: this.page, size: this.size } });
   },
   computed: {
-    ...mapState(['items'])
+    ...mapState(['items','total']),
   },
   filters: {
     date: function (value) {
@@ -68,6 +63,6 @@ export default {
 <style lang="less" scoped>
 @import '~@/assets/jobs.less';
 .titbox {
-  width: 40%;
+  width: 90%;
 }
 </style>

@@ -6,16 +6,15 @@
           <img src="/img/logo2.jpg" class="img fd1">
           <div class="fd1 titbox">
             <a>{{item.subject}}</a>
-            <p>{{item.time}}</p>
-            <p>{{item.address}}</p>
-            <p>{{item.type}}</p>
+            <p>举办时间：{{item.date}} {{item.time}}</p>
+            <p>举办地址：{{item.address}}</p>
+            <p>分站信息：{{item.unit}}</p>
           </div>
         </div>
-        <span class="fd2 spandata">{{item.date}}</span>
       </li>
     </ul>
     <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="size" layout="prev, pager, next, jumper"
-                   :total="items.total">
+                   :total="total">
     </el-pagination>
   </div>
 </template>
@@ -36,7 +35,7 @@ export default {
     ...mapActions(['query']),
     handleCurrentChange(val) {
       this.page = val
-      this.query({ paging: { page: val-1, size: this.size } });
+      this.query({ paging: { page: val, size: this.size } });
     },
     Obtain(index) {
       // li点击取id
@@ -48,7 +47,7 @@ export default {
     this.query({ paging: { page: this.page, size: this.size } });
   },
   computed: {
-    ...mapState(['items']),
+    ...mapState(['items','total']),
   },
   filters: {
     date: function(value) {

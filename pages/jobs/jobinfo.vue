@@ -6,15 +6,21 @@
           <img src="/img/logox.jpg" class="img fd1">
           <div class="fd1 titbox">
             <a>{{item.title}}</a>
-            <p>需求专业：{{item.txt1}}</p>
-            <p>需求岗位：{{item.txt2}}</p>
+            <p>工作性质：{{item.nature.name}}</p>
+            <p>需求人数：{{item.count}}</p>
+            <p>所在城市：{{item.city.name}}</p>
+          </div>
+          <div class="fd1 titbox">
+            <br>
+            <p>薪资待遇：{{item.salary.name}}</p>
+            <p>最低学历：{{item.xlreqs.name}}</p>
           </div>
         </div>
         <span class="fd2 spandata">{{item.meta.updatedAt | date}}</span>
       </li>
     </ul>
     <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="size"
-                   layout="prev, pager, next, jumper" :total="items.total">
+                   layout="prev, pager, next, jumper" :total="total">
     </el-pagination>
   </div>
 </template>
@@ -49,7 +55,7 @@ export default {
     this.query({ paging: { page: this.page, size: this.size } });
   },
   computed: {
-    ...mapState(['items']),
+    ...mapState(['items','total']),
   },
   filters: {
     date: function(value) {
@@ -63,6 +69,6 @@ export default {
 <style lang="less" scoped>
 @import '~@/assets/jobs.less';
 .titbox {
-  width: 90%;
+  width: 45%;
 }
 </style>
