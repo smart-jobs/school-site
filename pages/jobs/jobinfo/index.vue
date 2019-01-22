@@ -16,7 +16,7 @@
             <p>最低学历：{{item.xlreqs.name}}</p>
           </div>
         </div>
-        <span class="fd2 spandata">{{item.meta.updatedAt | date}}</span>
+        <span class="fd2 spandata">{{item.meta.updatedAt | date('YYYY-MM-DD')}}</span>
       </li>
     </ul>
     <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="size"
@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import moment from 'moment';
 import { createNamespacedHelpers } from 'vuex';
 
 const { mapActions, mapState } = createNamespacedHelpers('jobs/jobinfo');
@@ -48,7 +47,6 @@ export default {
     Obtain(index) {
       // li点击取id
       let _id = this.items[index]._id;
-      console.log(_id)
       this.$router.push('/jobs/jobinfo/'+_id)
     },
   },
@@ -57,12 +55,7 @@ export default {
   },
   computed: {
     ...mapState(['items','total']),
-  },
-  filters: {
-    date: function(value) {
-      if (value) return moment(value).format('YYYY-MM-DD');
-    },
-  },
+  }
 };
 </script>
 

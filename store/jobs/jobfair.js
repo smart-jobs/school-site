@@ -5,8 +5,10 @@ const pageSize = 10;
 
 const api = {
   simple: '/jobs/jobfair/simple',
-  query: '/jobs/jobfair/query',
+  query: '/jobs/jobfair/query_g',
   fetch: '/jobs/jobfair/fetch',
+  enterprise: '/jobs/jobfair/corp/list',
+  details: '/corp/details'
 };
 // initial state
 export const state = () => ({
@@ -14,6 +16,7 @@ export const state = () => ({
   items: [],
   current: null,
   total: 0,
+  enterprise: []
 });
 
 // actions
@@ -42,6 +45,11 @@ export const actions = {
     if (res.errcode === 0) commit(types.LOADED_DETAIL, res.data);
     return res;
   },
+  async ets({ commit }, { id }) {
+    const res = await this.$axios.$get(`${api.enterprise}?fair_id=${id}`);
+    if (res.errcode === 0) commit(types.LOADED_ETS, res.data);
+    return res;
+  }
 };
 
 // mutations
@@ -56,6 +64,9 @@ export const mutations = {
   [types.LOADED_DETAIL](state, payload) {
     state.current = payload;
   },
+  [types.LOADED_ETS](state, ets) {
+    state.enterprise = ets;
+  }
 };
 
 export const namespaced = true;

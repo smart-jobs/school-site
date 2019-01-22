@@ -3,15 +3,15 @@
     <p class="title">{{current && current.title}}</p>
     <p class="text">企业名称：{{current && current.corpname}}</p>
     <p class="text">工作位置：{{current | get('city.name')}}</p>
-    <!-- <p class="text">薪资待遇：{{current.salary.name}}</p>
-    <p class="text">招聘人数：{{current.count}}</p>
-    <p class="text">工作性质：{{current.nature.name}}</p>
-    <p class="text">工作类型：{{current.jobcat.name}}</p>
-    <p class="text">学历要求：{{current.xlreqs.name}}</p>
-    <p class="text">专业要求：{{current.zyreqs}}</p>
-    <p class="text">岗位职责：{{current.jobdesc}}</p>
-    <p class="text">分站信息：{{current.unit}}</p>
-    <p class="text2">{{current.content}}</p> -->
+    <p class="text">薪资待遇：{{current | get('salary.name')}}</p>
+    <p class="text">招聘人数：{{current && current.count}}</p>
+    <p class="text">工作性质：{{current | get('nature.name')}}</p>
+    <p class="text">工作类型：{{current | get('jobcat.name')}}</p>
+    <p class="text">学历要求：{{current | get('xlreqs.name')}}</p>
+    <p class="text">专业要求：{{current && current.zyreqs}}</p>
+    <p class="text">岗位职责：{{current && current.jobdesc}}</p>
+    <p class="text">分站信息：{{current && current.unit}}</p>
+    <pre class="text2">{{current && current.content}}</pre>
   </div>
 </template>
 
@@ -31,17 +31,11 @@ export default {
   mounted() {
     let id = this.$route.params.id;
     this.fetch({ id });
-    console.log(this.current);
+    console.log(this.current)
   },
   computed: {
     ...mapState(['current']),
-  },
-  filters: {
-    content: function(val) {
-      // val.indexOF([0-9])
-      // return
-    },
-  },
+  }
 };
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main">
-      <div class="mbox fd1 fj" v-for="(item,index) in tops" :key="index">
+      <div class="mbox fd1 fj" v-for="(item,index) in tops" :key="index" @click="btn(index)">
         <div class="imgbox fd1">
           <img src="/img/logox.jpg" class="bj">
         </div>
@@ -31,6 +31,10 @@ export default {
   },
   methods: {
     ...mapActions(['top']),
+    btn (index) {
+      let _id = this.tops[index]._id;
+      location.href = '/jobs/jobinfo/'+_id
+    }
   },
   mounted() {
     this.top({ size: 6 });

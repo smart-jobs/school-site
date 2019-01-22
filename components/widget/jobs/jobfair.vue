@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main">
-      <div class="m2box" v-for="(item,index) in tops" :key="index">
+      <div class="m2box" v-for="(item,index) in tops" :key="index" @click="btn(index)">
         <div class="txtbox2 fd1">
           <p class="txt2">招聘会</p>
         </div>
@@ -26,7 +26,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['top'])
+    ...mapActions(['top']),
+    btn (index) {
+      let _id = this.tops[index]._id;
+      location.href = '/jobs/jobinfo/'+_id
+    }
   },
   mounted() {
    this.top({ size: 2 });

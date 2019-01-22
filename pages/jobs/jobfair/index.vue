@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import moment from 'moment';
 import { createNamespacedHelpers } from 'vuex';
 const { mapActions, mapState } = createNamespacedHelpers('jobs/jobfair');
 export default {
@@ -39,8 +38,8 @@ export default {
     },
     Obtain(index) {
       // li点击取id
-      let id = this.items[index].id;
-      console.log(id);
+      let _id = this.items[index]._id;
+      this.$router.push('/jobs/jobfair/'+_id)
     },
   },
   mounted() {
@@ -48,12 +47,7 @@ export default {
   },
   computed: {
     ...mapState(['items','total']),
-  },
-  filters: {
-    date: function(value) {
-      if (value) return moment(value).format('YYYY-MM-DD');
-    },
-  },
+  }
 };
 </script>
 
