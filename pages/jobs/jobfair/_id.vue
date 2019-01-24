@@ -30,17 +30,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item,index) in enterprise" :key="index">
-          <td width="150" :rowspan="item.jobs.length">{{index+1}}</td>
-          <td width="300" class="th" :rowspan="item.jobs.length">{{enterprise && item.corpname}}</td>
-          <td width="750">
-            <div v-for="(i,idx) in item.jobs" :key="idx" class="fj tbox" :class="{p2:idx == 0}">
-              <i class="p1 t1 fd1">{{i.name}}</i>
-              <i class="p1 t2 fd1">{{i.count}}</i>
-              <p class="p3 t1 fd1">{{i.requirement}}</p>
-            </div>
-          </td>
-        </tr>
+        <template v-for="(item,num) in enterprise">
+          <tr v-for="(job,index) in item.jobs" :key="num+'_'+index">
+            <template v-if="index==0">
+              <td width="150" :rowspan="item.jobs.length">{{num+1}}</td>
+              <td width="300" class="th" :rowspan="item.jobs.length">{{enterprise && item.corpname}}</td>
+            </template>
+            <template v-else>
+              <td width="150"></td>
+              <td width="300"></td>
+            </template>
+            <td width="300">{{job.name}}</td>
+            <td width="150">{{job.count}}</td>
+            <td width="300">{{job.requirement}}</td>
+          </tr>
+        </template>
       </tbody>
     </table>
   </div>
