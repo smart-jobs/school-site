@@ -22,7 +22,7 @@ pre{
     word-wrap: break-word!important;
     *white-space:normal!important;
 }
-
+#__nuxt{min-width: 1200px;}
 /* 公共的样式 */
 
 
