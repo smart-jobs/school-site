@@ -35,7 +35,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui', '@/plugins/axios', '@/plugins/check-res', '@/plugins/naf-dict',
+    '@/plugins/element-ui', '@/plugins/axios', '@/plugins/check-res', '@/plugins/naf-dict', '@/plugins/filters',
     // { src: '@/plugins/stomp', ssr: false },
   ],
 
@@ -51,9 +51,15 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    proxy: true,
+    prefix: '/www/api',
   },
+  proxy: [
+    'http://99991.smart.jilinjobswx.cn/www/api',
+  ],
 
   router: {
+    base: '/',
     middleware: 'column',
   },
 

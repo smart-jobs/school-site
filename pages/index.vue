@@ -7,7 +7,7 @@
     </div>
     <div class="databox fj">
       <calendar class="fd1" />
-      <tab class="fd2" />
+      <jobs-widget class="fd2" />
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@ import Journalism from '~/components/layout/Journalism'
 import login from '~/components/utils/login'
 import imgs from '~/components/utils/imgs'
 import calendar from '~/components/utils/calendar'
-import tab from '~/components/layout/tab'
+import JobsWidget from '~/components/widget/jobs'
 export default {
   name: 'home',
   data() {
@@ -28,7 +28,7 @@ export default {
     login,
     imgs,
     calendar,
-    tab,
+    JobsWidget,
   }
 } // l轮播图宽度为424
 </script>
