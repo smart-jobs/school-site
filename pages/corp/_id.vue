@@ -1,5 +1,5 @@
 <template>
-  <div class="enterprise">
+  <div class="corp_list">
     <p class="title">企业名称：{{details && details.corpname}}</p>
     <p class="text">法人代表：{{details | get('info.legalPerson')}}</p>
     <p class="text">企业规模：{{details | get('info.scale.name')}}</p>
@@ -23,7 +23,7 @@ import _ from 'lodash'
 const { mapActions, mapState } = createNamespacedHelpers('corp/query');
 
 export default {
-  name: 'enterprise',
+  name: 'corp_list',
   data() {
     return {};
   },
@@ -57,7 +57,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
-.enterprise{position: relative;width: 1200px;margin: 6em auto;}
+.corp_list{position: relative;width: 1200px;margin: 6em auto;}
 .title {
   font-size: 1.2em;
   font-weight: 600;

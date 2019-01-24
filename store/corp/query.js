@@ -1,7 +1,7 @@
 import * as types from '../jobs/.mutation.js';
 
 const api = {
-  enterprise: '/jobs/jobfair/corp/list',
+  corp_list: '/jobs/jobfair/corp/list',
   details: '/corp/details'
 };
 // initial state

@@ -30,11 +30,11 @@
         </tr>
       </thead>
       <tbody>
-        <template v-for="(item,num) in enterprise">
+        <template v-for="(item,num) in corp_list">
           <tr v-for="(job,index) in item.jobs" :key="num+'_'+index">
             <template v-if="index==0">
               <td width="150" class="operation" :rowspan="item.jobs.length">投递简历</td>
-              <td width="300" class="th corpname" :rowspan="item.jobs.length" @click="btn(item)">{{enterprise && item.corpname}}</td>
+              <td width="300" class="th corpname" :rowspan="item.jobs.length" @click="btn(item)">{{corp_list && item.corpname}}</td>
             </template>
             <td width="300" class="th">{{job.name}}</td>
             <td width="150" class="th">{{job.count}}</td>
@@ -72,7 +72,7 @@ export default {
     this.ets({ id });
   },
   computed: {
-    ...mapState(["current", "enterprise"])
+    ...mapState(["current", "corp_list"])
   }
 };
 </script>

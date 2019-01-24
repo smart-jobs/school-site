@@ -7,7 +7,7 @@ const api = {
   simple: '/jobs/jobfair/simple',
   query: '/jobs/jobfair/query_g',
   fetch: '/jobs/jobfair/fetch',
-  enterprise: '/jobs/jobfair/corp/list',
+  corp_list: '/jobs/jobfair/corp/list',
   details: '/corp/details'
 };
 // initial state
@@ -16,7 +16,7 @@ export const state = () => ({
   items: [],
   current: null,
   total: 0,
-  enterprise: []
+  corp_list: []
 });
 
 // actions
@@ -46,7 +46,7 @@ export const actions = {
     return res;
   },
   async ets({ commit }, { id }) {
-    const res = await this.$axios.$get(`${api.enterprise}?fair_id=${id}`);
+    const res = await this.$axios.$get(`${api.corp_list}?fair_id=${id}`);
     if (res.errcode === 0) commit(types.LOADED_ETS, res.data);
     return res;
   }
@@ -65,7 +65,7 @@ export const mutations = {
     state.current = payload;
   },
   [types.LOADED_ETS](state, ets) {
-    state.enterprise = ets;
+    state.corp_list = ets;
   }
 };
 
