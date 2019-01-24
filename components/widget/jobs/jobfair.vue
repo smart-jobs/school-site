@@ -29,7 +29,7 @@ export default {
     ...mapActions(['top']),
     btn (index) {
       let _id = this.tops[index]._id;
-      location.href = '/jobs/jobinfo/'+_id
+      location.href = '/jobs/jobfair/'+_id
     }
   },
   mounted() {

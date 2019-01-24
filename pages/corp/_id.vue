@@ -34,6 +34,7 @@ export default {
     let id = this.$route.params.id;
     let tenant = this.$route.query.tenant;
     this.dts({ id, tenant});
+    console.log(this.details)
   },
   computed: {
     ...mapState(['details']),
