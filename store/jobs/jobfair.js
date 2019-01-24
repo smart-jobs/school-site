@@ -45,7 +45,7 @@ export const actions = {
     if (res.errcode === 0) commit(types.LOADED_DETAIL, res.data);
     return res;
   },
-  async ets({ commit }, { id }) {
+  async corp_list({ commit }, { id }) {
     const res = await this.$axios.$get(`${api.corp_list}?fair_id=${id}`);
     if (res.errcode === 0) commit(types.LOADED_ETS, res.data);
     return res;
@@ -64,8 +64,8 @@ export const mutations = {
   [types.LOADED_DETAIL](state, payload) {
     state.current = payload;
   },
-  [types.LOADED_ETS](state, ets) {
-    state.corp_list = ets;
+  [types.LOADED_ETS](state, payload) {
+    state.corp_list = payload;
   }
 };
 

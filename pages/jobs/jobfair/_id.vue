@@ -59,7 +59,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["fetch", "ets"]),
+    ...mapActions(["fetch", "corp_list"]),
     btn(item) {
       let _id = item.corpid;
       let unit = this.current.unit;
@@ -69,7 +69,7 @@ export default {
   mounted() {
     let id = this.$route.params.id;
     this.fetch({ id });
-    this.ets({ id });
+    this.corp_list({ id });
   },
   computed: {
     ...mapState(["current", "corp_list"])
