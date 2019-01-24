@@ -13,7 +13,7 @@
       <thead>
         <tr>
           <td width="150">
-            <b>序号</b>
+            <b>操作</b>
           </td>
           <td width="300">
             <b>单位全称</b>
@@ -33,15 +33,11 @@
         <template v-for="(item,num) in enterprise">
           <tr v-for="(job,index) in item.jobs" :key="num+'_'+index">
             <template v-if="index==0">
-              <td width="150" :rowspan="item.jobs.length">{{num+1}}</td>
-              <td width="300" class="th" :rowspan="item.jobs.length">{{enterprise && item.corpname}}</td>
+              <td width="150" class="operation" :rowspan="item.jobs.length">投递简历</td>
+              <td width="300" class="th corpname" :rowspan="item.jobs.length" @click="btn(item)">{{enterprise && item.corpname}}</td>
             </template>
-            <template v-else>
-              <td width="150"></td>
-              <td width="300"></td>
-            </template>
-            <td width="300">{{job.name}}</td>
-            <td width="150">{{job.count}}</td>
+            <td width="300" class="th">{{job.name}}</td>
+            <td width="150" class="th">{{job.count}}</td>
             <td width="300">{{job.requirement}}</td>
           </tr>
         </template>
@@ -99,34 +95,27 @@ export default {
   color: #ff9913;
   line-height: 5em;
 }
-.box {
-  width: 100%;
-  border: 1px solid #999;
-}
 table {
   border: 1px solid #999;
   border-collapse: collapse;
 }
 tr {
   width: 100%;
-  display: block;
 }
 td {
   border-right: 1px solid #999;
   border-bottom: 1px solid #999;
   text-align: center;
-  // padding: 4px;
 }
-.p1 {
-  line-height: 2em;
-  width: 100%;
-  display: inline-block;
-  vertical-align: text-top;
+.th, b{line-height: 2em}
+.corpname:hover{
+  color: #0028aa;
 }
-.t1{width: 298px;border-right: 1px solid #000;}
-.t2{width: 150px;border-right: 1px solid #000;}
-.tbox{width: 100%;border-top: 1px solid #999;}
-.p3{border-right:none;vertical-align: text-top;display: inline-block;}
-.p2 {border-top: none;}
-thead td{line-height: 2em}
+.corpname{
+  cursor: pointer;
+}
+.operation{
+  color: #0028aa;
+  cursor: pointer;
+}
 </style>
