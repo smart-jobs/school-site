@@ -8,7 +8,7 @@
              :class="{a2: a2 == index2}" @click.stop="menuClick(sub)">{{sub.label}}</div>
       </div>
     </div>
-    <div class="btn"  @click="btn">我的</div>
+    <!-- <div class="btn"  @click="btn">我的</div> -->
   </div>
 </template>
 
@@ -57,7 +57,7 @@ export default {
       this.a2 = -1;
     },
     btn () {
-      location.href = 'login'
+      location.href = 'user'
     }
   },
 };

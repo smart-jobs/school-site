@@ -21,22 +21,22 @@ export default {
       menu: [
         {
           label: "个人信息",
-          link: "login/qy",
+          link: "user/info",
           key: "0"
         },
         {
           label: "简历模板",
-          link: "login/qy",
+          link: "user/resume",
           key: "1"
         },
         {
           label: "求职信",
-          link: "login/qy",
+          link: "user/letter",
           key: "2"
         },
         {
           label: "入场券",
-          link: "login/qy",
+          link: "user/ticket",
           key: "3"
         }
       ]
@@ -45,7 +45,7 @@ export default {
   methods: {
     btn (item) {
       this.num = item.key
-      console.log(item)
+      location.href = item.link
     }
   },
   mounted() {},
