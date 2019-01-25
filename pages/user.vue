@@ -2,23 +2,20 @@
   <div class="boxone2">
     <div class="boxone fj">
       <!--二级导航菜单-->
-      <div class="tab">
-        <div class="tabs" v-for="(item,index) in menu" :key="index" :class="{ a1: item.key == num }">
-          <div class="tabx" @click="btn(item)">{{item.label}}</div>
-        </div>
-      </div>
+      <sub-nav :data="columns" :activated="column"/>
       <!--页面内容-->
       <nuxt-child/>
     </div>
   </div>
 </template>
 
+
 <script>
 export default {
   data() {
     return {
       num: '0',
-      menu: [
+      columns: [
         {
           label: "个人信息",
           link: "login/qy",
