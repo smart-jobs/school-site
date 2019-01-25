@@ -1,4 +1,4 @@
-import * as types from './.mutation.js';
+import * as types from '@/store/.mutation.js';
 
 const topSize = 6;
 const pageSize = 10;
@@ -8,7 +8,6 @@ const api = {
   query: '/jobs/jobfair/query_g',
   fetch: '/jobs/jobfair/fetch',
   corp_list: '/jobs/jobfair/corp/list',
-  details: '/corp/details'
 };
 // initial state
 export const state = () => ({
@@ -47,7 +46,7 @@ export const actions = {
   },
   async corp_list({ commit }, { id }) {
     const res = await this.$axios.$get(`${api.corp_list}?fair_id=${id}`);
-    if (res.errcode === 0) commit(types.LOADED_ETS, res.data);
+    if (res.errcode === 0) commit(types.LOADED_CORP_LIST, res.data);
     return res;
   }
 };
@@ -64,7 +63,7 @@ export const mutations = {
   [types.LOADED_DETAIL](state, payload) {
     state.current = payload;
   },
-  [types.LOADED_ETS](state, payload) {
+  [types.LOADED_CORP_LIST](state, payload) {
     state.corp_list = payload;
   }
 };

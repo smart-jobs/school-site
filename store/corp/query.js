@@ -1,4 +1,4 @@
-import * as types from '../jobs/.mutation.js';
+import * as types from '@/store/.mutation.js';
 
 const api = {
   corp_list: '/jobs/jobfair/corp/list',
@@ -11,17 +11,17 @@ export const state = () => ({
 
 // actions
 export const actions = {
-  async dts({ commit }, { id,tenant }) {
+  async details({ commit }, { id,tenant }) {
     const res = await this.$axios.$get(`${api.details}?corpid=${id}&_tenant=${tenant}`);
-    if (res.errcode === 0) commit(types.LOADED_DTS, res.data);
+    if (res.errcode === 0) commit(types.LOADED_DETAIL, res.data);
     return res;
   },
 };
 
 // mutations
 export const mutations = {
-  [types.LOADED_DTS](state, dts) {
-    state.details = dts;
+  [types.LOADED_DETAIL](state, payload) {
+    state.details = payload;
   },
 };
 
