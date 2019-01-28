@@ -26,6 +26,8 @@ export default {
     return {
       idx: 1,
       top: '',
+      idxx: '',
+      seta: '',
       list: [
         {
           uri: '/img/push_1.jpg',
@@ -66,7 +68,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.state.val = setInterval(this.set, 5000)
+    setInterval(this.set, 5000)
   }
 }
 </script>

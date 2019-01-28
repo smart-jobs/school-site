@@ -2,10 +2,12 @@
   <div>
     <div class="box">
       <img :src="bj1" class="bj">
-      <img :src="bj2" class="bottom">
+      <img :src="bj2" v-if="logo2 == null" class="bottom">
+      <img :src="bj2" v-else class="bottom">
     </div>
     <div class="logobox">
-      <img :src="logo" class="logo">
+      <div class="logo" v-if="logo2 == null">{{logo}}</div>
+      <img :src="logo2" v-else class="logo">
     </div>
   </div>
 </template>
@@ -17,7 +19,8 @@ export default {
     return {
       bj1: '/img/1477572201-3251.jpg',
       bj2: '/img/bg-shade.png',
-      logo: '/img/logo.png'
+      logo: '南方医科大学 | 就业信息网',
+      logo2: null
     }
   }
 }
@@ -47,5 +50,7 @@ export default {
   width: 1200px;
   position: relative;
   margin: 100px auto;
+  font-size: 3em;
+  font-family:'楷体';
 }
 </style>

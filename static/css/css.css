@@ -17,8 +17,12 @@ a:hover {text-decoration:none;color:#333;}
 .zj {clear:both;}
 .fj:after {content:'';display:block;height:0;visibility:hidden;clear:both;}
 /* 初始化CSS END */
-
-
+pre{
+    white-space: pre-wrap!important;
+    word-wrap: break-word!important;
+    *white-space:normal!important;
+}
+#__nuxt{min-width: 1200px;}
 /* 公共的样式 */
 
 

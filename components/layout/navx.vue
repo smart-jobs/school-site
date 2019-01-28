@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import _ from 'lodash';
 import { mapState } from 'vuex';
 
 export default {
@@ -30,7 +31,7 @@ export default {
   computed: {
     ...mapState(['menu', 'page']),
     pageIndex() {
-      const idx = this.menu.findIndex(p => p.key === this.page);
+      const idx = _.isArray(this.menu) && this.menu.findIndex(p => p.key === this.page);
       return idx;
     },
   },
