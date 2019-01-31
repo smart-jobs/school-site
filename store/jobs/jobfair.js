@@ -44,8 +44,9 @@ export const actions = {
     if (res.errcode === 0) commit(types.LOADED_DETAIL, res.data);
     return res;
   },
-  async corp_list({ commit }, { id }) {
+  async corplist({ commit }, { id }) {
     const res = await this.$axios.$get(`${api.corp_list}?fair_id=${id}`);
+    console.log(res)
     if (res.errcode === 0) commit(types.LOADED_CORP_LIST, res.data);
     return res;
   }

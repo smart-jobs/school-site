@@ -1,7 +1,7 @@
 <template>
   <div class="fd2 data">
     <ul>
-      <li class="fj" v-for="(item,index) in items" :key="index" @click="Obtain(index)">
+      <li class="fj" v-for="(item,index) in items" :key="index" @click="Obtain(item)">
         <div class="fd1 fj txtbox">
           <img src="/img/logo2.jpg" class="img fd1">
           <div class="fd1 titbox">
@@ -36,9 +36,10 @@ export default {
       this.page = val
       this.query({ paging: { page: val, size: this.size } });
     },
-    Obtain(index) {
+    Obtain(item) {
       // li点击取id
-      let _id = this.items[index]._id;
+      let _id = item._id;
+      console.log(_id)
       this.$router.push('/jobs/jobfair/'+_id)
     },
   },

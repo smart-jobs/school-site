@@ -34,7 +34,7 @@ const menu = [{
   }],
 }, {
   label: '招聘信息',
-  link: '/jobs/campus',
+  link: '/jobs/jobinfo',
   key: 'jobs',
   children: [
     {
