@@ -34,7 +34,7 @@ const menu = [{
   }],
 }, {
   label: '招聘信息',
-  link: '/jobs/campus',
+  link: '/jobs/jobinfo',
   key: 'jobs',
   children: [
     {
@@ -54,6 +54,10 @@ const menu = [{
   label: '联系我们',
   link: '/about/contact',
   key: 'about',
+}, {
+  label: '我的信息',
+  link: '/user/info',
+  key: 'user'
 }];
 
 export default menu;

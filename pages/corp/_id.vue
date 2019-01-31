@@ -28,12 +28,12 @@ export default {
     return {};
   },
   methods: {
-    ...mapActions(['dts']),
+    ...mapActions(['details']),
   },
   mounted() {
     let id = this.$route.params.id;
     let tenant = this.$route.query.tenant;
-    this.dts({ id, tenant});
+    this.details({ id, tenant});
     console.log(this.details)
   },
   computed: {
