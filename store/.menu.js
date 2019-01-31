@@ -56,8 +56,8 @@ const menu = [{
   key: 'about',
 }, {
   label: '我的信息',
-  link: '/user',
-  key: 'user',
+  link: '/user/info',
+  key: 'user'
 }];
 
 export default menu;

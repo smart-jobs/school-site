@@ -11,30 +11,31 @@
 
 
 <script>
+import { mapState } from 'vuex';
+import SubNav from '@/components/layout/subnav';
 export default {
   data() {
     return {
-      num: '0',
       columns: [
         {
           label: "个人信息",
           link: "user/info",
-          key: "0"
+          key: "info"
         },
         {
           label: "简历模板",
           link: "user/resume",
-          key: "1"
+          key: "resume"
         },
         {
           label: "求职信",
           link: "user/letter",
-          key: "2"
+          key: "letter"
         },
         {
           label: "入场券",
           link: "user/ticket",
-          key: "3"
+          key: "ticket"
         }
       ]
     };
@@ -46,7 +47,12 @@ export default {
     }
   },
   mounted() {},
-  computed: {}
+  computed: {
+    ...mapState(['column']),
+  },
+  components: {
+    SubNav,
+  }
 };
 </script>
 
