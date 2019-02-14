@@ -1,5 +1,5 @@
 'use strict'
-import * as types from '@/store/mutation-types';
+import * as types from '@/store/.mutation';
 
 // 从路由中提取栏目信息
 export default function ({ route, store, redirect }) {

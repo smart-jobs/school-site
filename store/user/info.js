@@ -1,28 +1,30 @@
 import * as types from '@/store/.mutation.js';
 
+const topSize = 6;
+const pageSize = 10;
+
 const api = {
-  corp_list: '/jobs/jobfair/corp/list',
-  details: '/corp/details'
+  query: '/user/acct/info',
 };
 // initial state
 export const state = () => ({
-  details: null
+  userinfo: []
 });
 
 // actions
 export const actions = {
-  async details({ commit }, { id,tenant }) {
-    const res = await this.$axios.$get(`${api.details}?corpid=${id}&_tenant=${tenant}`);
+  async query({ commit }, { id }) {
+    const res = await this.$axios.$get(`${api.fetch}?id=${id}`);
     if (res.errcode === 0) commit(types.LOADED_DETAIL, res.data);
     return res;
-  },
+  }
 };
 
 // mutations
 export const mutations = {
   [types.LOADED_DETAIL](state, payload) {
-    state.details = payload;
-  },
+    state.current = payload;
+  }
 };
 
 export const namespaced = true;

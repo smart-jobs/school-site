@@ -1,4 +1,4 @@
-import * as types from './.mutation.js';
+import * as types from '@/store/.mutation.js';
 
 const topSize = 6;
 const pageSize = 10;
