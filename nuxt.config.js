@@ -55,8 +55,8 @@ module.exports = {
     prefix: '/www/api',
   },
   proxy: [
-    'http://99991.smart.chinahuian.cn/www/api',
-    'http://smart.chinahuian.cn/ws',
+    'http://99991.smart.jilinjobswx.cn/www/api',
+    'http://smart.jilinjobswx.cn/ws',
   ],
 
   router: {
@@ -107,7 +107,7 @@ module.exports = {
       },
       weixin: {
         // baseUrl: `http://192.168.0.7:8000${url_prefix}/weixin`,
-        baseUrl: `http://smart.chinahuian.cn/weixin`,
+        baseUrl: `http://smart.jilinjobswx.cn/weixin`,
       }
     }
   },
