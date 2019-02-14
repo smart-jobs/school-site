@@ -1,6 +1,7 @@
 import * as types from './.mutation';
 import Cookies from 'js-cookie';
 import Jwt from 'jsonwebtoken';
+import util from '@/utils/user-util';
 
 const api = {
   qrcode: '/qrcode/create', // 创建二维码
@@ -89,7 +90,8 @@ export const mutations = {
     state.access_token = token;
     // const jwt = Jwt.decode(token);
     // state.userinfo = jwt.payload;
-    Cookies.set("auth", token);
+    // Cookies.set("auth", token);
+    util.save({userinfo, token});
   },
   [types.LOGIN_FAILURE](state) {
     state.isAuthenticated = false;

@@ -2,6 +2,7 @@
 import Vue from 'vue';
 // import NafCore from 'naf-core';
 // const { BusinessError } = NafCore.Error;
+import util from '@/utils/user-util';
 
 var vm = new Vue({})
 
@@ -10,7 +11,7 @@ export default function ({ $axios, redirect, app, store }) {
     if (process.browser) {
       const { isAuthenticated, unitcode, platform, access_token } = store.getters;
       // $axios.setToken(access_token); // setToken得下一次请求是才能生效，所以放弃这种方法
-      config.headers['Authorization'] = access_token; // 设置config可以在本次请求生效
+      config.headers['Authorization'] = util.token; // 设置config可以在本次请求生效
       // if ( isAuthenticated && platform === 'school') {
       //   config.baseURL = `/${unitcode}/api`
       // }
