@@ -13,15 +13,15 @@
 </template>
 
 <script>
-import Journalism from '~/components/layout/Journalism'
-import login from '~/components/utils/login'
-import imgs from '~/components/utils/imgs'
-import calendar from '~/components/utils/calendar'
-import JobsWidget from '~/components/widget/jobs'
+import Journalism from '~/components/layout/Journalism';
+import login from '~/components/widget/login';
+import imgs from '~/components/utils/imgs';
+import calendar from '~/components/utils/calendar';
+import JobsWidget from '~/components/widget/jobs';
 export default {
   name: 'home',
   data() {
-    return {}
+    return {};
   },
   components: {
     Journalism,
@@ -29,8 +29,8 @@ export default {
     imgs,
     calendar,
     JobsWidget,
-  }
-} // l轮播图宽度为424
+  },
+}; // l轮播图宽度为424
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
