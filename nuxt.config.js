@@ -36,7 +36,7 @@ module.exports = {
   */
   plugins: [
     '@/plugins/element-ui', '@/plugins/axios', '@/plugins/check-res', '@/plugins/naf-dict', '@/plugins/filters',
-    // { src: '@/plugins/stomp', ssr: false },
+    { src: '@/plugins/stomp', ssr: false },
   ],
 
   /*
@@ -55,7 +55,8 @@ module.exports = {
     prefix: '/www/api',
   },
   proxy: [
-    'http://99991.smart.jilinjobswx.cn/www/api',
+    'http://99991.smart.chinahuian.cn/www/api',
+    'http://smart.chinahuian.cn/ws',
   ],
 
   router: {
@@ -88,5 +89,26 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  vue: {
+    config: {
+      stomp: {
+        // brokerURL: 'ws://192.168.1.190:15674/ws',
+        brokerURL: '/ws', // ws://${location.host}/ws
+        connectHeaders: {
+          host: 'smart',
+          login: "web",
+          passcode: "web123"
+        },
+        // debug: true,
+        reconnectDelay: 5000,
+        heartbeatIncoming: 4000,
+        heartbeatOutgoing: 4000
+      },
+      weixin: {
+        // baseUrl: `http://192.168.0.7:8000${url_prefix}/weixin`,
+        baseUrl: `http://smart.chinahuian.cn/weixin`,
+      }
+    }
+  },
 }
