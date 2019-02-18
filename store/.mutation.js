@@ -13,7 +13,14 @@ export const HIDE_LOADING = 'HIDE_LOADING';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
-export const USER_INFO = 'USER_INFO';
+
+export const USER_INIT = 'USER_INIT';
+export const USER_DELETE = 'USER_DELETE';
+export const USER_QUERY = 'USER_QUERY';
+export const USER_CREEAT = 'USER_CREEAT';
+export const USER_FETACH = 'USER_FETACH';
+export const USER_UPDATE = 'USER_UPDATE';
+
 export const SELECT_UNIT = 'SELECT_UNIT';
 export const QRCODE_INIT = 'QRCODE_INIT';
 export const QRCODE_SUCCESS = 'QRCODE_SUCCESS';

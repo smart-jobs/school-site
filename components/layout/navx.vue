@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <div class="btn" v-for="(item,index) in menu" :key="index" :class="{a1:a1 == index}" @click="menuClick(item)"
+    <div class="btn" v-for="(item,index) in menu" :key="index" v-show="role !== item.role" :class="{a1:a1 == index}" @click="menuClick(item)"
          @mouseenter="enter1(index)" @mouseleave="leave1">
       {{item.label}}
       <div class="Submenu" v-if="item.children && item.children.length &gt; 0" v-show="a1 == index && showSub">
@@ -14,7 +14,9 @@
 
 <script>
 import _ from 'lodash';
-import { mapState } from 'vuex';
+import * as types from '@/store/.mutation';
+import { mapState, createNamespacedHelpers } from 'vuex';
+const { mapState: loginState , mapMutations} = createNamespacedHelpers('login');
 
 export default {
   name: 'navx',
@@ -26,16 +28,21 @@ export default {
       a1: -1,
       a2: -1,
       showSub: false,
+      role:'guest'
     };
   },
   computed: {
     ...mapState(['menu', 'page']),
+    ...loginState(['userinfo']),
     pageIndex() {
       const idx = _.isArray(this.menu) && this.menu.findIndex(p => p.key === this.page);
       return idx;
     },
   },
   methods: {
+    ...mapMutations({
+      init: types.USER_INIT,
+    }),
     // 一级菜单点击
     menuClick(item) {
       if (item && item.link) location.href = item.link;
@@ -59,6 +66,18 @@ export default {
     btn () {
       location.href = 'user'
     }
+  },
+  watch: {
+    userinfo: function (val) {
+      if (val !== null) {
+        if (val.role !== 'guest') {
+          this.role = val.role
+        }
+      }
+    }
+  },
+  created() {
+    this.init();
   },
 };
 </script>

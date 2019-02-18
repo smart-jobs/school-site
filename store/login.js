@@ -1,6 +1,5 @@
 import * as types from './.mutation';
 import Cookies from 'js-cookie';
-import Jwt from 'jsonwebtoken';
 import util from '@/utils/user-util';
 
 const api = {
@@ -101,8 +100,9 @@ export const mutations = {
     state.userinfo = null;
     Cookies.remove("auth");
   },
-  [types.USER_INFO](state, payload) {
-    state.userinfo = payload;
+  [types.USER_INIT](state) {
+    state.userinfo = util.user;
+    state.token = util.token;
   },
   [types.QRCODE_INIT](state, payload) {
     state.qrcode = payload;

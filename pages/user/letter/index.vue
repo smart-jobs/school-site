@@ -25,18 +25,17 @@
         <div class="text fd1 fj"><i class="fd1">联系方式:</i> <em class="fd1">{{item | get('contact.mobile')}}</em></div>
         <div class="text fd2 fj"><i class="fd1">电子邮件:</i> <em class="fd1">{{item | get('contact.email')}}</em></div>
       </div>
-      <pre class="item">
-        <div class="text">简历信息：</div>
-        {{item && item.content}}
-      </pre>
       <div class="item" v-show="item.reqly !== ''">
         <div class="text fj"><i class="fd1">回复:</i> <em class="fd1">{{item && item.reqly}}</em></div>
       </div>
+      <el-button class="btn0 xq" type="text" @click="xq(item)">查看详情</el-button>
     </el-card>
   </div>
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex';
+const { mapState, mapActions} = createNamespacedHelpers('user/letter');
 export default {
   data() {
     return {
@@ -65,9 +64,19 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['query']),
+    xq (item) {
+      console.log(item._id)
+    }
   },
-  mounted() {},
-  computed: {},
+  mounted() {
+    let userid =  JSON.parse(sessionStorage.getItem("user")).userid
+    this.query({userid:userid});
+    console.log(this.mylist)
+  },
+  computed: {
+    ...mapState(['mylist']),
+  },
   filters: {
     type1: function (val) {
       if (val !== null) {
@@ -138,4 +147,5 @@ em{
 .a1{color:#ff0033}
 .a2{color: #d1e000}
 .a3{color: #11ca00}
+.xq{margin-left: 0;}
 </style>

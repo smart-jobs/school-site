@@ -1,30 +1,30 @@
 <template>
   <div class="data fd2">
-    <el-button class="btn0" type="text" @click="btn0">新建模板</el-button>
+    <!-- <el-button class="btn0" type="text" @click="btn0">新建模板</el-button> -->
     <br>
-    <el-card class="box-card" v-for="(item,index) in userlist" :key="index">
+    <el-card class="box-card">
       <div slot="header" class="fj">
-        <span class="fd1">{{item && item.title}}</span>
+        <span class="fd1">{{current && current.title}}</span>
         <el-button class="fd2 btn" type="text" @click="btn2(item)">删除</el-button>
         <el-button class="fd2 btn" type="text" @click="btn1(item)">更改</el-button>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">姓名:</i> <em class="fd1">{{item | get('info.xm')}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">学历:</i> <em class="fd1">{{item | get('info.xl')}}</em></div>
+        <div class="text fd1 fj"><i class="fd1">姓名:</i> <em class="fd1">{{current | get('info.xm')}}</em></div>
+        <div class="text fd2 fj"><i class="fd1">学历:</i> <em class="fd1">{{current | get('info.xl')}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">性别:</i> <em class="fd1">{{item | get('info.xb')}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">毕业院校:</i> <em class="fd1">{{item | get('info.yxmc')}}</em></div>
+        <div class="text fd1 fj"><i class="fd1">性别:</i> <em class="fd1">{{current | get('info.xb')}}</em></div>
+        <div class="text fd2 fj"><i class="fd1">毕业院校:</i> <em class="fd1">{{current | get('info.yxmc')}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">出生日期:</i> <em class="fd1">{{item | get('info.csrq')}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">专业名称:</i> <em class="fd1">{{item | get('info.zymc')}}</em></div>
+        <div class="text fd1 fj"><i class="fd1">出生日期:</i> <em class="fd1">{{current | get('info.csrq')}}</em></div>
+        <div class="text fd2 fj"><i class="fd1">专业名称:</i> <em class="fd1">{{current | get('info.zymc')}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">联系方式:</i> <em class="fd1">{{item | get('contact.mobile')}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">电子邮件:</i> <em class="fd1">{{item | get('contact.email')}}</em></div>
+        <div class="text fd1 fj"><i class="fd1">联系方式:</i> <em class="fd1">{{current | get('contact.mobile')}}</em></div>
+        <div class="text fd2 fj"><i class="fd1">电子邮件:</i> <em class="fd1">{{current | get('contact.email')}}</em></div>
       </div>
-      <el-button class="btn0 xq" type="text" @click="xq(item)">查看详情</el-button>
+      <pre>{{current && current.content}}</pre>
     </el-card>
   </div>
 </template>
@@ -39,23 +39,11 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['query','delete']),
-    btn0 () {
-      location.href = 'user/resume/establish'
-    },
+    ...mapActions(['fetch','delete']),
     btn1 (item) {
       let _id = item._id
       this.$router.push({
         path: '/user/resume/establish',
-        query: {
-          _id:_id
-        }
-      })
-    },
-    xq (item) {
-      let _id = item._id
-      this.$router.push({
-        path: '/user/resume/detailed',
         query: {
           _id:_id
         }
@@ -71,7 +59,7 @@ export default {
         });
         if(this.$checkRes(res, '删除成功')) {
           this.$emit('scaned');
-          this.query({userid:userid});
+          location.href = 'user/resume'
         }
       } catch (err) {
         this.$message({
@@ -84,11 +72,12 @@ export default {
     }
   },
   mounted() {
-    let userid =  JSON.parse(sessionStorage.getItem("user")).userid
-    this.query({userid:userid});
+    let _id = this.$route.query._id
+    this.fetch({id: _id});
+    console.log(this.current)
   },
   computed: {
-    ...mapState(['userlist']),
+    ...mapState(['current']),
   }
 };
 </script>
@@ -128,4 +117,5 @@ em{
 .xq{
   margin-left: 0;
 }
+pre{font-size: 0.8em;}
 </style>

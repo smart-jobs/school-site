@@ -57,7 +57,8 @@ const menu = [{
 }, {
   label: '我的信息',
   link: '/user/info',
-  key: 'user'
+  key: 'user',
+  role: 'guest'
 }];
 
 export default menu;

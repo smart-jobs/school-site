@@ -23,8 +23,9 @@
 <script>
 import { createNamespacedHelpers } from 'vuex';
 import Qrcode from './qrcode';
+import * as types from '@/store/.mutation';
 
-const { mapState, mapActions } = createNamespacedHelpers('login');
+const { mapState, mapActions, mapMutations } = createNamespacedHelpers('login');
 
 export default {
   name: 'LoginWidget',
@@ -37,6 +38,7 @@ export default {
     };
   },
   created() {
+    this.init();
   },
   computed: {
     ...mapState(['loading', 'userinfo']),
@@ -44,6 +46,9 @@ export default {
   methods: {
     ...mapActions({
       login: 'login',
+    }),
+    ...mapMutations({
+      init: types.USER_INIT,
     }),
   },
 };
