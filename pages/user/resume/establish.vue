@@ -162,7 +162,7 @@ export default {
     let _id = this.$route.query._id
     if (_id) {
       this.swc = true
-      this.fetch({_id:_id});
+      this.fetch({id:_id});
     }else {
       this.init()
     }
