@@ -18,15 +18,8 @@
         <div class="text fd2 fj"><i class="fd1">毕业院校:</i> <em class="fd1">{{userinfo && userinfo.yxmc}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">出生日期:</i> <em class="fd1">{{userinfo && userinfo.csrq}}</em></div>
+        <div class="text fd1 fj"><i class="fd1">身份证号:</i> <em class="fd1">{{userinfo && userinfo.sfzh}}</em></div>
         <div class="text fd2 fj"><i class="fd1">专业名称:</i> <em class="fd1">{{userinfo && userinfo.zymc}}</em></div>
-      </div>
-      <!-- <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">联系方式:</i> <em class="fd1">{{userinfo && userinfo.mobile}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">电子邮件:</i> <em class="fd1">{{userinfo | get('contact.email')}}</em></div>
-      </div> -->
-      <div class="item" v-show="item.reqly !== ''">
-        <div class="text fj"><i class="fd1">回复:</i> <em class="fd1">{{item && item.reqly}}</em></div>
       </div>
       <el-button class="btn0 xq" type="text" @click="xq(item)">查看详情</el-button>
     </el-card>
@@ -47,7 +40,13 @@ export default {
     ...mapActions(['query']),
     ...useractions(['userquery']),
     xq (item) {
-      console.log(item._id)
+      let _id = item._id
+      this.$router.push({
+        path: '/user/letter/detailed',
+        query: {
+          _id:_id
+        }
+      })
     }
   },
   mounted() {

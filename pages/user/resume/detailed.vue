@@ -1,6 +1,5 @@
 <template>
   <div class="data fd2">
-    <!-- <el-button class="btn0" type="text" @click="btn0">新建模板</el-button> -->
     <br>
     <el-card class="box-card">
       <div slot="header" class="fj">
