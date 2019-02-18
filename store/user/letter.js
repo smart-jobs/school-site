@@ -6,7 +6,7 @@ const api = {
 };
 // initial state
 export const state = () => ({
-  mylist: [],
+  mylist: null,
 });
 
 // actions
@@ -15,7 +15,7 @@ export const actions = {
     const params = { userid: userid };
     const res = await this.$axios.$get(api.query,{ params });
     if (res.errcode === 0) {
-      commit(types.USER_QUERY, res);
+      commit(types.LETTER_QUERY, res.data);
     }
     return res;
   },
@@ -32,7 +32,7 @@ export const actions = {
 
 // mutations
 export const mutations = {
-  [types.USER_QUERY](state, { data}) {
+  [types.LETTER_QUERY](state, data) {
     state.mylist = data;
   },
   [types.USER_CREEAT](state, payload) {

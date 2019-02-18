@@ -20,8 +20,10 @@ export const USER_QUERY = 'USER_QUERY';
 export const USER_CREEAT = 'USER_CREEAT';
 export const USER_FETACH = 'USER_FETACH';
 export const USER_UPDATE = 'USER_UPDATE';
+export const USER_INFO = 'USER_INFO';
 
 export const SELECT_UNIT = 'SELECT_UNIT';
 export const QRCODE_INIT = 'QRCODE_INIT';
 export const QRCODE_SUCCESS = 'QRCODE_SUCCESS';
 
+export const LETTER_QUERY = 'LETTER_QUERY';
