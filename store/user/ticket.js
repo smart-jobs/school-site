@@ -2,7 +2,7 @@ import * as types from '@/store/.mutation.js';
 
 
 const api = {
-  query: '/jobs//jobfair/ticket/mylist',
+  query: '/jobs/jobfair/ticket/mylist',
 };
 // initial state
 export const state = () => ({
