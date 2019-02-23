@@ -8,10 +8,10 @@
              :class="{a2: a2 == index2}" @click.stop="menuClick(sub)">{{sub.label}}</div>
       </div>
     </div>
-    <div class="btn" v-show=" role == 'user'" @click="menuClick({link:'/user/info'})" @mouseenter="enter1(index)" @mouseleave="leave1">
+    <div class="btn" v-if=" role == 'user'" @click="menuClick({link:'/user/info'})">
       我的信息
     </div>
-    <div class="btn" v-show=" role == 'corp'" @click="menuClick({link:'/user_corp/info'})" @mouseenter="enter1(index)" @mouseleave="leave1">
+    <div class="btn" v-else-if=" role == 'corp'" @click="menuClick({link:'/user_corp/corp_info'})">
       我的信息
     </div>
   </div>
