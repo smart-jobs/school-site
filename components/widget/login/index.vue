@@ -20,6 +20,7 @@
         <div class="row">
           <img src="@/static/img/logok.png" class="bj">
         </div>
+      </div>
     </div>
   </div>
 </template>
