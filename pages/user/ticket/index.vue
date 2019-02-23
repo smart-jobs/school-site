@@ -37,7 +37,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['query','fetch']),
+    ...mapActions(['query']),
   },
   mounted() {
     let userid =  JSON.parse(sessionStorage.getItem("user")).userid
@@ -83,17 +83,6 @@ export default {
         case '1':
           return '外校学生'
           break;
-      }
-    }
-  },
-  watch: {
-    ticket_list: function (val) {
-      console.log(this.ticket_list)
-      this.id_list = []
-      if (val !== null) {
-        for (let i = 0; i < val.length; i++) {
-          this.fetch({id:val[i].fair_id})
-        }
       }
     }
   },
