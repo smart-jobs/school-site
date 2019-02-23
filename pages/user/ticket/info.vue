@@ -1,47 +1,33 @@
 <template>
   <div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">位置:</i> <em class="fd1"> {{currentlist && currentlist.address }}</em></div>
-        <div class="text fd2 fj"><i class="fd1">类型:</i> <em class="fd1">{{ currentlist && currentlist.type }}</em></div>
+        <div class="text fd1 fj"><i class="fd1">位置:</i> <em class="fd1"> {{item | get('currentlist.address') }}</em></div>
+        <div class="text fd2 fj"><i class="fd1">类型:</i> <em class="fd1">{{ item | get('currentlist.type') }}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">时间:</i> <em class="fd1">{{ currentlist && currentlist.date }} / {{ currentlist && currentlist.time }}</em></div>
-        <div class="text fd2 fj"><i class="fd1">举办地址:</i> <em class="fd1">{{ currentlist && currentlist.type }}</em></div>
+        <div class="text fd1 fj"><i class="fd1">时间:</i> <em class="fd1">{{ item | get('currentlist.date') }} / {{ item | get('currentlist.time') }}</em></div>
+        <div class="text fd2 fj"><i class="fd1">举办地址:</i> <em class="fd1">{{ item | get('currentlist.unit') }}</em></div>
       </div>
   </div>
 </template>
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
-const { mapState, mapActions} = createNamespacedHelpers('user/ticket');
+// const { mapState } = createNamespacedHelpers('user/ticket');
 export default {
   data() {
     return {
     };
   },
   methods: {
-    ...mapActions(['fetch'])
   },
   mounted() {
-    console.log(this.id_list)
-    this.fetch({id:this.id_list})
-    console.log(this.currentlist)
+    console.log(this.item)
   },
   computed: {
-    ...mapState(['currentlist','id_list']),
+    // ...mapState(['ticket_list']),
   },
-  watch: {
-    id_list: function (vals) {
-        console.log(vals)
-        if (vals !== null) {
-            console.log(val)
-            // console.log(this.id_list)
-            // for (let i = 0; i < this.id_list.length; i++) {
-            this.fetch({id:vals})
-            // }
-        }
-    }
-  }
+  props:['item'],
 };
 </script>
 
