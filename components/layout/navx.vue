@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <div class="btn" v-for="(item,index) in menu" :key="index" v-show="role !== item.role" :class="{a1:a1 == index}" @click="menuClick(item)"
+    <div class="btn" v-for="(item,index) in menu" :key="index" :class="{a1:a1 == index}" @click="menuClick(item)"
          @mouseenter="enter1(index)" @mouseleave="leave1">
       {{item.label}}
       <div class="Submenu" v-if="item.children && item.children.length &gt; 0" v-show="a1 == index && showSub">
@@ -8,7 +8,12 @@
              :class="{a2: a2 == index2}" @click.stop="menuClick(sub)">{{sub.label}}</div>
       </div>
     </div>
-    <!-- <div class="btn"  @click="btn">我的</div> -->
+    <div class="btn" v-show=" role == 'user'" @click="menuClick({link:'/user/info'})" @mouseenter="enter1(index)" @mouseleave="leave1">
+      我的信息
+    </div>
+    <div class="btn" v-show=" role == 'corp'" @click="menuClick({link:'/user_corp/info'})" @mouseenter="enter1(index)" @mouseleave="leave1">
+      我的信息
+    </div>
   </div>
 </template>
 
