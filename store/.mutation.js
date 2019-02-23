@@ -28,3 +28,5 @@ export const QRCODE_SUCCESS = 'QRCODE_SUCCESS';
 
 export const LETTER_QUERY = 'LETTER_QUERY';
 export const LETTER_FETACH = 'LETTER_FETACH';
+
+export const TICKET_LIST = 'TICKET_LIST';

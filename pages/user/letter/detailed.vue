@@ -63,11 +63,11 @@ export default {
       if (val !== null) {
         switch (val.type) {
           case '0':
-            return '招聘会'
+            return '招聘信息'
             break;
         
           case '1':
-            return '招聘信息'
+            return '招聘会'
             break;
         }
       }
