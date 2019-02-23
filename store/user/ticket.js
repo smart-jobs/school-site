@@ -3,14 +3,11 @@ import * as types from '@/store/.mutation.js';
 
 const api = {
   query: '/jobs//jobfair/ticket/mylist',
-  fetch: '/jobs/jobfair/fetch',
 };
 // initial state
 export const state = () => ({
-  ticket_list: null,
+  ticket_list: [],
   current: null,
-  currentlist: [],
-  i: 0
 });
 
 // actions
@@ -23,22 +20,11 @@ export const actions = {
     }
     return res;
   },
-  async fetch({ commit }, { id }) {
-    const res = await this.$axios.$get(`${api.fetch}?id=${id}`);
-    if (res.errcode === 0) commit(types.LOADED_DETAIL, res.data);
-    return res;
-  },
 };
 
 // mutations
 export const mutations = {
   [types.TICKET_LIST](state, data) {
     state.ticket_list = data;
-  },
-  [types.LOADED_DETAIL](state, payload) {
-    if (state.ticket_list !== null) {
-      state.ticket_list[state.i].currentlist = payload
-      state.i++
-    }
   },
 }

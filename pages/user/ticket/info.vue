@@ -1,32 +1,18 @@
 <template>
   <div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">位置:</i> <em class="fd1"> {{item | get('currentlist.address') }}</em></div>
-        <div class="text fd2 fj"><i class="fd1">类型:</i> <em class="fd1">{{ item | get('currentlist.type') }}</em></div>
+        <div class="text fd1 fj"><i class="fd1">位置:</i> <em class="fd1"> {{item.address }}</em></div>
+        <div class="text fd2 fj"><i class="fd1">类型:</i> <em class="fd1">{{ item.type }}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">时间:</i> <em class="fd1">{{ item | get('currentlist.date') }} / {{ item | get('currentlist.time') }}</em></div>
-        <div class="text fd2 fj"><i class="fd1">举办地址:</i> <em class="fd1">{{ item | get('currentlist.unit') }}</em></div>
+        <div class="text fd1 fj"><i class="fd1">时间:</i> <em class="fd1">{{ item.date }} / {{ item.time }}</em></div>
+        <div class="text fd2 fj"><i class="fd1">举办地址:</i> <em class="fd1">{{ item.unit }}</em></div>
       </div>
   </div>
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
-// const { mapState } = createNamespacedHelpers('user/ticket');
 export default {
-  data() {
-    return {
-    };
-  },
-  methods: {
-  },
-  mounted() {
-    console.log(this.item)
-  },
-  computed: {
-    // ...mapState(['ticket_list']),
-  },
   props:['item'],
 };
 </script>
