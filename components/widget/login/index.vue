@@ -16,6 +16,10 @@
           <el-button type="primary">企业入口</el-button>
         </div>
       </div>
+      <div class="buttonbox" v-show="userinfo && userinfo.role !== 'guest'">
+        <div class="row">
+          <img src="@/static/img/logok.png" class="bj">
+        </div>
     </div>
   </div>
 </template>
@@ -91,4 +95,5 @@ export default {
     padding: 20px;
   }
 }
+.bj{width: 50%;margin: 0 auto}
 </style>

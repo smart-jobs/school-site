@@ -42,7 +42,6 @@ export default {
   mounted() {
     let userid =  JSON.parse(sessionStorage.getItem("user")).userid
     this.query({ userid: userid })
-    console.log(this.ticket_list)
   },
   computed: {
     ...mapState(['ticket_list']),
