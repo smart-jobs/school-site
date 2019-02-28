@@ -41,7 +41,7 @@
 <script>
 import { createNamespacedHelpers } from "vuex";
 const { mapState, mapActions } = createNamespacedHelpers("user_corp/corp_fair");
-const { mapState:log } = createNamespacedHelpers('login');
+const { mapState: log } = createNamespacedHelpers("login");
 export default {
   data() {
     return {
@@ -53,7 +53,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["update","add"]),
+    ...mapActions(["update", "add"]),
     async btn2(item) {
       try {
         let corpid = this.useinfo.corpid;
@@ -147,11 +147,13 @@ export default {
       } else {
         this.$router.push("/user_corp/corp_fair/");
       }
+    } else {
+      this.$router.push("/user_corp/corp_fair/");
     }
   },
   computed: {
     ...mapState(["fetchlist"]),
-    ...log(['useinfo'])
+    ...log(["useinfo"])
   }
 };
 </script>
