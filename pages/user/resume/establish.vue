@@ -30,6 +30,7 @@
 <script>
 import { createNamespacedHelpers } from 'vuex';
 const { mapState, mapActions} = createNamespacedHelpers('user/resume');
+const { mapState:log } = createNamespacedHelpers('login');
 export default {
   data() {
     return {
@@ -104,7 +105,7 @@ export default {
       if (this.open == true) {
         if (this.swc !== true) { // 调用新建
           try {
-            let userid =  JSON.parse(sessionStorage.getItem("user")).userid
+            let userid =  this.userinfo.userid
             let item = this.items
             const res = await this.create({
               userid:userid,
@@ -125,7 +126,7 @@ export default {
           }
         }else { // 调用更改
           try {
-            let userid =  JSON.parse(sessionStorage.getItem("user")).userid
+            let userid =  this.userinfo.userid
             let id = this.$route.query._id
             let item = this.items
             const res2 = await this.update({
@@ -150,12 +151,11 @@ export default {
       }
     },
     init () { // 初始赋值
-      let userinfo =  JSON.parse(sessionStorage.getItem("user")).reg.info
-      this.xm = userinfo.xm
-      this.xl = userinfo.xl
-      this.xb = userinfo.xb
-      this.yxmc = userinfo.yxmc
-      this.zymc = userinfo.zymc
+      this.xm = this.userinfo.xm
+      this.xl = this.userinfo.xl
+      this.xb = this.userinfo.xb
+      this.yxmc = this.userinfo.yxmc
+      this.zymc = this.userinfo.zymc
     }
   },
   mounted() {
@@ -169,6 +169,7 @@ export default {
   },
   computed: {
     ...mapState(['createlist','current','uplist']),
+    ...log(['useinfo'])
   },
   watch: {
     current: function (val) {

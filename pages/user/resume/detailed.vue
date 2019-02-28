@@ -50,7 +50,7 @@ export default {
     },
     async btn2 (item) {
       try {
-        let userid =  JSON.parse(sessionStorage.getItem("user")).userid
+        let userid =  this.userinfo.userid
         let id = item._id
         const res = await this.delete({
           userid:userid,

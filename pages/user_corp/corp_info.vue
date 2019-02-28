@@ -68,6 +68,7 @@
 <script>
 import { createNamespacedHelpers } from 'vuex';
 const { mapState, mapActions} = createNamespacedHelpers('user_corp/corp_info');
+const { mapState:log } = createNamespacedHelpers('login');
 export default {
   data() {
     return {
@@ -78,14 +79,14 @@ export default {
     ...mapActions(['corp_query']),
   },
   mounted() {
-    this.useinfo = JSON.parse(sessionStorage.getItem("user"))
     if (this.useinfo) {
       this.corp_query({corpid:this.useinfo.corpid})
     }
     console.log(this.corp_info)
   },
   computed: {
-    ...mapState(['corp_info'])
+    ...mapState(['corp_info']),
+    ...log(['useinfo'])
   },
   filters: {
     topeof: function (val) {

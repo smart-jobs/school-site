@@ -22,6 +22,7 @@
 import info from './info'
 import { createNamespacedHelpers } from 'vuex';
 const { mapState, mapActions } = createNamespacedHelpers('user/ticket');
+const { mapState:log } = createNamespacedHelpers('login');
 export default {
   data() {
     return {
@@ -32,11 +33,12 @@ export default {
     ...mapActions(['query']),
   },
   mounted() {
-    let userid =  JSON.parse(sessionStorage.getItem("user")).userid
+    let userid =  this.userinfo.userid
     this.query({ userid: userid })
   },
   computed: {
     ...mapState(['ticket_list']),
+    ...log(['useinfo'])
   },
   filters: {
     type1: function (val) {

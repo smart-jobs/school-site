@@ -30,6 +30,7 @@
 import { createNamespacedHelpers } from 'vuex';
 const { mapState, mapActions} = createNamespacedHelpers('user/letter');
 const { mapState:userstate, mapActions:useractions} = createNamespacedHelpers('user/info');
+const { mapState:log } = createNamespacedHelpers('login');
 export default {
   data() {
     return {
@@ -50,13 +51,14 @@ export default {
     }
   },
   mounted() {
-    let userid =  JSON.parse(sessionStorage.getItem("user")).userid
+    let userid =  this.userinfo.userid
     this.query({userid:userid});
     this.userquery({userid:userid})
   },
   computed: {
     ...mapState(['mylist']),
     ...userstate(['userinfo']),
+    ...log(['useinfo'])
   },
   filters: {
     type1: function (val) {

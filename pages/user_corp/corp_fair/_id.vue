@@ -22,6 +22,7 @@
 <script>
 import { createNamespacedHelpers } from 'vuex';
 const { mapState, mapActions} = createNamespacedHelpers('user_corp/corp_fair');
+const { mapState:log } = createNamespacedHelpers('login');
 export default {
   data() {
     return {
@@ -62,7 +63,6 @@ export default {
   },
   mounted() {
     let _id = this.$route.params.id
-    this.useinfo = JSON.parse(sessionStorage.getItem("user"))
     if (this.useinfo !== null) {
       let corpid = this.useinfo.corpid
       this.fetch({corpid:corpid,fair_id:_id});
@@ -70,6 +70,7 @@ export default {
   },
   computed: {
     ...mapState(['fetchlist']),
+    ...log(['useinfo'])
   },
   watch: {
     fetchlist: function (val) {

@@ -32,6 +32,7 @@
 <script>
 import { createNamespacedHelpers } from 'vuex';
 const { mapState, mapActions} = createNamespacedHelpers('user/resume');
+const { mapState:log } = createNamespacedHelpers('login');
 export default {
   data() {
     return {
@@ -63,7 +64,7 @@ export default {
     },
     async btn2 (item) {
       try {
-        let userid =  JSON.parse(sessionStorage.getItem("user")).userid
+        let userid =  this.userinfo.userid
         let id = item._id
         const res = await this.delete({
           userid:userid,
@@ -84,11 +85,12 @@ export default {
     }
   },
   mounted() {
-    let userid =  JSON.parse(sessionStorage.getItem("user")).userid
+    let userid =  this.userinfo.userid
     this.query({userid:userid});
   },
   computed: {
     ...mapState(['userlist']),
+    ...log(['useinfo'])
   }
 };
 </script>

@@ -21,7 +21,7 @@
 <script>
 import { createNamespacedHelpers } from 'vuex';
 const { mapActions, mapState } = createNamespacedHelpers('user_corp/corp_fair');
-// const { mapState:logState, mapMutations } = createNamespacedHelpers('login');
+const { mapState:log } = createNamespacedHelpers('login');
 export default {
   name: 'TabItemJobfair',
   data() {
@@ -44,7 +44,6 @@ export default {
     }
   },
   mounted() {
-    this.useinfo = JSON.parse(sessionStorage.getItem("user"));
     if (this.useinfo !== null) {
       let corpid = this.useinfo.corpid
       this.query({corpid:corpid});
@@ -52,11 +51,8 @@ export default {
   },
   computed: {
     ...mapState(['items']),
-    // ...logState(['userinfo'])
-  },
-  // created() {
-  //   this.init();
-  // },
+    ...log(['useinfo'])
+  }
 };
 </script>
 

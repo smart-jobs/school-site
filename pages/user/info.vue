@@ -34,6 +34,7 @@
 </template>
 
 <script>
+const { mapState:log } = createNamespacedHelpers('login');
 export default {
   data() {
     return {
@@ -44,10 +45,11 @@ export default {
     
   },
   mounted() {
-    this.useinfo = JSON.parse(sessionStorage.getItem("user")).reg.info
-    console.log(this.useinfo)
+   
   },
-  computed: {}
+  computed: {
+    ...log(['useinfo'])
+  }
 };
 </script>
 
