@@ -37,6 +37,7 @@ module.exports = {
   plugins: [
     '@/plugins/element-ui', '@/plugins/axios', '@/plugins/check-res', '@/plugins/naf-dict', '@/plugins/filters',
     { src: '@/plugins/stomp', ssr: false },
+    { src: '@/plugins/userinfo', ssr: false },
   ],
 
   /*
@@ -61,7 +62,7 @@ module.exports = {
 
   router: {
     base: '/',
-    middleware: 'column',
+    middleware: ['column'],
   },
 
   loader: [

@@ -18,7 +18,7 @@
       </div>
       <div class="buttonbox" v-show="userinfo && userinfo.role !== 'guest'">
         <div class="row">
-          <img src="@/static/img/logok.png" class="bj">
+          <img src="@/static/img/logok.png" class="bj" />
         </div>
       </div>
     </div>
@@ -28,9 +28,8 @@
 <script>
 import { createNamespacedHelpers } from 'vuex';
 import Qrcode from './qrcode';
-import * as types from '@/store/.mutation';
 
-const { mapState, mapActions, mapMutations } = createNamespacedHelpers('login');
+const { mapState, mapActions } = createNamespacedHelpers('login');
 
 export default {
   name: 'LoginWidget',
@@ -42,18 +41,12 @@ export default {
       dataUrl: null,
     };
   },
-  created() {
-    this.init();
-  },
   computed: {
     ...mapState(['loading', 'userinfo']),
   },
   methods: {
     ...mapActions({
       login: 'login',
-    }),
-    ...mapMutations({
-      init: types.USER_INIT,
     }),
   },
 };
@@ -96,5 +89,8 @@ export default {
     padding: 20px;
   }
 }
-.bj{width: 50%;margin: 0 auto}
+.bj {
+  width: 50%;
+  margin: 0 auto;
+}
 </style>

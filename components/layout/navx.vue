@@ -8,20 +8,21 @@
              :class="{a2: a2 == index2}" @click.stop="menuClick(sub)">{{sub.label}}</div>
       </div>
     </div>
+    <no-ssr>
     <div class="btn" v-if=" role == 'user'" @click="menuClick({link:'/user/info'})">
       我的信息
     </div>
     <div class="btn" v-else-if=" role == 'corp'" @click="menuClick({link:'/user_corp/corp_info'})">
       我的信息
     </div>
+    </no-ssr>
   </div>
 </template>
 
 <script>
 import _ from 'lodash';
-import * as types from '@/store/.mutation';
 import { mapState, createNamespacedHelpers } from 'vuex';
-const { mapState: loginState , mapMutations} = createNamespacedHelpers('login');
+const { mapState: loginState } = createNamespacedHelpers('login');
 
 export default {
   name: 'navx',
@@ -33,7 +34,7 @@ export default {
       a1: -1,
       a2: -1,
       showSub: false,
-      role:'guest'
+      menus: [],
     };
   },
   computed: {
@@ -43,11 +44,11 @@ export default {
       const idx = _.isArray(this.menu) && this.menu.findIndex(p => p.key === this.page);
       return idx;
     },
+    role: function () {
+      return this.userinfo ? this.userinfo.role : 'guest';
+    },
   },
   methods: {
-    ...mapMutations({
-      init: types.USER_INIT,
-    }),
     // 一级菜单点击
     menuClick(item) {
       if (item && item.link) location.href = item.link;
@@ -71,18 +72,6 @@ export default {
     btn () {
       location.href = 'user'
     }
-  },
-  watch: {
-    userinfo: function (val) {
-      if (val !== null) {
-        if (val.role !== 'guest') {
-          this.role = val.role
-        }
-      }
-    }
-  },
-  created() {
-    this.init();
   },
 };
 </script>

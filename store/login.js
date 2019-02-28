@@ -102,7 +102,8 @@ export const mutations = {
   },
   [types.USER_INIT](state) {
     state.userinfo = util.user;
-    state.token = util.token;
+    state.access_token = util.token;
+    if (util.user) state.isAuthenticated = true;
   },
   [types.QRCODE_INIT](state, payload) {
     state.qrcode = payload;
