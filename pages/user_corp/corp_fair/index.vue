@@ -21,14 +21,19 @@
 <script>
 import { createNamespacedHelpers } from 'vuex';
 const { mapActions, mapState } = createNamespacedHelpers('user_corp/corp_fair');
+// const { mapState:logState, mapMutations } = createNamespacedHelpers('login');
 export default {
   name: 'TabItemJobfair',
   data() {
     return {
+      useinfo: ''
     };
   },
   methods: {
     ...mapActions(['query']),
+    // ...mapMutations({
+    //   init: types.USER_INIT
+    // }),
     Obtain(item) {
       let _id = item._id
       this.$router.push('/jobs/jobfair/'+_id)
@@ -39,15 +44,19 @@ export default {
     }
   },
   mounted() {
-    let useinfo = JSON.parse(sessionStorage.getItem("user"))
-    if (useinfo !== null) {
-      let corpid = useinfo.corpid
+    this.useinfo = JSON.parse(sessionStorage.getItem("user"));
+    if (this.useinfo !== null) {
+      let corpid = this.useinfo.corpid
       this.query({corpid:corpid});
     }
   },
   computed: {
-    ...mapState(['items'])
-  }
+    ...mapState(['items']),
+    // ...logState(['userinfo'])
+  },
+  // created() {
+  //   this.init();
+  // },
 };
 </script>
 

@@ -87,9 +87,6 @@ export const mutations = {
     state.isAuthenticated = true;
     state.userinfo = userinfo;
     state.access_token = token;
-    // const jwt = Jwt.decode(token);
-    // state.userinfo = jwt.payload;
-    // Cookies.set("auth", token);
     util.save({userinfo, token});
   },
   [types.LOGIN_FAILURE](state) {
