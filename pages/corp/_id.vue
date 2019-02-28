@@ -34,7 +34,6 @@ export default {
     let id = this.$route.params.id;
     let tenant = this.$route.query.tenant;
     this.detailsy({ id, tenant});
-    console.log(this.details)
   },
   computed: {
     ...mapState(['details']),

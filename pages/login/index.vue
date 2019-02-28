@@ -35,7 +35,6 @@ export default {
   methods: {
     btn (item) {
       this.num = item.key
-      console.log(item)
     }
   },
   mounted() {},

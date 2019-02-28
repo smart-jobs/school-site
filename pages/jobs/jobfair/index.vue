@@ -39,7 +39,6 @@ export default {
     Obtain(item) {
       // li点击取id
       let _id = item._id;
-      console.log(_id)
       this.$router.push('/jobs/jobfair/'+_id)
     },
   },
