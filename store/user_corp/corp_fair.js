@@ -5,7 +5,8 @@ const api = {
   query: '/jobs/jobfair/corp/mylist',
   fetch: '/jobs/jobfair/corp/fetch',
   delete: '/jobs/jobfair/corp/job/delete',
-  update:' /corp/job/update'
+  update: '/jobs/jobfair/corp/job/update',
+  add: '/jobs/jobfair/corp/job/add'
 };
 // initial state
 export const state = () => ({
@@ -42,7 +43,16 @@ export const actions = {
   async update({ commit }, {corpid,job_id,name,count,requirement} ) { // 修改
     const params = {corpid:corpid,job_id:job_id};
     const parameter = {name:name,count:count,requirement:requirement}
-    const res = await this.$axios.$post(api.delete, {parameter}, { params });
+    const res = await this.$axios.$post(api.update, {parameter}, { params });
+    if (res.errcode === 0) {
+      commit(types.LOADED_DETAIL, res);
+    }
+    return res;
+  },
+  async add({ commit }, {corpid,fair_id,name,count,requirement} ) { // 修改
+    const params = {corpid:corpid,fair_id:fair_id};
+    const parameter = {name:name,count:count,requirement:requirement}
+    const res = await this.$axios.$post(api.add, parameter, { params });
     if (res.errcode === 0) {
       commit(types.LOADED_DETAIL, res);
     }
@@ -57,7 +67,6 @@ export const mutations = {
   },
   [types.LOADED_DETAIL](state, { data }) {
     state.fetchlist = data
-    console.log(data)
   }
 };
 

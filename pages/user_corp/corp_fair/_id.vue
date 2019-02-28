@@ -1,6 +1,6 @@
 <template>
   <div class="data fd2">
-    <el-button class="fd1 btn0" type="text" @click="btn1(index)">添加职位</el-button>
+    <el-button class="fd1 btn0" type="text" @click="btn0">添加职位</el-button>
     <br>
     <el-card class="box-card" v-for="(item,index) in jobs" :key="index">
       <div slot="header" class="fj">
@@ -55,6 +55,9 @@ export default {
     },
     async btn1 (index) {
       this.$router.push({path:'/user_corp/corp_fair/update',query:{index:index}})
+    },btn0 () {
+        let fair_id = this.fetchlist.fair_id
+        this.$router.push({path:'/user_corp/corp_fair/update',query:{fair_id:fair_id}})
     }
   },
   mounted() {
