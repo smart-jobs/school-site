@@ -21,3 +21,9 @@ export const mutations = {
     state.column = payload;
   },
 }
+
+export const getters = {
+  isAuthenticated: state => state.login.isAuthenticated,
+  userinfo: state => state.login.userinfo,
+  access_token: state => state.login.access_token,
+}

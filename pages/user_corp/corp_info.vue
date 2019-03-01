@@ -67,8 +67,7 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
-const { mapState, mapActions} = createNamespacedHelpers('user_corp/corp_info');
-const { mapState:log } = createNamespacedHelpers('login');
+const { mapState, mapActions, mapGetters} = createNamespacedHelpers('user_corp/corp_info');
 export default {
   data() {
     return {
@@ -85,7 +84,7 @@ export default {
   },
   computed: {
     ...mapState(['corp_info']),
-    ...log(['userinfo'])
+    ...mapGetters(['userinfo'])
   },
   filters: {
     topeof: function (val) {
