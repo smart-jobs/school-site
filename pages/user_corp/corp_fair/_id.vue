@@ -63,14 +63,14 @@ export default {
   },
   mounted() {
     let _id = this.$route.params.id
-    if (this.useinfo !== null) {
-      let corpid = this.useinfo.corpid
+    if (this.userinfo !== null) {
+      let corpid = this.userinfo.corpid
       this.fetch({corpid:corpid,fair_id:_id});
     }
   },
   computed: {
     ...mapState(['fetchlist']),
-    ...log(['useinfo'])
+    ...log(['userinfo'])
   },
   watch: {
     fetchlist: function (val) {

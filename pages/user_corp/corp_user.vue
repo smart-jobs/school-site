@@ -3,36 +3,36 @@
     <div class="userbox">
       <div class="fj">
         <span class="fd1">姓名</span>
-        <em class="fd1">{{useinfo.name}}</em>
+        <em class="fd1">{{userinfo && userinfo.name}}</em>
       </div>
       <div class="fj">
         <span class="fd1">分站信息</span>
-        <em class="fd1">{{useinfo.unit}}</em>
+        <em class="fd1">{{userinfo && userinfo.unit}}</em>
       </div>
       <div class="fj none">
         <span class="fd1">公司名称</span>
-        <em class="fd1">{{useinfo.corpname}}</em>
+        <em class="fd1">{{userinfo && userinfo.corpname}}</em>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex';
 const { mapState:log } = createNamespacedHelpers('login');
 export default {
   data() {
     return {
-      useinfo:''
     };
   },
   methods: {
     
   },
   mounted() {
-   
+   console.log(this.userinfo)
   },
   computed: {
-    ...log(['useinfo'])
+    ...log(['userinfo'])
   }
 };
 </script>

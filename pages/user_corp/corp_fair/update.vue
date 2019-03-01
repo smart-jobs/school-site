@@ -56,7 +56,7 @@ export default {
     ...mapActions(["update", "add"]),
     async btn2(item) {
       try {
-        let corpid = this.useinfo.corpid;
+        let corpid = this.userinfo.corpid;
         let job_id = item._id;
         let name = this.name;
         let count = this.count;
@@ -97,7 +97,7 @@ export default {
     },
     async btn3() {
       try {
-        let corpid = this.useinfo.corpid;
+        let corpid = this.userinfo.corpid;
         let fair_id = this.fair_id;
         let name = this.name;
         let count = this.count;
@@ -153,7 +153,7 @@ export default {
   },
   computed: {
     ...mapState(["fetchlist"]),
-    ...log(["useinfo"])
+    ...log(["userinfo"])
   }
 };
 </script>

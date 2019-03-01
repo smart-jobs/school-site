@@ -79,14 +79,13 @@ export default {
     ...mapActions(['corp_query']),
   },
   mounted() {
-    if (this.useinfo) {
-      this.corp_query({corpid:this.useinfo.corpid})
+    if (this.userinfo) {
+      this.corp_query({corpid:this.userinfo.corpid})
     }
-    console.log(this.corp_info)
   },
   computed: {
     ...mapState(['corp_info']),
-    ...log(['useinfo'])
+    ...log(['userinfo'])
   },
   filters: {
     topeof: function (val) {

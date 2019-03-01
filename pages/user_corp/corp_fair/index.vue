@@ -31,9 +31,6 @@ export default {
   },
   methods: {
     ...mapActions(['query']),
-    // ...mapMutations({
-    //   init: types.USER_INIT
-    // }),
     Obtain(item) {
       let _id = item._id
       this.$router.push('/jobs/jobfair/'+_id)
@@ -44,14 +41,14 @@ export default {
     }
   },
   mounted() {
-    if (this.useinfo !== null) {
-      let corpid = this.useinfo.corpid
+    if (this.userinfo !== null) {
+      let corpid = this.userinfo.corpid
       this.query({corpid:corpid});
     }
   },
   computed: {
     ...mapState(['items']),
-    ...log(['useinfo'])
+    ...log(['userinfo'])
   }
 };
 </script>
