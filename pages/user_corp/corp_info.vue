@@ -66,8 +66,8 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
-const { mapState, mapActions, mapGetters} = createNamespacedHelpers('user_corp/corp_info');
+import { createNamespacedHelpers, mapGetters } from 'vuex';
+const { mapState, mapActions } = createNamespacedHelpers('user_corp/corp_info');
 export default {
   data() {
     return {

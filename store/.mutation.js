@@ -3,6 +3,9 @@ export const LOADED_LIST = 'LOADED_LIST';
 export const LOADED_TOP = 'LOADED_TOP';
 export const LOADED_DETAIL = 'LOADED_DETAIL';
 export const LOADED_CORP_LIST = 'LOADED_CORP_LIST';
+export const ITEM_DELETED = 'ITEM_DELETED';
+export const ITEM_CREATED = 'ITEM_CREATED';
+export const ITEM_UPDATED = 'ITEM_UPDATED';
 
 export const SET_PAGE = 'SET_PAGE';
 export const SET_COLUMN = 'SET_COLUMN';
