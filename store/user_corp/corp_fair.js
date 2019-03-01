@@ -7,11 +7,13 @@ const api = {
   delete: '/jobs/jobfair/corp/job/delete',
   update: '/jobs/jobfair/corp/job/update',
   add: '/jobs/jobfair/corp/job/add',
+  details: '/jobs/jobfair/fetch',
 };
 // initial state
 export const state = () => ({
   items: [],
   current: null,
+  corp_info: null
 });
 
 // actions
@@ -58,6 +60,14 @@ export const actions = {
     }
     return res;
   },
+  async details({ commit }, {id} ) { // 修改
+    const params = {id:id};
+    const res = await this.$axios.$get(api.details,{ params });
+    if (res.errcode === 0) {
+      commit(types.CORPINFO, res.data);
+    }
+    return res;
+  },
 };
 
 // mutations
@@ -67,6 +77,9 @@ export const mutations = {
   },
   [types.LOADED_DETAIL](state, data) {
     state.current = data
+  },
+  [types.CORPINFO](state, data) {
+    state.corp_info = data
   },
 };
 

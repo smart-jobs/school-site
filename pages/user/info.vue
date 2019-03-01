@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex';
 const { mapState:log } = createNamespacedHelpers('login');
 export default {
   data() {

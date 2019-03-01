@@ -41,7 +41,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route)
     if (this.userinfo !== null) {
       let corpid = this.userinfo.corpid
       this.query({corpid:corpid});

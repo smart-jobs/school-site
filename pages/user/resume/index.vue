@@ -90,7 +90,7 @@ export default {
   },
   computed: {
     ...mapState(['userlist']),
-    ...log(['useinfo'])
+    ...log(['userinfo'])
   }
 };
 </script>

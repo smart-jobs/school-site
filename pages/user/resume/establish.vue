@@ -6,16 +6,16 @@
         <input class="fd1 input1" :placeholder="item.title" v-model="title"/>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">姓名:</i> <input :placeholder="item.info.xm" class="fd1" v-model="xm" :disabled="disabled"/></div>
-        <div class="text fd2 fj"><i class="fd1">学历:</i> <input class="fd1" :placeholder="item.info.xl" v-model="xl" :disabled="disabled"/></div>
+        <div class="text fd1 fj"><i class="fd1">姓名:</i> <input :placeholder="item.info.xm" class="fd1" v-model="xm" :disabled="swc"/></div>
+        <div class="text fd2 fj"><i class="fd1">学历:</i> <input class="fd1" :placeholder="item.info.xl" v-model="xl" :disabled="swc"/></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">性别:</i> <input :placeholder="item.info.xb" class="fd1" v-model="xb" :disabled="disabled"/></div>
-        <div class="text fd2 fj"><i class="fd1">毕业院校:</i> <input :placeholder="item.info.yxmc" class="fd1" v-model="yxmc" :disabled="disabled"/></div>
+        <div class="text fd1 fj"><i class="fd1">性别:</i> <input :placeholder="item.info.xb" class="fd1" v-model="xb" :disabled="swc"/></div>
+        <div class="text fd2 fj"><i class="fd1">毕业院校:</i> <input :placeholder="item.info.yxmc" class="fd1" v-model="yxmc" :disabled="swc"/></div>
       </div>
       <div class="item fj">
         <div class="text fd1 fj"><i class="fd1">出生日期:</i> <input :placeholder="item.info.csrq" v-model="csrq" class="fd1"/></div>
-        <div class="text fd2 fj"><i class="fd1">专业名称:</i> <input :placeholder="item.info.zymc" v-model="zymc" class="fd1" :disabled="disabled"/></div>
+        <div class="text fd2 fj"><i class="fd1">专业名称:</i> <input :placeholder="item.info.zymc" v-model="zymc" class="fd1" :disabled="swc"/></div>
       </div>
       <div class="item fj">
         <div class="text fd1 fj"><i class="fd1">联系方式:</i> <input :placeholder="item.contact.mobile" v-model="mobile" class="fd1"/></div>
@@ -164,12 +164,12 @@ export default {
       this.swc = true
       this.fetch({id:_id});
     }else {
-      this.init()
+      this.swc = false
     }
   },
   computed: {
     ...mapState(['createlist','current','uplist']),
-    ...log(['useinfo'])
+    ...log(['userinfo'])
   },
   watch: {
     current: function (val) {

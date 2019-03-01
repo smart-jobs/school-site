@@ -2,20 +2,20 @@
   <div class="data fd2">
     <el-button class="fd1 btn0" type="text" @click="handleAdd">添加职位</el-button>
     <br />
-    <el-card class="box-card" v-for="(item, index) in jobs" :key="index">
+    <el-card class="box-card" v-for="(item, index) in current && current.jobs" :key="index">
       <div slot="header" class="fj">
         <span class="fd1">{{ current && current.corpname }}</span>
         <el-button class="fd2 btn" type="text" v-if="current.status == 1" @click="handleDelete(item)">删除</el-button>
         <el-button class="fd2 btn" type="text" v-if="current.status == 1" @click="handleUpdate(index)">更改</el-button>
       </div>
-      <!-- <div class="item fj">
+      <div class="item fj">
         <div class="text fd1 fj">
-          <i class="fd1">招聘会:</i> <em class="fd1">{{ info && info.subject }}</em>
+          <i class="fd1">招聘会:</i> <em class="fd1">{{ corp_info && corp_info.subject }}</em>
         </div>
         <div class="text fd2 fj">
-          <i class="fd1">分站信息:</i> <em class="fd1">{{ info && info.unit }}</em>
+          <i class="fd1">分站信息:</i> <em class="fd1">{{ corp_info && corp_info.unit }}</em>
         </div>
-      </div> -->
+      </div>
       <div class="item fj">
         <div class="text fd1 fj">
           <i class="fd1">招聘职位:</i> <em class="fd1">{{ item && item.name }}</em>
@@ -39,11 +39,10 @@ const { mapState, mapActions } = createNamespacedHelpers('user_corp/corp_fair');
 export default {
   data() {
     return {
-      jobs: null,
     };
   },
   methods: {
-    ...mapActions(['fetch', 'delete']),
+    ...mapActions(['fetch', 'delete','details']),
     async handleDelete(item) {
       let corpid = this.userinfo.corpid;
       let job_id = item._id;
@@ -66,19 +65,13 @@ export default {
     if (this.userinfo !== null) {
       let corpid = this.userinfo.corpid;
       this.fetch({ corpid: corpid, fair_id: _id });
+      this.details({id:_id})
     }
   },
   computed: {
-    ...mapState(['current']),
+    ...mapState(['current','corp_info']),
     ...mapGetters(['userinfo']),
-  },
-  watch: {
-    current: function(val) {
-      if (val !== null) {
-        this.jobs = val.jobs;
-      }
-    },
-  },
+  }
 };
 </script>
 

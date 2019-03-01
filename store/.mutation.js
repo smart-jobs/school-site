@@ -33,3 +33,6 @@ export const LETTER_QUERY = 'LETTER_QUERY';
 export const LETTER_FETACH = 'LETTER_FETACH';
 
 export const TICKET_LIST = 'TICKET_LIST';
+
+
+export const CORPINFO = 'CORPINFO';
