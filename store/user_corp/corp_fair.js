@@ -6,7 +6,7 @@ const api = {
   fetch: '/jobs/jobfair/corp/fetch',
   delete: '/jobs/jobfair/corp/job/delete',
   update: '/jobs/jobfair/corp/job/update',
-  add: '/jobs/jobfair/corp/job/add'
+  add: '/jobs/jobfair/corp/job/add',
 };
 // initial state
 export const state = () => ({
@@ -67,7 +67,7 @@ export const mutations = {
   },
   [types.LOADED_DETAIL](state, data) {
     state.current = data
-  }
+  },
 };
 
 export const namespaced = true;

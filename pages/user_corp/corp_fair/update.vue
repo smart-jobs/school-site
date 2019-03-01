@@ -3,7 +3,7 @@
     <br>
     <el-card class="box-card">
       <div slot="header" class="fj">
-        <span class="fd1">{{fetchlist && fetchlist.corpname}}</span>
+        <span class="fd1">{{current && current.corpname}}</span>
         <el-button class="fd2 btn" type="text" @click="btn2(fetch)" v-if="fair_id == ''">提交更改</el-button>
         <el-button class="fd2 btn" type="text" @click="btn3" v-else>提交新建</el-button>
       </div>
@@ -70,7 +70,6 @@ export default {
             requirement: requirement
           });
           if (this.$checkRes(res, "更改成功")) {
-            this.$emit("scaned");
             this.$router.push("/user_corp/corp_fair/");
           } else {
             this.$message({
@@ -111,7 +110,6 @@ export default {
             requirement: requirement
           });
           if (this.$checkRes(res, "提交成功")) {
-            this.$emit("scaned");
             this.$router.push("/user_corp/corp_fair/");
           } else {
             this.$message({
@@ -142,8 +140,8 @@ export default {
       this.fair_id = this.$route.query.fair_id;
     } else if (this.$route.query.index) {
       let index = this.$route.query.index;
-      if (this.fetchlist !== null) {
-        this.fetch = this.fetchlist.jobs[index];
+      if (this.current !== null) {
+        this.fetch = this.current.jobs[index];
       } else {
         this.$router.push("/user_corp/corp_fair/");
       }
@@ -152,7 +150,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["fetchlist"]),
+    ...mapState(["current"]),
     ...log(["userinfo"])
   }
 };

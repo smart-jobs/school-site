@@ -8,6 +8,14 @@
         <el-button class="fd2 btn" type="text" v-if="current.status == 1" @click="handleDelete(item)">删除</el-button>
         <el-button class="fd2 btn" type="text" v-if="current.status == 1" @click="handleUpdate(index)">更改</el-button>
       </div>
+      <!-- <div class="item fj">
+        <div class="text fd1 fj">
+          <i class="fd1">招聘会:</i> <em class="fd1">{{ info && info.subject }}</em>
+        </div>
+        <div class="text fd2 fj">
+          <i class="fd1">分站信息:</i> <em class="fd1">{{ info && info.unit }}</em>
+        </div>
+      </div> -->
       <div class="item fj">
         <div class="text fd1 fj">
           <i class="fd1">招聘职位:</i> <em class="fd1">{{ item && item.name }}</em>
