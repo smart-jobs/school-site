@@ -3,15 +3,15 @@
     <div class="userbox">
       <div class="fj">
         <span class="fd1">姓名</span>
-        <em class="fd1">{{useinfo.xm}}</em>
+        <em class="fd1">{{userinfo | get('reg.info.xm')}}</em>
       </div>
       <div class="fj">
         <span class="fd1">性别</span>
-        <em class="fd1">{{useinfo.xb}}</em>
+        <em class="fd1">{{userinfo | get('reg.info.xb')}}</em>
       </div>
       <div class="fj">
         <span class="fd1">学历</span>
-        <em class="fd1">{{useinfo.xl}}</em>
+        <em class="fd1">{{userinfo | get('reg.info.xl')}}</em>
       </div>
       <div class="fj">
         <span class="fd1">证件名称</span>
@@ -19,15 +19,15 @@
       </div>
       <div class="fj">
         <span class="fd1">证件号码</span>
-        <em class="fd1">{{useinfo.sfzh}}</em>
+        <em class="fd1">{{userinfo | get('reg.info.sfzh')}}</em>
       </div>
       <div class="fj">
         <span class="fd1">院校名称</span>
-        <em class="fd1">{{useinfo.yxmc}}</em>
+        <em class="fd1">{{userinfo | get('reg.info.yxmc')}}</em>
       </div>
       <div class="fj none">
         <span class="fd1">专业名称</span>
-        <em class="fd1">{{useinfo.zymc}}</em>
+        <em class="fd1">{{userinfo | get('reg.info.zymc')}}</em>
       </div>
     </div>
   </div>
@@ -39,17 +39,16 @@ const { mapState:log } = createNamespacedHelpers('login');
 export default {
   data() {
     return {
-      useinfo:''
     };
   },
   methods: {
     
   },
   mounted() {
-   
+    console.log(this.userinfo)
   },
   computed: {
-    ...log(['useinfo'])
+    ...log(['userinfo'])
   }
 };
 </script>

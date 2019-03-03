@@ -10,16 +10,16 @@
         <div class="text fd2 fj"><i class="fd1">类别:</i> <em class="fd1">{{item | type1}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">姓名:</i> <em class="fd1">{{userinfo && userinfo.xm}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">学历:</i> <em class="fd1">{{userinfo && userinfo.xl}}</em></div>
+        <div class="text fd1 fj"><i class="fd1">姓名:</i> <em class="fd1">{{userinfo | get('reg.info.xm')}}</em></div>
+        <div class="text fd2 fj"><i class="fd1">学历:</i> <em class="fd1">{{userinfo | get('reg.info.xl')}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">性别:</i> <em class="fd1">{{userinfo && userinfo.xb}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">毕业院校:</i> <em class="fd1">{{userinfo && userinfo.yxmc}}</em></div>
+        <div class="text fd1 fj"><i class="fd1">性别:</i> <em class="fd1">{{userinfo  | get('reg.info.xb')}}</em></div>
+        <div class="text fd2 fj"><i class="fd1">毕业院校:</i> <em class="fd1">{{userinfo  | get('reg.info.yxmc')}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">身份证号:</i> <em class="fd1">{{userinfo && userinfo.sfzh}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">专业名称:</i> <em class="fd1">{{userinfo && userinfo.zymc}}</em></div>
+        <div class="text fd1 fj"><i class="fd1">身份证号:</i> <em class="fd1">{{userinfo | get('reg.info.sfzh')}}</em></div>
+        <div class="text fd2 fj"><i class="fd1">专业名称:</i> <em class="fd1">{{userinfo | get('reg.info.zymc')}}</em></div>
       </div>
       <el-button class="btn0 xq" type="text" @click="xq(item)">查看详情</el-button>
     </el-card>
@@ -29,7 +29,6 @@
 <script>
 import { createNamespacedHelpers } from 'vuex';
 const { mapState, mapActions} = createNamespacedHelpers('user/letter');
-const { mapState:userstate, mapActions:useractions} = createNamespacedHelpers('user/info');
 const { mapState:log } = createNamespacedHelpers('login');
 export default {
   data() {
@@ -39,7 +38,6 @@ export default {
   },
   methods: {
     ...mapActions(['query']),
-    ...useractions(['userquery']),
     xq (item) {
       let _id = item._id
       this.$router.push({
@@ -51,14 +49,14 @@ export default {
     }
   },
   mounted() {
-    let userid =  this.userinfo.userid
-    this.query({userid:userid});
-    this.userquery({userid:userid})
+    if (this.userinfo !== null) {
+      let userid =  this.userinfo.userid
+      this.query({userid:userid});
+    }
   },
   computed: {
     ...mapState(['mylist']),
-    ...userstate(['userinfo']),
-    ...log(['useinfo'])
+    ...log(['userinfo'])
   },
   filters: {
     type1: function (val) {

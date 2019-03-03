@@ -52,7 +52,7 @@ export default {
       });
       this.$checkRes(res, '删除成功', '删除失败');
     },
-    async handleUpdate(index) {
+    handleUpdate(index) {
       this.$router.push({ path: '/user_corp/corp_fair/update', query: { index: index } });
     },
     handleAdd() {

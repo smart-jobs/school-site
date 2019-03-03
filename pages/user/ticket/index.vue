@@ -26,7 +26,6 @@ const { mapState:log } = createNamespacedHelpers('login');
 export default {
   data() {
     return {
-      id_list: []
     };
   },
   methods: {
@@ -38,7 +37,7 @@ export default {
   },
   computed: {
     ...mapState(['ticket_list']),
-    ...log(['useinfo'])
+    ...log(['userinfo'])
   },
   filters: {
     type1: function (val) {

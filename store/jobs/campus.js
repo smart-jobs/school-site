@@ -9,7 +9,7 @@ const api = {
 export const state = () => ({
   tops: [],
   items: [],
-  current: null,
+  currents: null,
   total: 0,
 });
 
@@ -51,7 +51,7 @@ export const mutations = {
     state.total = total;
   },
   [types.LOADED_DETAIL](state, payload) {
-    state.current = payload;
+    state.currents = payload;
   },
 };
 
