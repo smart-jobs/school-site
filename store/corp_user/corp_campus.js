@@ -19,7 +19,6 @@ export const state = () => ({
 export const actions = {
   async query({ commit }, { corpid, size, pagesize }) { // 查询
     const params = { corpid:corpid, skip:(size-1)*pagesize, limit:pagesize };
-    console.log(params)
     const res = await this.$axios.$get(api.query,{ params });
     if (res.errcode === 0) {
       commit(types.LOADED_LIST, res);

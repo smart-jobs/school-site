@@ -1,6 +1,9 @@
 <template>
   <div class="details">
-    <p class="title">{{current && current.title}}</p>
+    <p class="title fj">
+      <span class="fd1">{{current && current.title}}</span>
+      <el-button class="fd1 btn0" type="text" v-if="userinfo.role == 'user'">投递简历</el-button>
+    </p>
     <p class="text">企业名称：{{current && current.corpname}}</p>
     <p class="text">工作位置：{{current | get('city.name')}}</p>
     <p class="text">薪资待遇：{{current | get('salary.name')}}</p>
@@ -19,7 +22,7 @@
 import { createNamespacedHelpers } from 'vuex';
 
 const { mapActions, mapState } = createNamespacedHelpers('jobs/jobinfo');
-
+const { mapState: log } = createNamespacedHelpers("login");
 export default {
   name: 'JobinfoDetail',
   data() {
@@ -31,10 +34,10 @@ export default {
   mounted() {
     let id = this.$route.params.id;
     this.fetch({ id });
-    console.log(this.current)
   },
   computed: {
     ...mapState(['current']),
+    ...log(["userinfo"]),
   }
 };
 </script>
@@ -53,5 +56,12 @@ export default {
 .text2 {
   margin-top: 3em;
   line-height: 2rem;
+}
+.btn0 {
+  padding: 3px 0;
+  margin-top: 1.2em;
+  margin-left: 3%;
+  display: block;
+  text-align: left;
 }
 </style>

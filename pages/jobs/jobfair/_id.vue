@@ -33,7 +33,7 @@
         <template v-for="(item,num) in corp_list">
           <tr v-for="(job,index) in item.jobs" :key="num+'_'+index">
             <template v-if="index==0">
-              <td width="150" class="operation" :rowspan="item.jobs.length">投递简历</td>
+              <td width="150" class="operation" :rowspan="item.jobs.length"><span v-if="userinfo.role == 'user'">投递简历</span></td>
               <td width="300" class="th corpname" :rowspan="item.jobs.length" @click="btn(item)">{{corp_list && item.corpname}}</td>
             </template>
             <td width="300" class="th">{{job.name}}</td>
@@ -50,7 +50,7 @@
 import { createNamespacedHelpers } from "vuex";
 
 const { mapActions, mapState } = createNamespacedHelpers("jobs/jobfair");
-
+const { mapState: log } = createNamespacedHelpers("login");
 export default {
   name: "JobinfoDetail",
   data() {
@@ -72,7 +72,8 @@ export default {
     this.corplist({ id });
   },
   computed: {
-    ...mapState(["current", "corp_list"])
+    ...mapState(["current", "corp_list"]),
+    ...log(["userinfo"]),
   }
 };
 </script>

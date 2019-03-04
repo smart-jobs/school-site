@@ -78,12 +78,10 @@ export default {
   },
   methods: {
     handleCurrentChange(val) {
-      console.log('当前是' + val + '页');
     },
     Obtain(index) {
       // li点击取id
       let id = this.list[index].id;
-      console.log(id);
     },
   },
 }; // l轮播图宽度为424

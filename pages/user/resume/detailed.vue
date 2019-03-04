@@ -73,7 +73,6 @@ export default {
   mounted() {
     let _id = this.$route.query._id
     this.fetch({id: _id});
-    console.log(this.current)
   },
   computed: {
     ...mapState(['current']),

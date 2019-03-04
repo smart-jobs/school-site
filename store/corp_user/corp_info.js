@@ -16,7 +16,6 @@ export const actions = {
     const res = await this.$axios.$get(api.info,{ params });
     if (res.errcode === 0) {
       commit(types.USER_INFO, res.data);
-      console.log(res.data)
     }
     return res;
   }

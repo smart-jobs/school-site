@@ -69,7 +69,6 @@ export default {
       let size = this.size;
       let pagesize = this.pagesize;
       this.query({ corpid: corpid, size: size, pagesize: pagesize });
-      console.log(this.items)
     }
   },
   computed: {

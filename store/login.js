@@ -46,7 +46,6 @@ export const actions = {
         // TODO: 尝试时候用绑定的微信进行登录
         await dispatch('login');
       }
-      console.log(res);
       return res;
     } finally {
       commit(types.HIDE_LOADING);
@@ -56,7 +55,6 @@ export const actions = {
     commit(types.SHOW_LOADING);
     try {
       let res = await this.$axios.$post(api.login)
-      console.log(res);
       if (res.errcode && res.errcode !== 0) {
         commit(types.LOGIN_FAILURE);
       } else {
@@ -65,7 +63,6 @@ export const actions = {
       }
       return res;
     } catch (err) {
-      console.error(err);
       commit(types.LOGIN_FAILURE);
       return { errcode: -1, errmsg: 'error' };
     } finally {

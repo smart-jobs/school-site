@@ -37,7 +37,6 @@ export default {
   mounted() {
     let id = this.$route.params.id;
     this.fetch({ id });
-    console.log(this.currents)
   },
   computed: {
     ...mapState(['currents']),

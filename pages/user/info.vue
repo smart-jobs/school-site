@@ -45,7 +45,6 @@ export default {
     
   },
   mounted() {
-    console.log(this.userinfo)
   },
   computed: {
     ...log(['userinfo'])

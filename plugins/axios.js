@@ -10,10 +10,7 @@ export default function ({ $axios, redirect, app, store }) {
   $axios.onRequest(config => {
     if (process.browser) {
       const { isAuthenticated, unitcode, platform, access_token } = store.getters;
-      // $axios.setToken(access_token); // setToken得下一次请求是才能生效，所以放弃这种方法
       config.headers['Authorization'] = util.token; // 设置config可以在本次请求生效
-      // if ( isAuthenticated && platform === 'school') {
-      //   config.baseURL = `/${unitcode}/api`
       // }
       vm.$loading()
     }
@@ -25,19 +22,7 @@ export default function ({ $axios, redirect, app, store }) {
       load.close();
       const res = response.data;
       if (res.errcode) {
-        // console.log('response: ', response);
         console.error(`请求发生错误：${res.errcode}, ${res.errmsg}`);
-        // vm.$message({
-        //   type: 'error',
-        //   message: res.errmsg || '请求失败',
-        //   duration: 3000
-        // });
-        // vm.$notify({
-        //   title: '错误',
-        //   message: res.errmsg || '请求发生错误',
-        //   type: 'error'
-        // });
-        // throw new BusinessError(res.errcode, res.errmsg);
       }
     }
   })
