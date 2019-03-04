@@ -35,7 +35,7 @@
 <script>
 import { createNamespacedHelpers } from "vuex";
 const { mapActions, mapState } = createNamespacedHelpers(
-  "corp_usercampus"
+  "corp_user/corp_campus"
 );
 const { mapState: log } = createNamespacedHelpers("login");
 export default {

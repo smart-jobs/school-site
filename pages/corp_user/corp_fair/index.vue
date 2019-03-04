@@ -20,7 +20,7 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
-const { mapActions, mapState } = createNamespacedHelpers('corp_userfair');
+const { mapActions, mapState } = createNamespacedHelpers('corp_user/corp_fair');
 const { mapState:log } = createNamespacedHelpers('login');
 export default {
   name: 'TabItemJobfair',
