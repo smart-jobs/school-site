@@ -35,7 +35,7 @@
 
 <script>
 import { createNamespacedHelpers, mapGetters } from 'vuex';
-const { mapState, mapActions } = createNamespacedHelpers('corp_info/corp_fair');
+const { mapState, mapActions } = createNamespacedHelpers('corp_userfair');
 export default {
   data() {
     return {
