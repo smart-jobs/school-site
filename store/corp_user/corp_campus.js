@@ -27,10 +27,10 @@ export const actions = {
   async fetch({ commit }, {id} ) { // 详细查询
     const params = {id:id};
     const res = await this.$axios.$get(api.fetch, { params });
-    if (res.errcode === 0) {
-      // console.log(res)
-      commit(types.LOADED_DETAIL, res.data);
-    }
+    // if (res.errcode === 0) {
+    //   // console.log(res)
+    //   commit(types.LOADED_DETAIL, res.data);
+    // }
     return res;
   },
   async update({ commit }, {corpid,id,subject, content, address, time, contact, email, jobs, date} ) { // 修改

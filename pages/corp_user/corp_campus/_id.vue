@@ -2,34 +2,34 @@
   <div class="data fd2">
     <el-button class="fd1 btn0" type="text" @click="handleAdd">添加职位</el-button>
     <br />
-    <el-card class="box-card" v-for="(item, index) in currents && currents.jobs" :key="index">
+    <el-card class="box-card" v-for="(item, index) in dataForm && dataForm.jobs" :key="index">
       <div slot="header" class="fj">
-        <span class="fd1">{{ currents && currents.corpname }}</span>
+        <span class="fd1">{{ dataForm && dataForm.corpname }}</span>
         <el-button class="fd2 btn" type="text" v-if="item.status == 1" @click="handleUpdate(item)">更改</el-button>
         <el-button class="fd2 btn" type="text" v-if="item.status == 1" @click="handleDelete(item)">删除</el-button>
       </div>
       <div class="item fj">
         <div class="text fd1 fj">
-          <i class="fd1">宣讲会:</i> <em class="fd1">{{ currents && currents.subject }}</em>
+          <i class="fd1">宣讲会:</i> <em class="fd1">{{ dataForm && dataForm.subject }}</em>
         </div>
         <div class="text fd2 fj">
-          <i class="fd1">分站信息:</i> <em class="fd1">{{ currents && currents.unit }}</em>
+          <i class="fd1">分站信息:</i> <em class="fd1">{{ dataForm && dataForm.unit }}</em>
         </div>
       </div>
       <div class="item fj">
         <div class="text fd1 fj">
-          <i class="fd1">举办企业:</i> <em class="fd1">{{ currents && currents.corpname }}</em>
+          <i class="fd1">举办企业:</i> <em class="fd1">{{ dataForm && dataForm.corpname }}</em>
         </div>
         <div class="text fd2 fj">
-          <i class="fd1">开始时间:</i> <em class="fd1">{{ currents && currents.date }} {{ currents && currents.time }}</em>
+          <i class="fd1">开始时间:</i> <em class="fd1">{{ dataForm && dataForm.date }} {{ dataForm && dataForm.time }}</em>
         </div>
       </div>
        <div class="item fj">
         <div class="text fd1 fj">
-          <i class="fd1">联系方式:</i> <em class="fd1">{{ currents && currents.contact }}</em>
+          <i class="fd1">联系方式:</i> <em class="fd1">{{ dataForm && dataForm.contact }}</em>
         </div>
         <div class="text fd2 fj">
-          <i class="fd1">联系邮箱:</i> <em class="fd1">{{ currents && currents.email }}</em>
+          <i class="fd1">联系邮箱:</i> <em class="fd1">{{ dataForm && dataForm.email }}</em>
         </div>
       </div>
       <div class="item fj">
@@ -55,6 +55,7 @@ const { mapState, mapActions } = createNamespacedHelpers('corp_user/corp_campus'
 export default {
   data() {
     return {
+      dataForm: null,
     };
   },
   methods: {
@@ -76,14 +77,17 @@ export default {
       this.$router.push({ path: '/corp_user/corp_campus/update', query: { fair_id: fair_id } });
     },
   },
-  mounted() {
+  async mounted() {
     let id = this.$route.params.id;
     if (id) {
-      this.fetch({ id:id});
+      const res = await this.fetch({ id:id});
+      if(this.$checkRes(res)){
+        this.dataForm = res.data;
+      }
     }
   },
   computed: {
-    ...mapState(['currents','corp_info']),
+    ...mapState(['corp_info']),
   }
 };
 </script>

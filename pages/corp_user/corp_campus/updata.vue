@@ -3,7 +3,7 @@
     <br>
     <el-card class="box-card">
       <div slot="header" class="fj">
-        <span class="fd1">{{currents && currents.corpname}}</span>
+        <span class="fd1">{{dataForm && dataForm.corpname}}</span>
         <el-button class="fd2 btn" type="text" @click="change" v-if="id !== ''">提交更改</el-button>
         <el-button class="fd2 btn" type="text" @click="btn3" v-else>提交新建</el-button>
       </div>
@@ -11,13 +11,13 @@
         <div class="text fd1 fj">
           <i class="fd1">宣讲标题:</i>
           <em class="fd1">
-            <el-input v-model="list.subject"></el-input>
+            <el-input v-model="dataForm.subject"></el-input>
           </em>
         </div>
         <div class="text fd2 fj">
           <i class="fd1">举办地址:</i>
           <em class="fd1">
-            <el-input v-model="list.address"></el-input>
+            <el-input v-model="dataForm.address"></el-input>
           </em>
         </div>
       </div>
@@ -25,13 +25,13 @@
         <div class="text fd1 fj">
           <i class="fd1">开始日期:</i>
           <em class="fd1">
-            <el-input v-model="list.date"></el-input>
+            <el-input v-model="dataForm.date"></el-input>
           </em>
         </div>
         <div class="text fd2 fj">
           <i class="fd1">开始时间:</i>
           <em class="fd1">
-            <el-input v-model="list.time"></el-input>
+            <el-input v-model="dataForm.time"></el-input>
           </em>
         </div>
       </div>
@@ -39,13 +39,13 @@
         <div class="text fd1 fj">
           <i class="fd1">联系电话:</i>
           <em class="fd1">
-            <el-input v-model="list.contact"></el-input>
+            <el-input v-model="dataForm.contact"></el-input>
           </em>
         </div>
         <div class="text fd2 fj">
           <i class="fd1">联系邮箱:</i>
           <em class="fd1">
-            <el-input v-model="list.email"></el-input>
+            <el-input v-model="dataForm.email"></el-input>
           </em>
         </div>
       </div>
@@ -53,7 +53,7 @@
         <div class="text fd1 fj">
           <i class="fd1">宣讲内容:</i>
           <em class="fd1">
-            <el-input type="textarea" :rows="3" v-model="list.content"></el-input>
+            <el-input type="textarea" :rows="3" v-model="dataForm.content"></el-input>
           </em>
         </div>
       </div>
@@ -61,7 +61,7 @@
         <h2 class="fd1">招聘职位</h2>
         <el-button class="fd1 btn h2" type="text" @click="tj">添加职位</el-button>
       </div>
-      <div class="item" v-for="(item, index) in list && list.jobs" :key="index">
+      <div class="item" v-for="(item, index) in dataForm && dataForm.jobs" :key="index">
         <el-button class="bt0" type="text" @click="shanchu(index)">删除职位</el-button>
         <br>
         <div class="item fj">
@@ -94,7 +94,7 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapState, mapActions, mapMutations } = createNamespacedHelpers(
+const { mapActions, mapMutations } = createNamespacedHelpers(
   "corp_user/corp_campus"
 );
 const { mapState: log } = createNamespacedHelpers("login");
@@ -102,7 +102,7 @@ export default {
   data() {
     return {
       id: "",
-      list: {
+      dataForm: {
         subject: "",
         address: "",
         contact: "",
@@ -110,7 +110,7 @@ export default {
         date: "格式：2020-03-04",
         email: "",
         time: "格式：12：12",
-        jobs: [{ count: "", name: "", requirement: "" }]
+        jobs: []
       }
     };
   },
@@ -122,12 +122,12 @@ export default {
         let corpid = this.userinfo.corpid;
         let id = this._id;
         
-        if (this.list.subject !== ''&&this.list.address !== ''&&this.list.contact !== ''&&this.list.content !== ''&&this.list.date !== ''&&this.list.email !== ''&&this.list.time !== ''&&this.list.jobs.length >= 1) {
-          let list = this.list
+        if (this.dataForm.subject !== ''&&this.dataForm.address !== ''&&this.dataForm.contact !== ''&&this.dataForm.content !== ''&&this.dataForm.date !== ''&&this.dataForm.email !== ''&&this.dataForm.time !== ''&&this.dataForm.jobs.length >= 1) {
+          let dataForm = this.dataForm
           const res = await this.update({
             corpid: corpid,
             id: id,
-            list
+            dataForm
           });
           if (this.$checkRes(res, "更改成功")) {
             this.$router.push("/corp_user/corp_campus/");
@@ -157,7 +157,7 @@ export default {
     async btn3() {
       try {
         let corpid = this.userinfo.corpid;
-        let id = this.id;
+        let id = this.dataId;
         let name = this.name;
         let count = this.count;
         let requirement = this.requirement;
@@ -171,13 +171,7 @@ export default {
           });
           if (this.$checkRes(res, "提交成功")) {
             this.$router.push("/corp_user/corp_campus/");
-          } else {
-            this.$message({
-              type: "error",
-              message: res.message || "提交失败",
-              duration: 1000
-            });
-          }
+          } 
         } else {
           this.$message({
             type: "error",
@@ -195,53 +189,26 @@ export default {
       }
     },
     tj() {
-      this.list.jobs.push({ count: "", name: "", requirement: "" });
+      this.dataForm.jobs.push({ count: "", name: "", requirement: "" });
     },
     shanchu(index) {
-      this.list.jobs.splice(index, 1);
+      this.dataForm.jobs.splice(index, 1);
     },
-    init() {
-      // 初始化
-      let subject = { ...this.currents }.subject;
-      this.list.subject = subject;
-      let address = { ...this.currents }.address;
-      this.list.address = address
-      let contact = { ...this.currents }.contact;
-      this.list.contact = contact
-      let content = { ...this.currents }.content;
-      this.list.content = content
-      let date = { ...this.currents }.date;
-      this.list.date = date
-      let email = { ...this.currents }.email;
-      this.list.email = email
-      let time = { ...this.currents }.time;
-      this.list.time = time
-      this.list.jobs = []
-      for (let i = 0; i < this.currents.jobs.length; i++) {
-        const name = this.currents.jobs[i].name
-        const count = this.currents.jobs[i].count
-        const requirement = this.currents.jobs[i].requirement
-        this.list.jobs.push({name:name,count:count,requirement:requirement})
-      }
-    }
   },
-  mounted() {
-    if (this.$route.query.id) {
-      this.id = this.$route.query.id;
-      this.fetch({ id: this.id });
+  async mounted() {
+    if (this.dataId) {
+      const res = await this.fetch({ id: this.dataId});
+      if(this.$checkRes(res)){
+        this.dataForm = res.data;
+      }
     }
   },
   computed: {
-    ...mapState(["currents"]),
-    ...log(["userinfo"])
-  },
-  watch: {
-    currents: function(val) {
-      if (val !== null) {
-        this.init();
-      }
+    ...log(["userinfo"]),
+    dataId() {
+      return this.$route.query.id;
     }
-  }
+  },
 };
 </script>
 
