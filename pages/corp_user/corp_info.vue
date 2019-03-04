@@ -67,7 +67,7 @@
 
 <script>
 import { createNamespacedHelpers, mapGetters } from 'vuex';
-const { mapState, mapActions } = createNamespacedHelpers('user_corp/corp_info');
+const { mapState, mapActions } = createNamespacedHelpers('corp_user/corp_info');
 export default {
   data() {
     return {
