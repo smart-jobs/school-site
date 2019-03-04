@@ -4,7 +4,7 @@
     <el-card class="box-card">
       <div slot="header" class="fj">
         <span class="fd1">{{dataForm && dataForm.corpname}}</span>
-        <el-button class="fd2 btn" type="text" @click="change" v-if="id !== ''">提交更改</el-button>
+        <el-button class="fd2 btn" type="text" @click="change" v-if="dataId !== undefined">提交更改</el-button>
         <el-button class="fd2 btn" type="text" @click="btn3" v-else>提交新建</el-button>
       </div>
       <div class="item fj">
@@ -101,14 +101,13 @@ const { mapState: log } = createNamespacedHelpers("login");
 export default {
   data() {
     return {
-      id: "",
       dataForm: {
-        subject: "",
-        address: "",
-        contact: "",
-        content: "",
+        subject: "宣讲会名称",
+        address: "宣讲会地址",
+        contact: "联系电话",
+        content: "宣讲内容",
         date: "格式：2020-03-04",
-        email: "",
+        email: "联系邮箱",
         time: "格式：12：12",
         jobs: []
       }
@@ -120,9 +119,8 @@ export default {
     async change() {
       try {
         let corpid = this.userinfo.corpid;
-        let id = this._id;
-        
-        if (this.dataForm.subject !== ''&&this.dataForm.address !== ''&&this.dataForm.contact !== ''&&this.dataForm.content !== ''&&this.dataForm.date !== ''&&this.dataForm.email !== ''&&this.dataForm.time !== ''&&this.dataForm.jobs.length >= 1) {
+        let id = this.dataId;
+        if (this.dataForm.subject !== ''&&this.dataForm.address !== ''&&this.dataForm.contact !== ''&&this.dataForm.content !== ''&&this.dataForm.date !== ''&&this.dataForm.email !== ''&&this.dataForm.time !== '') {
           let dataForm = this.dataForm
           const res = await this.update({
             corpid: corpid,
@@ -131,12 +129,6 @@ export default {
           });
           if (this.$checkRes(res, "更改成功")) {
             this.$router.push("/corp_user/corp_campus/");
-          } else {
-            this.$message({
-              type: "error",
-              message: res.message || "更改失败",
-              duration: 1000
-            });
           }
         } else {
           this.$message({
@@ -157,17 +149,11 @@ export default {
     async btn3() {
       try {
         let corpid = this.userinfo.corpid;
-        let id = this.dataId;
-        let name = this.name;
-        let count = this.count;
-        let requirement = this.requirement;
-        if (name !== "" && count !== "" && requirement !== "") {
+        if (this.dataForm.subject !== ''&&this.dataForm.address !== ''&&this.dataForm.contact !== ''&&this.dataForm.content !== ''&&this.dataForm.date !== ''&&this.dataForm.email !== ''&&this.dataForm.time !== '') {
+          let dataForm = this.dataForm
           const res = await this.add({
             corpid: corpid,
-            id: id,
-            name: name,
-            count: count,
-            requirement: requirement
+            dataForm
           });
           if (this.$checkRes(res, "提交成功")) {
             this.$router.push("/corp_user/corp_campus/");
@@ -189,10 +175,17 @@ export default {
       }
     },
     tj() {
-      this.dataForm.jobs.push({ count: "", name: "", requirement: "" });
+      if (this.dataForm.jobs == null) {
+        this.dataForm.jobs = new Array()
+        this.dataForm.jobs.push({ count: "", name: "", requirement: "" });
+      }else {
+        this.dataForm.jobs.push({ count: "", name: "", requirement: "" });
+      }
     },
     shanchu(index) {
-      this.dataForm.jobs.splice(index, 1);
+      if (this.dataForm.jobs.length > 0) {
+        this.dataForm.jobs.splice(index, 1);
+      }
     },
   },
   async mounted() {

@@ -8,7 +8,7 @@
           <img src="/img/logo1.jpg" class="img fd1">
           <div class="fd1 titbox">
             <div class="fj">
-              <a @click="Obtain(item)">{{item.subject}}</a>
+              <a @click="Obtain(item)" class="fd1">{{item.subject}}</a>
               <el-button
                 class="fd2 btn"
                 type="text"
@@ -17,18 +17,16 @@
               >更改</el-button>
             </div>
             <p class="fd1">举办单位：{{item.corpname}}</p>
-            <p>举办地址：{{item.address}}</p>
-            <p>举办时间：{{item.date}} {{item.time}}</p>
-            <p>联系电话：{{item.contact}}</p>
-            <p>联系邮箱：{{item.email}}</p>
             <p>分站信息：{{item.unit}}</p>
             <p>
-              <el-button type="text" @click="xq(item)">查看招聘职位</el-button>
             </p>
           </div>
         </div>
       </li>
     </ul>
+    <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="size" :page-size="pagesize"
+                   layout="prev, pager, next, jumper" :total="total">
+    </el-pagination>
   </div>
 </template>
 
@@ -43,21 +41,22 @@ export default {
   data() {
     return {
       size: 0,
-      pagesize: 10
+      pagesize: 10,
     };
   },
   methods: {
     ...mapActions(["query"]),
+    handleCurrentChange(val) {
+      let corpid = this.userinfo.corpid;
+      this.size = val
+      this.query({ corpid: corpid, size: val, pagesize: this.pagesize });
+    },
     Obtain(item) {
       let _id = item._id;
       this.$router.push("/jobs/campus/" + _id);
     },
-    xq(item) {
-      let _id = item._id;
-      this.$router.push("/corp_user/corp_campus/" + _id);
-    },
     handleAdd(item) {
-
+      this.$router.push("/corp_user/corp_campus/updata")
     },
     handleUpdate (item) {
       let _id = item._id;
@@ -70,10 +69,11 @@ export default {
       let size = this.size;
       let pagesize = this.pagesize;
       this.query({ corpid: corpid, size: size, pagesize: pagesize });
+      console.log(this.items)
     }
   },
   computed: {
-    ...mapState(["items"]),
+    ...mapState(["items",'total']),
     ...log(["userinfo"])
   }
 };

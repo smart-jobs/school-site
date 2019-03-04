@@ -37,6 +37,7 @@ export const actions = {
   async fetch({ commit }, { id }) {
     const res = await this.$axios.$get(`${api.fetch}?id=${id}`);
     if (res.errcode === 0) commit(types.LOADED_DETAIL, res.data);
+    console.log(res)
     return res;
   },
 };
