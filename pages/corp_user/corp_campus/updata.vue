@@ -95,7 +95,7 @@
 <script>
 import { createNamespacedHelpers } from "vuex";
 const { mapState, mapActions, mapMutations } = createNamespacedHelpers(
-  "corp_info/corp_campus"
+  "corp_user/corp_campus"
 );
 const { mapState: log } = createNamespacedHelpers("login");
 export default {
