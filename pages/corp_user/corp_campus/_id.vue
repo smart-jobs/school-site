@@ -51,7 +51,7 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
-const { mapState, mapActions } = createNamespacedHelpers('user_corp/corp_campus');
+const { mapState, mapActions } = createNamespacedHelpers('corp_info/corp_campus');
 export default {
   data() {
     return {
@@ -69,11 +69,11 @@ export default {
     //   this.$checkRes(res, '删除成功', '删除失败');
     },
     handleUpdate(itme) {
-      this.$router.push({ path: '/user_corp/corp_campus/update', query: { index: index } });
+      this.$router.push({ path: '/corp_user/corp_campus/update', query: { index: index } });
     },
     handleAdd() {
       let fair_id = this.current.fair_id;
-      this.$router.push({ path: '/user_corp/corp_campus/update', query: { fair_id: fair_id } });
+      this.$router.push({ path: '/corp_user/corp_campus/update', query: { fair_id: fair_id } });
     },
   },
   mounted() {

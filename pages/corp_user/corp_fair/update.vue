@@ -40,7 +40,7 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapState, mapActions } = createNamespacedHelpers("user_corp/corp_fair");
+const { mapState, mapActions } = createNamespacedHelpers("corp_info/corp_fair");
 const { mapState: log } = createNamespacedHelpers("login");
 export default {
   data() {
@@ -70,7 +70,7 @@ export default {
             requirement: requirement
           });
           if (this.$checkRes(res, "更改成功")) {
-            this.$router.push("/user_corp/corp_fair/");
+            this.$router.push("/corp_user/corp_fair/");
           } else {
             this.$message({
               type: "error",
@@ -110,7 +110,7 @@ export default {
             requirement: requirement
           });
           if (this.$checkRes(res, "提交成功")) {
-            this.$router.push("/user_corp/corp_fair/");
+            this.$router.push("/corp_user/corp_fair/");
           } else {
             this.$message({
               type: "error",
@@ -143,10 +143,10 @@ export default {
       if (this.current !== null) {
         this.fetch = this.current.jobs[index];
       } else {
-        this.$router.push("/user_corp/corp_fair/");
+        this.$router.push("/corp_user/corp_fair/");
       }
     } else {
-      this.$router.push("/user_corp/corp_fair/");
+      this.$router.push("/corp_user/corp_fair/");
     }
   },
   computed: {

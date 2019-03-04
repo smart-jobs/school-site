@@ -95,7 +95,7 @@
 <script>
 import { createNamespacedHelpers } from "vuex";
 const { mapState, mapActions, mapMutations } = createNamespacedHelpers(
-  "user_corp/corp_campus"
+  "corp_info/corp_campus"
 );
 const { mapState: log } = createNamespacedHelpers("login");
 export default {
@@ -133,7 +133,7 @@ export default {
             requirement: requirement
           });
           if (this.$checkRes(res, "更改成功")) {
-            this.$router.push("/user_corp/corp_fair/");
+            this.$router.push("/corp_user/corp_fair/");
           } else {
             this.$message({
               type: "error",
@@ -173,7 +173,7 @@ export default {
             requirement: requirement
           });
           if (this.$checkRes(res, "提交成功")) {
-            this.$router.push("/user_corp/corp_fair/");
+            this.$router.push("/corp_user/corp_fair/");
           } else {
             this.$message({
               type: "error",
