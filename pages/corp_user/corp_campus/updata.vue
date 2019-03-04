@@ -130,7 +130,7 @@ export default {
             list
           });
           if (this.$checkRes(res, "更改成功")) {
-            this.$router.push("/corp_user/corp_fair/");
+            this.$router.push("/corp_user/corp_campus/");
           } else {
             this.$message({
               type: "error",
@@ -170,7 +170,7 @@ export default {
             requirement: requirement
           });
           if (this.$checkRes(res, "提交成功")) {
-            this.$router.push("/corp_user/corp_fair/");
+            this.$router.push("/corp_user/corp_campus/");
           } else {
             this.$message({
               type: "error",
