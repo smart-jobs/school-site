@@ -4,7 +4,7 @@
     <el-card class="box-card">
       <div slot="header" class="fj">
         <span class="fd1">{{currents && currents.corpname}}</span>
-        <el-button class="fd2 btn" type="text" @click="btn2(fetch)" v-if="id !== ''">提交更改</el-button>
+        <el-button class="fd2 btn" type="text" @click="change" v-if="id !== ''">提交更改</el-button>
         <el-button class="fd2 btn" type="text" @click="btn3" v-else>提交新建</el-button>
       </div>
       <div class="item fj">
@@ -107,9 +107,9 @@ export default {
         address: "",
         contact: "",
         content: "",
-        date: "",
+        date: "格式：2020-03-04",
         email: "",
-        time: "",
+        time: "格式：12：12",
         jobs: [{ count: "", name: "", requirement: "" }]
       }
     };
@@ -117,23 +117,20 @@ export default {
   methods: {
     ...mapActions(["update", "add", "fetch"]),
     ...mapMutations(["jobsadd", "jobsdelete"]),
-    async btn2(item) {
+    async change() {
       try {
         let corpid = this.userinfo.corpid;
-        let id = item._id;
-        let name = this.name;
-        let count = this.count;
-        let requirement = this.requirement;
-        if (name !== "" && count !== "" && requirement !== "") {
+        let id = this._id;
+        
+        if (this.list.subject !== ''&&this.list.address !== ''&&this.list.contact !== ''&&this.list.content !== ''&&this.list.date !== ''&&this.list.email !== ''&&this.list.time !== ''&&this.list.jobs.length >= 1) {
+          let list = this.list
           const res = await this.update({
             corpid: corpid,
             id: id,
-            name: name,
-            count: count,
-            requirement: requirement
+            list
           });
           if (this.$checkRes(res, "更改成功")) {
-            this.$router.push("/user_corp/corp_fair/");
+            this.$router.push("/user_corp/corp_campus/");
           } else {
             this.$message({
               type: "error",
@@ -232,7 +229,6 @@ export default {
     if (this.$route.query.id) {
       this.id = this.$route.query.id;
       this.fetch({ id: this.id });
-      //   this.init();
     }
   },
   computed: {

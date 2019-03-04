@@ -4,7 +4,7 @@ import * as types from '@/store/.mutation.js';
 const api = {
   query: '/jobs/campus/list',
   fetch: '/jobs/campus/fetch',
-  update: '/jobs/campus/job/update',
+  update: '/jobs/campus/update',
   add: '/jobs/campus/create ',
   details: '/jobs/jobfair/fetch',
 };
