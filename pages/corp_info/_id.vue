@@ -18,6 +18,7 @@
 </template>
 
 <script>
+// 企业详情
 import { createNamespacedHelpers } from 'vuex';
 import _ from 'lodash'
 const { mapActions, mapState } = createNamespacedHelpers('corp/query');
