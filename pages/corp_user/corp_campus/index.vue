@@ -35,7 +35,7 @@
 <script>
 import { createNamespacedHelpers } from "vuex";
 const { mapActions, mapState } = createNamespacedHelpers(
-  "user_corp/corp_campus"
+  "corp_info/corp_campus"
 );
 const { mapState: log } = createNamespacedHelpers("login");
 export default {
@@ -54,14 +54,14 @@ export default {
     },
     xq(item) {
       let _id = item._id;
-      this.$router.push("/user_corp/corp_campus/" + _id);
+      this.$router.push("/corp_user/corp_campus/" + _id);
     },
     handleAdd(item) {
 
     },
     handleUpdate (item) {
       let _id = item._id;
-      this.$router.push({path:"/user_corp/corp_campus/updata",query:{id:_id}});
+      this.$router.push({path:"/corp_user/corp_campus/updata",query:{id:_id}});
     }
   },
   mounted() {

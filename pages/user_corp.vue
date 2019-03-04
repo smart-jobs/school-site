@@ -19,32 +19,32 @@ export default {
       columns: [
         {
           label: "企业信息",
-          link: "/user_corp/corp_info",
+          link: "/corp_user/corp_info",
           key: "corp_info"
         },
         {
           label: "用户信息",
-          link: "user_corp/corp_user",
+          link: "corp_user/corp_user",
           key: "corp_user"
         },
         {
           label: "招聘会",
-          link: "user_corp/corp_fair",
+          link: "corp_user/corp_fair",
           key: "corp_fair"
         },
         {
           label: "宣讲会",
-          link: "user_corp/corp_campus",
+          link: "corp_user/corp_campus",
           key: "corp_campus"
         },
         {
           label: "求职信",
-          link: "user_corp/corp_letter",
+          link: "corp_user/corp_letter",
           key: "corp_letter"
         },
          {
           label: "招聘信息",
-          link: "user_corp/corp_jobinfo",
+          link: "corp_user/corp_jobinfo",
           key: "corp_jobinfo"
         }
       ]

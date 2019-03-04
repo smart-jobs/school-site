@@ -20,7 +20,7 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
-const { mapActions, mapState } = createNamespacedHelpers('user_corp/corp_fair');
+const { mapActions, mapState } = createNamespacedHelpers('corp_info/corp_fair');
 const { mapState:log } = createNamespacedHelpers('login');
 export default {
   name: 'TabItemJobfair',
@@ -37,7 +37,7 @@ export default {
     },
     xq (item) {
       let _id = item._id
-      this.$router.push('/user_corp/corp_fair/'+_id)
+      this.$router.push('/corp_user/corp_fair/'+_id)
     }
   },
   mounted() {

@@ -12,7 +12,7 @@
     <div class="btn" v-if=" role == 'user'" @click="menuClick({link:'/user/info'})">
       我的信息
     </div>
-    <div class="btn" v-else-if=" role == 'corp'" @click="menuClick({link:'/user_corp/corp_info'})">
+    <div class="btn" v-else-if=" role == 'corp'" @click="menuClick({link:'/corp_user/corp_info'})">
       我的信息
     </div>
     </no-ssr>

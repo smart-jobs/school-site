@@ -35,7 +35,7 @@
 
 <script>
 import { createNamespacedHelpers, mapGetters } from 'vuex';
-const { mapState, mapActions } = createNamespacedHelpers('user_corp/corp_fair');
+const { mapState, mapActions } = createNamespacedHelpers('corp_info/corp_fair');
 export default {
   data() {
     return {
@@ -53,11 +53,11 @@ export default {
       this.$checkRes(res, '删除成功', '删除失败');
     },
     handleUpdate(index) {
-      this.$router.push({ path: '/user_corp/corp_fair/update', query: { index: index } });
+      this.$router.push({ path: '/corp_user/corp_fair/update', query: { index: index } });
     },
     handleAdd() {
       let fair_id = this.current.fair_id;
-      this.$router.push({ path: '/user_corp/corp_fair/update', query: { fair_id: fair_id } });
+      this.$router.push({ path: '/corp_user/corp_fair/update', query: { fair_id: fair_id } });
     },
   },
   mounted() {
