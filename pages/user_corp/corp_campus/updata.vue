@@ -53,11 +53,7 @@
         <div class="text fd1 fj">
           <i class="fd1">宣讲内容:</i>
           <em class="fd1">
-            <el-input
-              type="textarea"
-              :rows="3"
-              v-model="list.content"
-            ></el-input>
+            <el-input type="textarea" :rows="3" v-model="list.content"></el-input>
           </em>
         </div>
       </div>
@@ -86,11 +82,7 @@
           <div class="text fd1 fj">
             <i class="fd1">职位需求:</i>
             <em class="fd1">
-              <el-input
-                type="textarea"
-                :rows="3"
-                v-model="item.requirement"
-              ></el-input>
+              <el-input type="textarea" :rows="3" v-model="item.requirement"></el-input>
             </em>
           </div>
         </div>
@@ -102,7 +94,7 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapState, mapActions, mapMutations} = createNamespacedHelpers(
+const { mapState, mapActions, mapMutations } = createNamespacedHelpers(
   "user_corp/corp_campus"
 );
 const { mapState: log } = createNamespacedHelpers("login");
@@ -124,7 +116,7 @@ export default {
   },
   methods: {
     ...mapActions(["update", "add", "fetch"]),
-    ...mapMutations(['jobsadd','jobsdelete']),
+    ...mapMutations(["jobsadd", "jobsdelete"]),
     async btn2(item) {
       try {
         let corpid = this.userinfo.corpid;
@@ -205,28 +197,42 @@ export default {
         console.error(err);
       }
     },
-    tj () {
-        this.list.jobs.push({ count: "", name: "", requirement: "" })
+    tj() {
+      this.list.jobs.push({ count: "", name: "", requirement: "" });
     },
-    shanchu (index) {
-        this.list.jobs.splice(index,1)
+    shanchu(index) {
+      this.list.jobs.splice(index, 1);
     },
     init() {
       // 初始化
-      this.list.subject = {...this.currents}.subject
-      this.list.address = {...this.currents}.address
-      this.list.contact = {...this.currents}.contact
-      this.list.content = {...this.currents}.content
-      this.list.date = {...this.currents}.date
-      this.list.email = {...this.currents}.email
-      this.list.time = {...this.currents}.time
-      this.list.jobs = {...this.currents}.jobs
+      let subject = { ...this.currents }.subject;
+      this.list.subject = subject;
+      let address = { ...this.currents }.address;
+      this.list.address = address
+      let contact = { ...this.currents }.contact;
+      this.list.contact = contact
+      let content = { ...this.currents }.content;
+      this.list.content = content
+      let date = { ...this.currents }.date;
+      this.list.date = date
+      let email = { ...this.currents }.email;
+      this.list.email = email
+      let time = { ...this.currents }.time;
+      this.list.time = time
+      this.list.jobs = []
+      for (let i = 0; i < this.currents.jobs.length; i++) {
+        const name = this.currents.jobs[i].name
+        const count = this.currents.jobs[i].count
+        const requirement = this.currents.jobs[i].requirement
+        this.list.jobs.push({name:name,count:count,requirement:requirement})
+      }
     }
   },
   mounted() {
     if (this.$route.query.id) {
       this.id = this.$route.query.id;
       this.fetch({ id: this.id });
+      //   this.init();
     }
   },
   computed: {
@@ -271,7 +277,7 @@ em {
 .btn0 {
   padding: 3px 0;
   margin-top: 2em;
-//   margin-left: 3%;
+  //   margin-left: 3%;
   display: block;
   text-align: left;
 }
@@ -286,5 +292,8 @@ h2 {
   line-height: 2.5em;
   margin-bottom: 5%;
 }
-.h2{margin-top: 2%;margin-left: 3%}
+.h2 {
+  margin-top: 2%;
+  margin-left: 3%;
+}
 </style>
