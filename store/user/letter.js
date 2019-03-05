@@ -4,6 +4,8 @@ import * as types from '@/store/.mutation.js';
 const api = {
   query: '/jobs/letter/mylist',
   fetch: '/jobs/letter/fetch',
+  deliver: '/jobs/letter/deliver', // 投递简历
+  
 };
 // initial state
 export const state = () => ({
@@ -24,6 +26,15 @@ export const actions = {
   async fetch({ commit }, { id }) {
     const params = { id: id };
     const res = await this.$axios.$get(api.fetch,{ params });
+    if (res.errcode === 0) {
+      commit(types.LETTER_FETACH, res.data);
+    }
+    return res;
+  },
+  async deliver({ commit }, { userid, corpid, resumeid, type, origin }) {
+    const params = { userid: userid };
+    const parameter = {corpid:corpid, resumeid:resumeid, type:type, origin:origin}
+    const res = await this.$axios.$post(api.deliver,{...parameter },{params});
     if (res.errcode === 0) {
       commit(types.LETTER_FETACH, res.data);
     }

@@ -80,7 +80,6 @@ export default {
     },
     Obtain(index) {
       // li点击取id
-      let id = this.list[index].id;
     },
   },
   mounted() {

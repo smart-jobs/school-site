@@ -80,8 +80,6 @@ export default {
     handleCurrentChange(val) {
     },
     Obtain(index) {
-      // li点击取id
-      let id = this.list[index].id;
     },
   },
 }; // l轮播图宽度为424

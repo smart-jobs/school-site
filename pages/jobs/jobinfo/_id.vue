@@ -2,7 +2,9 @@
   <div class="details">
     <p class="title fj">
       <span class="fd1">{{current && current.title}}</span>
-      <el-button class="fd1 btn0" type="text" v-if="userinfo.role == 'user'">投递简历</el-button>
+      <no-ssr>
+      
+      </no-ssr>
     </p>
     <p class="text">企业名称：{{current && current.corpname}}</p>
     <p class="text">工作位置：{{current | get('city.name')}}</p>
@@ -15,30 +17,78 @@
     <p class="text">岗位职责：{{current && current.jobdesc}}</p>
     <p class="text">分站信息：{{current && current.unit}}</p>
     <pre class="text2">{{current && current.content}}</pre>
+    <br>
+    <el-select v-if="role == 'user'" v-model="resumeid" placeholder="请选择简历" class="fd1 btn"><el-option :label="item.title" :value="item._id" v-for="(item,index) in userlist" :key="index"></el-option></el-select>
+    <el-button class="fd1 btn0" v-if="role == 'user'" @click="delivery">投递简历</el-button>
   </div>
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
-
-const { mapActions, mapState } = createNamespacedHelpers('jobs/jobinfo');
-const { mapState: log } = createNamespacedHelpers("login");
+import { createNamespacedHelpers, mapGetters } from "vuex";
+const { mapActions, mapState } = createNamespacedHelpers("jobs/jobinfo");
+const { mapActions: resume,mapState:maplist } = createNamespacedHelpers("user/resume");
+const { mapActions: actions } = createNamespacedHelpers("user/letter");
 export default {
-  name: 'JobinfoDetail',
+  name: "JobinfoDetail",
   data() {
-    return {};
+    return {
+      visible2: false,
+      info: '',
+      resumeid:''
+    };
   },
   methods: {
-    ...mapActions(['fetch']),
+    ...mapActions(["fetch"]),
+    ...resume(['query']),
+    ...actions(['deliver']),
+    async delivery() {
+      try {
+        if (this.resumeid !== '') {
+          let userid = this.userinfo.userid
+          let corpid = this.current.corpid
+          let resumeid = this.resumeid
+          let origin = this.current._id
+          const res = await this.deliver({
+            corpid: corpid,
+            userid: userid,
+            resumeid: resumeid,
+            type: '0',
+            origin: origin
+          });
+          if (this.$checkRes(res, "投递成功")) {
+          } 
+        }else {
+          this.$message({
+            type: "error",
+            message: "请先选择简历模板",
+            duration: 1000
+          });
+        }
+      }catch (err) {
+        this.$message({
+          type: "error",
+          message: err.message || "提交失败",
+          duration: 1000
+        });
+      }
+    },
   },
   mounted() {
     let id = this.$route.params.id;
     this.fetch({ id });
+    if (this.userinfo !== null) {
+      let userid = this.userinfo.userid
+      this.query({userid:userid})
+    }
   },
   computed: {
-    ...mapState(['current']),
-    ...log(["userinfo"]),
-  }
+    ...mapState(["current"]),
+    ...maplist(['userlist']),
+    ...mapGetters(['userinfo']),
+    role() {
+      return this.userinfo && this.userinfo.role;
+    }
+  },
 };
 </script>
 
@@ -56,12 +106,5 @@ export default {
 .text2 {
   margin-top: 3em;
   line-height: 2rem;
-}
-.btn0 {
-  padding: 3px 0;
-  margin-top: 1.2em;
-  margin-left: 3%;
-  display: block;
-  text-align: left;
 }
 </style>
