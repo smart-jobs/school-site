@@ -49,9 +49,8 @@
       width="30%"
       :modal-append-to-body="false"
       >
-      <span>
       <el-select v-if="role == 'user'" v-model="resumeid" placeholder="请选择简历" class="fd1 btn"><el-option :label="item.title" :value="item._id" v-for="(item,index) in userlist" :key="index"></el-option></el-select>
-      </span>
+      <br>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="handleClose">确 定</el-button>
@@ -94,7 +93,7 @@ export default {
           let userid = this.userinfo.userid
           let corpid = this.corp_list[this.idx].corpid
           let resumeid = this.resumeid
-          let origin = this.corp_list[this.idx]._id
+          let origin = this.current._id
           const res = await this.deliver({
             corpid: corpid,
             userid: userid,
