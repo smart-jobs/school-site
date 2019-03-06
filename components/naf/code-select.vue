@@ -35,7 +35,7 @@ export default {
     ...mapActions(['load']),
     handleChange() {
       if (this.selected) {
-        const items = this.datas[this.level];
+        const items = this.datas || [];
         const item = items.find(p => p.code === this.selected);
         if (item && this.mode === 'name') {
           this.$emit('input', item.name);
