@@ -5,7 +5,7 @@ const api = {
   query: '/jobs/jobinfo/list',
   fetch: '/jobs/jobinfo/fetch',
   updata: '/jobs/jobinfo/update',
-  create: '/jobs/jobinfo/create'
+  create: '/jobs/jobinfo/create',
 };
 // initial state
 export const state = () => ({

@@ -17,7 +17,7 @@
       </div>
       <div class="item fj">
         <div class="text fd1 fj">
-          <i class="fd1">学历要求:</i> <em class="fd1"><el-input v-model="dataForm.xlreqs.name"></el-input></em>
+          <i class="fd1">学历要求:</i> <em class="fd1"><code-select v-model="dataForm.xlreqs" category="xlcc" mode="pair"></code-select></em>
         </div>
         <div class="text fd2 fj">
           <i class="fd1">专业要求:</i> <em class="fd1"><el-input v-model="dataForm.zyreqs"></el-input></em>
@@ -25,15 +25,15 @@
       </div>
       <div class="item fj">
         <div class="text fd1 fj">
-          <i class="fd1">薪资待遇:</i> <em class="fd1"><el-input v-model="dataForm.salary.name"></el-input></em>
+          <i class="fd1">薪资待遇:</i> <em class="fd1"><code-select v-model="dataForm.salary" category="xzdy" mode="pair"></code-select></em>
         </div>
         <div class="text fd2 fj">
-          <i class="fd1">职位要求:</i> <em class="fd1"><el-input v-model="dataForm.nature.name"></el-input></em>
+          <i class="fd1">职位要求:</i> <em class="fd1"><code-select v-model="dataForm.nature" category="gzxz" mode="pair"></code-select></em>
         </div>
       </div>
       <div class="item fj">
         <div class="text fd1 fj">
-          <i class="fd1">工作地点:</i> <em class="fd1"><el-input v-model="dataForm.city.name"></el-input></em>
+          <i class="fd1">工作地点:</i> <em class="fd1"><code-select v-model="dataForm.city" category="xzqh" mode="pair"></code-select></em>
         </div>
         <div class="text fd2 fj">
           <i class="fd1">招聘结束:</i> <em class="fd1"><el-input v-model="dataForm.expired"></el-input></em>
@@ -41,7 +41,7 @@
       </div>
       <div class="item fj">
         <div class="text fd1 fj">
-          <i class="fd1">所属行业:</i> <em class="fd1"><el-input v-model="dataForm.jobcat.name"></el-input></em>
+          <i class="fd1">所属行业:</i> <em class="fd1"><code-select v-model="dataForm.jobcat" category="hylb" mode="pair"></code-select></em>
         </div>
         <div class="text fd2 fj">
           <i class="fd1">分站信息:</i> <em class="fd1">{{userinfo && userinfo.unit}}</em>
@@ -61,23 +61,29 @@
 
 <script>
 import { createNamespacedHelpers, mapGetters } from 'vuex';
+import CodeSelect from '@/components/naf/code-select';
+
 const { mapActions } = createNamespacedHelpers('corp_user/corp_jobinfo');
+
 export default {
+  components: {
+    CodeSelect,
+  },
   data() {
     return {
       id: null,
       dataForm:{
-        city: {name:''},
-        content: "",
-        count: "",
-        expired: "",
-        jobcat: {name:''},
-        jobdesc: "",
-        nature: {name:''},
-        salary: {name:''},
-        title: "",
-        xlreqs: {name:''},
-        zyreqs: "",
+        city: null,
+        content: null,
+        count: null,
+        expired: null,
+        jobcat: null,
+        jobdesc: null,
+        nature: null,
+        salary: null,
+        title: null,
+        xlreqs: null,
+        zyreqs: null,
       }
     };
   },
@@ -141,7 +147,7 @@ export default {
         });
         console.error(err);
       }
-    }
+    },
   },
   async mounted() {
     this.id = this.$route.query.id;
