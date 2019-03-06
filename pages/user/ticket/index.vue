@@ -20,9 +20,8 @@
 
 <script>
 import info from './info'
-import { createNamespacedHelpers } from 'vuex';
+import { createNamespacedHelpers,mapGetters } from 'vuex';
 const { mapState, mapActions } = createNamespacedHelpers('user/ticket');
-const { mapState:log } = createNamespacedHelpers('login');
 export default {
   data() {
     return {
@@ -37,7 +36,7 @@ export default {
   },
   computed: {
     ...mapState(['ticket_list']),
-    ...log(['userinfo'])
+    ...mapGetters(['userinfo'])
   },
   filters: {
     type1: function (val) {

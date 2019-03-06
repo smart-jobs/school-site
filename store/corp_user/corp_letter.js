@@ -15,17 +15,26 @@ export const state = () => ({
 
 // actions
 export const actions = {
-  async query({ commit }, { corpid}) { // 查询
-    const params = { corpid:corpid};
+  async query({ commit }, { corpid,type,size,pagesize }) { // 查询
+    const params = { corpid:corpid,type:type,limit:pagesize,skip:(size-1)*pagesize };
     const res = await this.$axios.$get(api.query,{ params });
     if (res.errcode === 0) {
       commit(types.LOADED_LIST, res);
     }
     return res;
   },
-  async fetch({ commit }, {id} ) { // 详细查询
-    const params = {id:id};
-    const res = await this.$axios.$get(api.fetch, { params });
+  async fetch({ commit }, { id }) { // 详细查询
+    const params = { id:id };
+    const res = await this.$axios.$get(api.fetch,{ params });
+    if (res.errcode === 0) {
+      commit(types.LOADED_DETAIL, res.data);
+    }
+    return res;
+  },
+  async reply({ commit }, {id,corpid,reply,status} ) { // 回复
+    const params = {id:id,corpid:corpid};
+    const parameter = {reply:reply,status:status}
+    const res = await this.$axios.$post(api.reply, { ...parameter},{params});
     return res;
   },
 };
@@ -38,6 +47,7 @@ export const mutations = {
   },
   [types.LOADED_DETAIL](state, data) {
     state.currents = data
+    console.log(state.currents)
   },
 };
 
