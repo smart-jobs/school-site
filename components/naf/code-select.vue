@@ -34,13 +34,17 @@ export default {
   methods: {
     ...mapActions(['load']),
     handleChange() {
-      if (item && this.mode === 'name') {
-        this.$emit('input', item.name);
-        return;
-      }
-      if (this.mode === 'pair') {
-        this.$emit('input', item);
-        return;
+      if (this.selected) {
+        const items = this.datas[this.level];
+        const item = items.find(p => p.code === this.selected);
+        if (item && this.mode === 'name') {
+          this.$emit('input', item.name);
+          return;
+        }
+        if (this.mode === 'pair') {
+          this.$emit('input', item);
+          return;
+        }
       }
 
       this.$emit('input', this.selected);
