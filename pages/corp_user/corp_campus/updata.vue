@@ -93,11 +93,10 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from "vuex";
+import { createNamespacedHelpers,mapGetters } from "vuex";
 const { mapActions, mapMutations } = createNamespacedHelpers(
   "corp_user/corp_campus"
 );
-const { mapState: log } = createNamespacedHelpers("login");
 export default {
   data() {
     return {
@@ -197,7 +196,7 @@ export default {
     }
   },
   computed: {
-    ...log(["userinfo"]),
+    ...mapGetters(["userinfo"]),
     dataId() {
       return this.$route.query.id;
     }

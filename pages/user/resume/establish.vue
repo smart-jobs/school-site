@@ -28,9 +28,8 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
+import { createNamespacedHelpers,mapGetters } from 'vuex';
 const { mapState, mapActions} = createNamespacedHelpers('user/resume');
-const { mapState:log } = createNamespacedHelpers('login');
 export default {
   data() {
     return {
@@ -169,7 +168,7 @@ export default {
   },
   computed: {
     ...mapState(['createlist','current','uplist']),
-    ...log(['userinfo'])
+    ...mapGetters(['userinfo'])
   },
   watch: {
     current: function (val) {

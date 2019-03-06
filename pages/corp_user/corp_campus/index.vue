@@ -31,11 +31,10 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from "vuex";
+import { createNamespacedHelpers,mapGetters } from "vuex";
 const { mapActions, mapState } = createNamespacedHelpers(
   "corp_user/corp_campus"
 );
-const { mapState: log } = createNamespacedHelpers("login");
 export default {
   name: "TabItemJobfair",
   data() {
@@ -73,7 +72,7 @@ export default {
   },
   computed: {
     ...mapState(["items",'total']),
-    ...log(["userinfo"])
+    ...mapGetters(["userinfo"])
   }
 };
 </script>

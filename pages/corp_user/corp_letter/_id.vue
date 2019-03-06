@@ -56,11 +56,10 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from "vuex";
+import { createNamespacedHelpers,mapGetters } from "vuex";
 const { mapActions, mapState } = createNamespacedHelpers(
   "corp_user/corp_letter"
 );
-const { mapState: log } = createNamespacedHelpers("login");
 export default {
   data() {
     return {
@@ -161,7 +160,7 @@ export default {
   },
   computed: {
     ...mapState(["currents"]),
-    ...log(["userinfo"])
+    ...mapGetters(["userinfo"])
   }
 };
 </script>
