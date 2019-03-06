@@ -5,7 +5,7 @@
 </template>
 <script>
 import { createNamespacedHelpers } from 'vuex';
-const { mapState, mapActions } = createNamespacedHelpers('naf/dict');
+const { mapActions } = createNamespacedHelpers('naf/dict');
 
 export default {
   name: 'code-select',
