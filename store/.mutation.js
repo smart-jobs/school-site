@@ -36,3 +36,6 @@ export const TICKET_LIST = 'TICKET_LIST';
 
 
 export const CORPINFO = 'CORPINFO';
+
+
+export const CALENDAR = 'CALENDAR';
