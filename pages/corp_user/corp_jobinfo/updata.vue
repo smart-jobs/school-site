@@ -132,7 +132,6 @@ export default {
             this.$router.push("/corp_user/corp_jobinfo/");
           }
         } else {
-          console.log(this.dataForm)
           this.$message({
             type: "error",
             message: "请填写完整信息",
