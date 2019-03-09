@@ -33,7 +33,7 @@ const menu = [{
     key: 'flash',
   },
   {
-    label: '通知公共',
+    label: '通知公告',
     link: '/news/notice',
     key: 'notice',
   }],
