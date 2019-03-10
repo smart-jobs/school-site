@@ -1,7 +1,8 @@
 <template>
   <div class="data fd2">
     <el-button class="btn0" type="text" @click="btn0">新建模板</el-button>
-    <el-card class="box-card" v-for="(item,index) in list" :key="index">
+    <br>
+    <el-card class="box-card" v-for="(item,index) in userlist" :key="index">
       <div slot="header" class="fj">
         <span class="fd1">{{item && item.title}}</span>
         <el-button class="fd2 btn" type="text" @click="btn2(item)">删除</el-button>
@@ -23,56 +24,22 @@
         <div class="text fd1 fj"><i class="fd1">联系方式:</i> <em class="fd1">{{item | get('contact.mobile')}}</em></div>
         <div class="text fd2 fj"><i class="fd1">电子邮件:</i> <em class="fd1">{{item | get('contact.email')}}</em></div>
       </div>
-      <pre class="item">
-        {{item && item.content}}
-      </pre>
+      <el-button class="btn0 xq" type="text" @click="xq(item)">查看详情</el-button>
     </el-card>
   </div>
 </template>
 
 <script>
+import { createNamespacedHelpers,mapGetters } from 'vuex';
+const { mapState, mapActions} = createNamespacedHelpers('user/resume');
 export default {
   data() {
     return {
-      list:[
-        {
-          title:'模板标题',
-          content:'撒咖啡就爱看是否会卡机是分开了飞机到了付款就会打瞌睡加肥加大SVN家里快单进口量的反馈进店率凝聚力对抗看见了第三个看了冀东水泥撒大声地了；安抚撒咖啡就爱看是否会卡机是分开了飞机到了付款就会打瞌睡加肥加大SVN家里快单进口量的反馈进店率凝聚力对抗看见了第三个看了冀东水泥撒大声地了；安抚',
-          info:{
-            xm:'张恒洋',
-            xb:'男',
-            csrq:'1995-11-15',
-            xl:'本科',
-            yxmc:'吉林农业大学',
-            zymc:'计算机技术与科学'
-          },
-          contact:{
-            mobile:'15948346032',
-            email:'1042813942@qq.com'
-          },
-          _id:'546548asd6as421sd8w6qf1'
-        },
-        {
-          title:'模板标题',
-          content:'撒咖啡就爱看是否会卡机是分开了飞机到了付款就会打瞌睡加肥加大SVN家里快单进口量的反馈进店率凝聚力对抗看见了第三个看了冀东水泥撒大声地了；安抚撒咖啡就爱看是否会卡机是分开了飞机到了付款就会打瞌睡加肥加大SVN家里快单进口量的反馈进店率凝聚力对抗看见了第三个看了冀东水泥撒大声地了；安抚',
-          info:{
-            xm:'张恒洋',
-            xb:'男',
-            csrq:'1995-11-15',
-            xl:'本科',
-            yxmc:'吉林农业大学',
-            zymc:'计算机技术与科学'
-          },
-          contact:{
-            mobile:'15948346032',
-            email:'1042813942@qq.com'
-          },
-          _id:'546548asd6as421sd8w6qf1'
-        }
-      ]
+      
     };
   },
   methods: {
+    ...mapActions(['query','delete']),
     btn0 () {
       location.href = 'user/resume/establish'
     },
@@ -85,13 +52,45 @@ export default {
         }
       })
     },
-    btn2 (item) {
+    xq (item) {
       let _id = item._id
-      console.log('删除传参'+_id)
+      this.$router.push({
+        path: '/user/resume/detailed',
+        query: {
+          _id:_id
+        }
+      })
+    },
+    async btn2 (item) {
+      try {
+        let userid =  this.userinfo.userid
+        let id = item._id
+        const res = await this.delete({
+          userid:userid,
+          id: id
+        });
+        if(this.$checkRes(res, '删除成功')) {
+          this.$emit('scaned');
+          this.query({userid:userid});
+        }
+      } catch (err) {
+        this.$message({
+          type: 'error',
+          message: err.message || '删除失败',
+          duration: 1000,
+        });
+        console.error(err);
+      }
     }
   },
-  mounted() {},
-  computed: {}
+  mounted() {
+    let userid =  this.userinfo.userid
+    this.query({userid:userid});
+  },
+  computed: {
+    ...mapState(['userlist']),
+    ...mapGetters(['userinfo'])
+  }
 };
 </script>
 
@@ -126,5 +125,8 @@ em{
   margin-left: 10%;
   display: block;
   text-align: left
+}
+.xq{
+  margin-left: 0;
 }
 </style>

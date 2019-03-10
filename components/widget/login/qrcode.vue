@@ -33,7 +33,6 @@ export default {
       fetchToken: 'fetchToken',
     }),
     async onMessage(message) {
-      console.log('receive a message: ', message.body);
       if (message.body == 'scaned') {
         try {
           const res = await this.fetchToken({
@@ -55,7 +54,6 @@ export default {
     async initQrcode() {
       // 创建二维码
       await this.createQrcode();
-      console.log('this.qrcode: ', this.qrcode);
       let uri = `${Vue.config.weixin.baseUrl}/qrcode/${this.qrcode}/scan`;
       if (uri.startsWith('/')) {
         uri = `${location.protocol}//${location.host}${uri}`;

@@ -18,6 +18,7 @@
 </template>
 
 <script>
+// 企业详情
 import { createNamespacedHelpers } from 'vuex';
 import _ from 'lodash'
 const { mapActions, mapState } = createNamespacedHelpers('corp/query');
@@ -28,13 +29,12 @@ export default {
     return {};
   },
   methods: {
-    ...mapActions(['details']),
+    ...mapActions(['detailsy']),
   },
   mounted() {
     let id = this.$route.params.id;
     let tenant = this.$route.query.tenant;
-    this.details({ id, tenant});
-    console.log(this.details)
+    this.detailsy({ id, tenant});
   },
   computed: {
     ...mapState(['details']),

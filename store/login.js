@@ -1,6 +1,6 @@
 import * as types from './.mutation';
 import Cookies from 'js-cookie';
-import Jwt from 'jsonwebtoken';
+import util from '@/utils/user-util';
 
 const api = {
   qrcode: '/qrcode/create', // 创建二维码
@@ -46,7 +46,6 @@ export const actions = {
         // TODO: 尝试时候用绑定的微信进行登录
         await dispatch('login');
       }
-      console.log(res);
       return res;
     } finally {
       commit(types.HIDE_LOADING);
@@ -56,7 +55,6 @@ export const actions = {
     commit(types.SHOW_LOADING);
     try {
       let res = await this.$axios.$post(api.login)
-      console.log(res);
       if (res.errcode && res.errcode !== 0) {
         commit(types.LOGIN_FAILURE);
       } else {
@@ -65,7 +63,6 @@ export const actions = {
       }
       return res;
     } catch (err) {
-      console.error(err);
       commit(types.LOGIN_FAILURE);
       return { errcode: -1, errmsg: 'error' };
     } finally {
@@ -87,9 +84,7 @@ export const mutations = {
     state.isAuthenticated = true;
     state.userinfo = userinfo;
     state.access_token = token;
-    // const jwt = Jwt.decode(token);
-    // state.userinfo = jwt.payload;
-    Cookies.set("auth", token);
+    util.save({userinfo, token});
   },
   [types.LOGIN_FAILURE](state) {
     state.isAuthenticated = false;
@@ -99,8 +94,10 @@ export const mutations = {
     state.userinfo = null;
     Cookies.remove("auth");
   },
-  [types.USER_INFO](state, payload) {
-    state.userinfo = payload;
+  [types.USER_INIT](state) {
+    state.userinfo = util.user;
+    state.access_token = util.token;
+    if (util.user) state.isAuthenticated = true;
   },
   [types.QRCODE_INIT](state, payload) {
     state.qrcode = payload;

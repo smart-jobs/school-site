@@ -1,0 +1,80 @@
+<template>
+  <div class="fd2 data">
+    <ul>
+      <el-button class="btn0" type="text" @click="handleadd">新建招聘信息</el-button>
+      <br>
+      <li class="fj" v-for="(item,index) in items" :key="index">
+        <div class="fd1 fj txtbox">
+          <img src="/www/img/logo2.jpg" class="img fd1">
+          <div class="fd1 titbox">
+            <a>{{item.title}}</a>
+            <p>招聘人数：{{item.count}}</p>
+            <p>学历要求：{{item | get('xlreqs.name')}}</p>
+            <p>
+              <el-button class="btn0 xq" type="text" @click="xq(item)">查看招聘职位</el-button>
+            </p>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="size" :page-size="pagesize"
+                   layout="prev, pager, next, jumper" :total="total">
+    </el-pagination>
+  </div>
+</template>
+
+<script>
+import { createNamespacedHelpers,mapGetters } from 'vuex';
+const { mapActions, mapState } = createNamespacedHelpers('corp_user/corp_jobinfo');
+export default {
+  name: 'TabItemJobfair',
+  data() {
+    return {
+      size: 0,
+      pagesize: 10,
+    };
+  },
+  methods: {
+    ...mapActions(['query']),
+    handleCurrentChange(val) {
+      let corpid = this.userinfo.corpid;
+      this.size = val
+      this.query({ corpid: corpid, size: val, pagesize: this.pagesize });
+    },
+    xq (item) {
+      let _id = item._id
+      this.$router.push('/corp_user/corp_jobinfo/'+_id)
+    },
+    handleadd() {
+      this.$router.push('/corp_user/corp_jobinfo/updata')
+    }
+  },
+  mounted() {
+    if (this.userinfo !== null) {
+      let corpid = this.userinfo.corpid;
+      let size = this.size;
+      let pagesize = this.pagesize;
+      this.query({ corpid: corpid, size: size, pagesize: pagesize });
+    }
+  },
+  computed: {
+    ...mapState(['items','total']),
+    ...mapGetters(['userinfo'])
+  }
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="less" scoped>
+@import '~@/assets/jobs.less';
+.titbox {
+  width: 90%;
+}
+.btn0{
+  padding: 3px 0;
+  margin-top: 1em;
+  margin-left: 6%;
+  display: block;
+  text-align: left
+}
+</style>

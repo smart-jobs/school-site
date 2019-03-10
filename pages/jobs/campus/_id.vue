@@ -1,18 +1,23 @@
 <template>
   <div class="details">
-    <p class="title">{{current && current.subject}}</p>
-    <p class="text">企业名称：{{current && current.corpname}}</p>
-    <p class="text">分站信息：{{current && current.unit}}</p>
-    <p class="text">举办时间：{{current && current.date+ ' '+current.time}}</p>
-    <p class="text">联系电话：{{current && current.contact}}</p>
-    <p class="text">电子邮箱：{{current && current.email}}</p>
-    <p class="text">举办地址：{{current && current.address}}</p>
-    <p class="text">招聘职位：{{current | get('jobs[0].name')}}</p>
-    <p class="text">需求人数：{{current | get('jobs[0].count')}}</p>
-    <p class="text">职位要求：{{current | get('jobs[0].requirement')}}</p>
+    <p class="title">{{currents && currents.subject}}</p>
+    <p class="text">企业名称：{{currents && currents.corpname}}</p>
+    <p class="text">分站信息：{{currents && currents.unit}}</p>
+    <p class="text">举办时间：{{currents && currents.date+ ' '+currents.time}}</p>
+    <p class="text">联系电话：{{currents && currents.contact}}</p>
+    <p class="text">电子邮箱：{{currents && currents.email}}</p>
+    <p class="text">举办地址：{{currents && currents.address}}</p>
     <p class="text3">温馨提示：为防讯息临时变动,参会前可联系招聘会举办方确认。</p>
     <p class="title">宣讲会详情</p>
-    <pre class="text2">{{current && current.content}}</pre>
+    <pre class="text2">{{currents && currents.content}}</pre>
+    <p class="title">职位详情</p>
+    <div class="text2" v-for="(item,index) in currents && currents.jobs" :key="index">
+      <p class="title2">职位{{index+1}}</p>
+      <p class="text">招聘职位：{{item && item.name}}</p>
+      <p class="text">需求人数：{{item && item.count}}</p>
+      <p class="text">职位要求：{{item && item.requirement}}</p>
+      <br>
+    </div>
   </div>
 </template>
 
@@ -32,10 +37,9 @@ export default {
   mounted() {
     let id = this.$route.params.id;
     this.fetch({ id });
-    console.log(this.current)
   },
   computed: {
-    ...mapState(['current']),
+    ...mapState(['currents']),
   }
 };
 </script>
@@ -44,6 +48,11 @@ export default {
 <style lang="less" scoped>
 .title {
   font-size: 1.2em;
+  font-weight: 600;
+  line-height: 3em;
+}
+.title2 {
+  font-size: 1em;
   font-weight: 600;
   line-height: 3em;
 }

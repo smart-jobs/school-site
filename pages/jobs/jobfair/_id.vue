@@ -33,7 +33,7 @@
         <template v-for="(item,num) in corp_list">
           <tr v-for="(job,index) in item.jobs" :key="num+'_'+index">
             <template v-if="index==0">
-              <td width="150" class="operation" :rowspan="item.jobs.length">投递简历</td>
+              <td width="150" class="operation" :rowspan="item.jobs.length"><span v-if="role == 'user'" @click="delivery(num)">投递简历</span></td>
               <td width="300" class="th corpname" :rowspan="item.jobs.length" @click="btn(item)">{{corp_list && item.corpname}}</td>
             </template>
             <td width="300" class="th">{{job.name}}</td>
@@ -43,36 +43,99 @@
         </template>
       </tbody>
     </table>
+    <el-dialog
+      title="请选择简历模板"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :modal-append-to-body="false"
+      >
+      <el-select v-if="role == 'user'" v-model="resumeid" placeholder="请选择简历" class="fd1 btn"><el-option :label="item.title" :value="item._id" v-for="(item,index) in userlist" :key="index"></el-option></el-select>
+      <br>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="handleClose">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import { createNamespacedHelpers } from "vuex";
+import { createNamespacedHelpers,mapGetters } from "vuex";
 
 const { mapActions, mapState } = createNamespacedHelpers("jobs/jobfair");
-
+const { mapActions: resume,mapState:maplist } = createNamespacedHelpers("user/resume");
+const { mapActions: actions } = createNamespacedHelpers("user/letter");
 export default {
   name: "JobinfoDetail",
   data() {
     return {
-      he: ''
+      dialogVisible: false,
+      resumeid:'',
+      idx:''
     };
   },
   methods: {
     ...mapActions(["fetch", "corplist"]),
+    ...resume(['query']),
+    ...actions(['deliver']),
     btn(item) {
       let _id = item.corpid;
       let unit = this.current.unit;
       this.$router.push({ path: "/corp/" + _id, query: { tenant: unit } });
+    },
+    delivery (num) {
+      this.dialogVisible = true
+      this.idx = num
+    },
+    async handleClose () {
+       try {
+        if (this.resumeid !== '') {
+          let userid = this.userinfo.userid
+          let corpid = this.corp_list[this.idx].corpid
+          let resumeid = this.resumeid
+          let origin = this.current._id
+          const res = await this.deliver({
+            corpid: corpid,
+            userid: userid,
+            resumeid: resumeid,
+            type: '1',
+            origin: origin
+          });
+          if (this.$checkRes(res, "投递成功")) {
+            this.dialogVisible = false
+          } 
+        }else {
+          this.$message({
+            type: "error",
+            message: "请先选择简历模板",
+            duration: 1000
+          });
+        }
+      }catch (err) {
+        this.$message({
+          type: "error",
+          message: err.message || "提交失败",
+          duration: 1000
+        });
+      }
     }
   },
   mounted() {
     let id = this.$route.params.id;
     this.fetch({ id });
     this.corplist({ id });
+    if (this.userinfo !== null) {
+      let userid = this.userinfo.userid
+      this.query({userid:userid})
+    }
   },
   computed: {
-    ...mapState(["current", "corp_list"])
+    ...mapState(["current", "corp_list"]),
+    ...mapGetters(['userinfo']),
+    ...maplist(['userlist']),
+    role() {
+      return this.userinfo && this.userinfo.role;
+    }
   }
 };
 </script>

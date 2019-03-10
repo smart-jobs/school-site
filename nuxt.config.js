@@ -2,12 +2,14 @@ const pkg = require('./package')
 
 module.exports = {
   mode: 'universal',
-
+  server: {
+    port: 3400,
+  },
   /*
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: '智慧就业',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -15,7 +17,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '/css/css.css'}
+      { rel: 'stylesheet', href: '/www/css/css.css'}
     ]
   },
 
@@ -37,6 +39,7 @@ module.exports = {
   plugins: [
     '@/plugins/element-ui', '@/plugins/axios', '@/plugins/check-res', '@/plugins/naf-dict', '@/plugins/filters',
     { src: '@/plugins/stomp', ssr: false },
+    { src: '@/plugins/userinfo', ssr: false },
   ],
 
   /*
@@ -55,13 +58,13 @@ module.exports = {
     prefix: '/www/api',
   },
   proxy: [
-    'http://99991.smart.chinahuian.cn/www/api',
-    'http://smart.chinahuian.cn/ws',
+    'http://99991.smart.jilinjobswx.cn/www/api',
+    'http://smart.jilinjobswx.cn/ws',
   ],
 
   router: {
-    base: '/',
-    middleware: 'column',
+    base: '/www/',
+    middleware: ['column'],
   },
 
   loader: [
@@ -107,7 +110,7 @@ module.exports = {
       },
       weixin: {
         // baseUrl: `http://192.168.0.7:8000${url_prefix}/weixin`,
-        baseUrl: `http://smart.chinahuian.cn/weixin`,
+        baseUrl: `http://smart.jilinjobswx.cn/weixin`,
       }
     }
   },

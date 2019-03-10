@@ -6,22 +6,30 @@
       <img :src="bj2" v-else class="bottom">
     </div>
     <div class="logobox">
-      <div class="logo" v-if="logo2 == null">{{logo}}</div>
+      <div class="logo" v-if="logo2 == null">{{config && config.name}} | 就业信息网</div>
       <img :src="logo2" v-else class="logo">
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'home',
   data() {
     return {
-      bj1: '/img/1477572201-3251.jpg',
-      bj2: '/img/bg-shade.png',
-      logo: '南方医科大学 | 就业信息网',
+      bj1: '/www/img/1477572201-3251.jpg',
+      bj2: '/www/img/bg-shade.png',
       logo2: null
     }
+  },
+  methods: {
+  },
+  mounted() {
+  },
+  computed: {
+    ...mapGetters(['config'])
   }
 }
 </script>

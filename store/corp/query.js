@@ -11,7 +11,7 @@ export const state = () => ({
 
 // actions
 export const actions = {
-  async details({ commit }, { id,tenant }) {
+  async detailsy({ commit }, { id,tenant }) {
     const res = await this.$axios.$get(`${api.details}?corpid=${id}&_tenant=${tenant}`);
     if (res.errcode === 0) commit(types.LOADED_DETAIL, res.data);
     return res;

@@ -6,16 +6,16 @@
         <input class="fd1 input1" :placeholder="item.title" v-model="title"/>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">姓名:</i> <input :placeholder="item.info.xm" class="fd1" v-model="xm" :disabled="disabled"/></div>
-        <div class="text fd2 fj"><i class="fd1">学历:</i> <input class="fd1" :placeholder="item.info.xl" v-model="xl" :disabled="disabled"/></div>
+        <div class="text fd1 fj"><i class="fd1">姓名:</i> <input :placeholder="item.info.xm" class="fd1" v-model="xm" :disabled="swc"/></div>
+        <div class="text fd2 fj"><i class="fd1">学历:</i> <input class="fd1" :placeholder="item.info.xl" v-model="xl" :disabled="swc"/></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">性别:</i> <input :placeholder="item.info.xb" class="fd1" v-model="xb" :disabled="disabled"/></div>
-        <div class="text fd2 fj"><i class="fd1">毕业院校:</i> <input :placeholder="item.info.yxmc" class="fd1" v-model="yxmc" :disabled="disabled"/></div>
+        <div class="text fd1 fj"><i class="fd1">性别:</i> <input :placeholder="item.info.xb" class="fd1" v-model="xb" :disabled="swc"/></div>
+        <div class="text fd2 fj"><i class="fd1">毕业院校:</i> <input :placeholder="item.info.yxmc" class="fd1" v-model="yxmc" :disabled="swc"/></div>
       </div>
       <div class="item fj">
         <div class="text fd1 fj"><i class="fd1">出生日期:</i> <input :placeholder="item.info.csrq" v-model="csrq" class="fd1"/></div>
-        <div class="text fd2 fj"><i class="fd1">专业名称:</i> <input :placeholder="item.info.zymc" v-model="zymc" class="fd1" :disabled="disabled"/></div>
+        <div class="text fd2 fj"><i class="fd1">专业名称:</i> <input :placeholder="item.info.zymc" v-model="zymc" class="fd1" :disabled="swc"/></div>
       </div>
       <div class="item fj">
         <div class="text fd1 fj"><i class="fd1">联系方式:</i> <input :placeholder="item.contact.mobile" v-model="mobile" class="fd1"/></div>
@@ -28,10 +28,13 @@
 </template>
 
 <script>
+import { createNamespacedHelpers,mapGetters } from 'vuex';
+const { mapState, mapActions} = createNamespacedHelpers('user/resume');
 export default {
   data() {
     return {
-      disabled: false,
+      disabled: true,
+      swc: false,
       title: '',
       xm: '',
       xl: '',
@@ -57,24 +60,124 @@ export default {
           mobile:'请输入联系方式',
           email:'请输入邮箱地址'
         }
-      }
+      },
+      items: null,
+      open: false
     };
   },
   methods: { // 提交验证
-    btn () {
-      if (email) {
-
+  ...mapActions(['create','fetch','update']),
+    open4(msg) {
+      this.$notify({
+        title: '警告',
+        message: msg,
+        type: 'warning'
+      });
+    },
+    indfo () {
+      let reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/
+      if (this.title == '' && this.xm == '' && this.xl == '' && this.xb == '' && this.yxmc == '' && this.csrq == '' && this.zymc == '' && this.mobile == '' && this.content == '' && this.mobile == '') {bb
+        this.open4('请填写完整信息')
+        return false
+      }else if (!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(this.mobile))) {
+        this.open4('请填写正确的手机号')
+        return false
+      }else if (!reg.test(this.email)) {
+        this.open4('请填写正确邮箱')
+        return false
+      }else { // 赋值
+        this.items = {title: this.title,content: this.content,info:{xm: this.xm,xl: this.xl,xb: this.xb,yxmc: this.yxmc,csrq: this.csrq,zymc: this.zymc,},contact:{mobile: this.mobile,email: this.email}
+        }
+        this.open = true
       }
+    },
+    empty () { // 清空
+      this.title = ''
+      this.content = ''
+      this.csrq = ''
+      this.mobile = ''
+      this.email = ''
+      this.items = null
+    },
+    async btn() {
+      this.indfo()
+      if (this.open == true) {
+        if (this.swc !== true) { // 调用新建
+          try {
+            let userid =  this.userinfo.userid
+            let item = this.items
+            const res = await this.create({
+              userid:userid,
+              item
+            });
+            if(this.$checkRes(res, '提交成功')) {
+              this.$emit('scaned');
+              this.empty()
+              location.href = 'user/resume'
+            }
+          } catch (err) {
+            this.$message({
+              type: 'error',
+              message: err.message || '提交失败',
+              duration: 1000,
+            });
+            console.error(err);
+          }
+        }else { // 调用更改
+          try {
+            let userid =  this.userinfo.userid
+            let id = this.$route.query._id
+            let item = this.items
+            const res2 = await this.update({
+              userid: userid,
+              id: id,
+              item
+            });
+            if(this.$checkRes(res2, '提交成功')) {
+              this.$emit('scaned');
+              this.empty()
+              location.href = 'user/resume'
+            }
+          } catch (err) {
+            this.$message({
+              type: 'error',
+              message: err.message || '提交失败',
+              duration: 1000,
+            });
+            console.error(err);
+          }
+        }
+      }
+    },
+    init () { // 初始赋值
+      this.xm = this.userinfo.xm
+      this.xl = this.userinfo.xl
+      this.xb = this.userinfo.xb
+      this.yxmc = this.userinfo.yxmc
+      this.zymc = this.userinfo.zymc
     }
   },
   mounted() {
     let _id = this.$route.query._id
     if (_id) {
-      this.disabled = true
-      console.log('发请求')
+      this.swc = true
+      this.fetch({id:_id});
+    }else {
+      this.swc = false
     }
   },
-  computed: {}
+  computed: {
+    ...mapState(['createlist','current','uplist']),
+    ...mapGetters(['userinfo'])
+  },
+  watch: {
+    current: function (val) {
+      if (val !== null) { // 赋值
+        this.item = this.current
+        this.init()
+      }
+    }
+  }
 };
 </script>
 

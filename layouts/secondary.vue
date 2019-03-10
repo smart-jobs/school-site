@@ -7,28 +7,27 @@
 </template>
 
 <script>
-import banner from '~/components/layout/banner'
-import navx from '~/components/layout/navx'
-import feet from '~/components/layout/feet'
+import banner from '~/components/layout/banner';
+import navx from '~/components/layout/navx';
+import feet from '~/components/layout/feet';
 
 export default {
   components: {
     banner,
     navx,
-    feet
+    feet,
   },
   data() {
     return {
       activated: 0,
     };
   },
-}
+};
 </script>
 
 <style>
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;

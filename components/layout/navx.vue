@@ -8,13 +8,21 @@
              :class="{a2: a2 == index2}" @click.stop="menuClick(sub)">{{sub.label}}</div>
       </div>
     </div>
-    <!-- <div class="btn"  @click="btn">我的</div> -->
+    <no-ssr>
+    <div class="btn" v-if=" role == 'user'" @click="menuClick({link:'/user/info'})">
+      我的信息
+    </div>
+    <div class="btn" v-else-if=" role == 'corp'" @click="menuClick({link:'/corp_user/corp_info'})">
+      我的信息
+    </div>
+    </no-ssr>
   </div>
 </template>
 
 <script>
 import _ from 'lodash';
-import { mapState } from 'vuex';
+import { mapState, createNamespacedHelpers } from 'vuex';
+const { mapState: loginState } = createNamespacedHelpers('login');
 
 export default {
   name: 'navx',
@@ -26,13 +34,18 @@ export default {
       a1: -1,
       a2: -1,
       showSub: false,
+      menus: [],
     };
   },
   computed: {
     ...mapState(['menu', 'page']),
+    ...loginState(['userinfo']),
     pageIndex() {
       const idx = _.isArray(this.menu) && this.menu.findIndex(p => p.key === this.page);
       return idx;
+    },
+    role: function () {
+      return this.userinfo ? this.userinfo.role : 'guest';
     },
   },
   methods: {

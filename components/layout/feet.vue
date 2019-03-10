@@ -9,19 +9,27 @@
         <a href="">联系我们</a>
       </div>
       <div class="fj">
-        <p class="">吉林省高等学校毕业生就业指导中心 版权所有 | 域名备案信息：吉ICP备xxxxxxxx号</p>
-        <!-- <p class="">Copyright 2019   All Rights Reserved</p> -->
+        <p class="">{{config && config.copyright}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
-  name: 'home',
   data() {
-    return {};
+    return {
+    };
   },
+  methods: {
+  },
+  mounted() {
+  },
+  computed: {
+    ...mapGetters(['config'])
+  }
 };
 </script>
 

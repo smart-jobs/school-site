@@ -1,29 +1,30 @@
 import * as types from '@/store/.mutation.js';
 
-const topSize = 6;
-const pageSize = 10;
 
 const api = {
-  query: '/user/acct/info',
+  info: '/user/info',
 };
 // initial state
 export const state = () => ({
-  userinfo: []
+  userinfo: null,
 });
 
 // actions
 export const actions = {
-  async query({ commit }, { id }) {
-    const res = await this.$axios.$get(`${api.fetch}?id=${id}`);
-    if (res.errcode === 0) commit(types.LOADED_DETAIL, res.data);
+  async userquery({ commit }, { userid }) {
+    const params = { id: userid };
+    const res = await this.$axios.$get(api.info,{ params });
+    if (res.errcode === 0) {
+      commit(types.USER_INFO, res.data);
+    }
     return res;
   }
 };
 
 // mutations
 export const mutations = {
-  [types.LOADED_DETAIL](state, payload) {
-    state.current = payload;
+  [types.USER_INFO](state, data) {
+    state.userinfo = data;
   }
 };
 
