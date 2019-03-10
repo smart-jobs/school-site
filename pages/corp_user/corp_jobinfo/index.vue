@@ -5,7 +5,7 @@
       <br>
       <li class="fj" v-for="(item,index) in items" :key="index">
         <div class="fd1 fj txtbox">
-          <img src="/img/logo2.jpg" class="img fd1">
+          <img src="/www/img/logo2.jpg" class="img fd1">
           <div class="fd1 titbox">
             <a>{{item.title}}</a>
             <p>招聘人数：{{item.count}}</p>

@@ -5,7 +5,7 @@
     <ul>
       <li class="fj" v-for="(item,index) in items" :key="index">
         <div class="fd1 fj txtbox">
-          <img src="/img/logo1.jpg" class="img fd1">
+          <img src="/www/img/logo1.jpg" class="img fd1">
           <div class="fd1 titbox">
             <div class="fj">
               <a @click="Obtain(item)" class="fd1">{{item.subject}}</a>
