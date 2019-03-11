@@ -37,9 +37,6 @@ export default {
       this.query({ paging: { page: val, size: this.size } });
     },
     Obtain(item) {
-      // li点击取id
-      let _id = item._id;
-      // this.$router.push('/jobs/jobfair/'+_id)
       location.href = `http://${item.unit}.smart.jilinjobswx.cn/www/jobs/jobfair/${item._id}`;
     },
   },
