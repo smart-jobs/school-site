@@ -21,7 +21,7 @@ export const actions = {
       return;
     }
     if (!res.data) {
-      console.error('fetch site config fail, invalid code: ', tenant);
+      console.error('fetch site config fail, invalid code: ', _tenant);
       error({ message: '该高校分站还未开通' });
       return;
     }
