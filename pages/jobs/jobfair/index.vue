@@ -39,7 +39,8 @@ export default {
     Obtain(item) {
       // li点击取id
       let _id = item._id;
-      this.$router.push('/jobs/jobfair/'+_id)
+      // this.$router.push('/jobs/jobfair/'+_id)
+      location.href = `http://${item.unit}.smart.jilinjobswx.cn/www/jobs/jobfair/${item._id}`;
     },
   },
   mounted() {
