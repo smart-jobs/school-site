@@ -28,7 +28,8 @@ export default {
   methods: {
     ...mapActions(['top']),
     btn (item) {
-      location.href = `http://${item.unit}.smart.jilinjobswx.cn/www/jobs/jobfair/${item._id}`;
+      let id = item._id;
+      location.href = '/www/jobs/jobfair/'+id
     }
   },
   mounted() {

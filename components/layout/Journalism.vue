@@ -9,7 +9,7 @@
         </div>
       </div>
       <ul class="ul">
-        <li v-for="(item,index) in items" :key="index" class="fj">
+        <li v-for="(item,index) in items" :key="index" class="fj" @click="Obtain(item)">
           <span class="txt2 fd1">{{item.title}}</span>
           <a class="fd2 time">{{item.meta.createdAt | time}}</a>
         </li>
