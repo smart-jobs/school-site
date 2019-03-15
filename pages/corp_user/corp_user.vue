@@ -1,19 +1,23 @@
 <template>
   <div class="data fd2">
-    <div class="userbox">
-      <div class="fj">
-        <span class="fd1">姓名</span>
-        <em class="fd1">{{userinfo && userinfo.name}}</em>
+    <el-card class="box-card">
+      <div class="item fj">
+        <div class="text fd1 fj">
+          <i class="fd1">姓名:</i>
+          <em class="fd1">{{userinfo && userinfo.name}}</em>
+        </div>
+        <div class="text fd2 fj">
+          <i class="fd1">分站信息:</i>
+          <em class="fd1">{{userinfo && userinfo.unit}}</em>
+        </div>
       </div>
-      <div class="fj">
-        <span class="fd1">分站信息</span>
-        <em class="fd1">{{userinfo && userinfo.unit}}</em>
+      <div class="item fj">
+        <div class="text fd1 fj">
+          <i class="fd1">公司名称:</i>
+          <em class="fd1">{{userinfo && userinfo.corpname}}</em>
+        </div>
       </div>
-      <div class="fj none">
-        <span class="fd1">公司名称</span>
-        <em class="fd1">{{userinfo && userinfo.corpname}}</em>
-      </div>
-    </div>
+    </el-card>
   </div>
 </template>
 
@@ -36,9 +40,24 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.userbox{width: 60%;margin: 10% auto;font-size: 1.2em;font-weight: 700;line-height: 2.5em;}
-span{width: 25%;text-align-last: justify;border-right: 1px solid #999;text-indent: 1em;padding-right: 3%;}
-em{margin-left: 5%}
-.fj{border-bottom:1px solid #999;}
-.none{border-bottom:none;}
+.box-card {
+  width: 80%;
+  margin-left: 5%;
+}
+.text {
+  font-size: 14px;
+  width: 50%;
+}
+.item {
+  margin-bottom: 18px;
+}
+i {
+  width: 20%;
+  display: block;
+  text-align-last: justify;
+}
+em {
+  display: block;
+  margin-left: 10%;
+}
 </style>

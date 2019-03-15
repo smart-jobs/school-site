@@ -9,26 +9,23 @@
         <a href="/www/about/contact">联系我们</a>
       </div>
       <div class="fj">
-        <p>{{config && config.copyright}}</p>
+        <p class>{{config && config.copyright}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
   data() {
-    return {
-    };
+    return {};
   },
-  methods: {
-  },
-  mounted() {
-  },
+  methods: {},
+  mounted() {},
   computed: {
-    ...mapGetters(['config'])
+    ...mapGetters(["config"])
   }
 };
 </script>
@@ -36,21 +33,21 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .box {
-  background: #333;
+  background:linear-gradient(#0196c3, #1d66a0);;
   width: 100%;
   padding: 3% 0;
+  color: #aecce3
 }
 .txtbox {
   width: 1200px;
   margin: 0 auto;
-  color: #686666;
 }
 .abox {
   text-align: center;
   width: 100%;
 }
 a {
-  color: #686666;
+  color: #aecce3;
   width: 8%;
   cursor: pointer;
   display: inline-block;

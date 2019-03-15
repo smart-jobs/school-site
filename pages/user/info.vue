@@ -1,35 +1,22 @@
 <template>
   <div class="data fd2">
-    <div class="userbox">
-      <div class="fj">
-        <span class="fd1">姓名</span>
-        <em class="fd1">{{userinfo | get('reg.info.xm')}}</em>
+    <el-card class="box-card">
+      <div class="item fj">
+        <div class="text fd1 fj"><i class="fd1">姓名:</i> <em class="fd1">{{userinfo | get('reg.info.xm')}}</em></div>
+        <div class="text fd2 fj"><i class="fd1">性别:</i> <em class="fd1">{{userinfo | get('reg.info.xb')}}</em></div>
       </div>
-      <div class="fj">
-        <span class="fd1">性别</span>
-        <em class="fd1">{{userinfo | get('reg.info.xb')}}</em>
+      <div class="item fj">
+        <div class="text fd1 fj"><i class="fd1">证件名称:</i> <em class="fd1">身份证</em></div>
+        <div class="text fd2 fj"><i class="fd1">证件号码:</i> <em class="fd1">{{userinfo | get('reg.info.sfzh')}}</em></div>
       </div>
-      <div class="fj">
-        <span class="fd1">学历</span>
-        <em class="fd1">{{userinfo | get('reg.info.xl')}}</em>
+      <div class="item fj">
+        <div class="text fd2 fj"><i class="fd1">毕业院校:</i> <em class="fd1">{{userinfo  | get('reg.info.yxmc')}}</em></div>
+        <div class="text fd2 fj"><i class="fd1">专业名称:</i> <em class="fd1">{{userinfo | get('reg.info.zymc')}}</em></div>
       </div>
-      <div class="fj">
-        <span class="fd1">证件名称</span>
-        <em class="fd1">身份证</em>
+      <div class="item fj">
+        <div class="text fd1 fj"><i class="fd1">学历:</i> <em class="fd1">{{userinfo | get('reg.info.xl')}}</em></div>
       </div>
-      <div class="fj">
-        <span class="fd1">证件号码</span>
-        <em class="fd1">{{userinfo | get('reg.info.sfzh')}}</em>
-      </div>
-      <div class="fj">
-        <span class="fd1">院校名称</span>
-        <em class="fd1">{{userinfo | get('reg.info.yxmc')}}</em>
-      </div>
-      <div class="fj none">
-        <span class="fd1">专业名称</span>
-        <em class="fd1">{{userinfo | get('reg.info.zymc')}}</em>
-      </div>
-    </div>
+    </el-card>
   </div>
 </template>
 
@@ -52,9 +39,35 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.userbox{width: 60%;margin: 10% auto;font-size: 1.2em;font-weight: 700;line-height: 2.5em;}
-span{width: 25%;text-align-last: justify;border-right: 1px solid #999;text-indent: 1em;padding-right: 3%;}
-em{margin-left: 5%}
-.fj{border-bottom:1px solid #999;}
-.none{border-bottom:none;}
+.text {
+  font-size: 14px;
+  width: 50%;
+}
+
+.item {
+  margin-bottom: 18px;
+}
+i{
+  width: 20%;
+  display: block;
+  text-align-last: justify;
+}
+em{
+  display: block;
+  margin-left: 10%
+}
+.box-card {
+  width: 80%;
+  margin-bottom: 2em;
+}
+.btn{
+  padding: 3px 8px;
+}
+.btn0{
+  padding: 3px 0;
+  margin-top: 2em;
+  margin-left: 10%;
+  display: block;
+  text-align: left
+}
 </style>

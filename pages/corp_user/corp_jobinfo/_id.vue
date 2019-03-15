@@ -1,6 +1,5 @@
 <template>
   <div class="data fd2">
-    <br />
     <el-card class="box-card">
       <div slot="header" class="fj">
         <span class="fd1">{{ currents && currents.corpname }}</span>
@@ -103,7 +102,7 @@ em {
 }
 .box-card {
   width: 80%;
-  margin: 2em auto;
+  margin-left: 2em;
 }
 .btn {
   padding: 3px 8px;

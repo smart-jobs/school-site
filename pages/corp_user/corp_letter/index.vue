@@ -133,19 +133,19 @@ export default {
 @import "~@/assets/jobs.less";
 .btnbox {
   width: 100%;
-  border: 1px solid #999;
+  border: 1px solid #ddd;
 }
 .btn {
   width: 10%;
   text-align: center;
   line-height: 2.5em;
   font-size: 1.2em;
-  border-right: 1px solid #999;
-  border-bottom: 1px solid #999;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 .btn3 {
   width: 80%;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #ddd;
   margin-top: 3em;
 }
 .box-card {

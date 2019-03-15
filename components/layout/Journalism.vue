@@ -4,8 +4,7 @@
       <div class="fj titlebox">
         <div class="fd1 title">就业快讯</div>
         <div class="fd2 txt">
-          MORE
-          <img src="/www/img/z1.jpg" class="icon">
+          更多>>
         </div>
       </div>
       <ul class="ul">
@@ -27,7 +26,7 @@ export default {
   data() {
     return {
       page: 1, // 页数
-      pagesize: 20, // 条数
+      pagesize: 6, // 条数
     };
   },
   mounted() {
@@ -60,6 +59,7 @@ export default {
 .box {
   width: 340px;
   border: 1px solid rgb(196, 196, 196);
+  border-radius:4px; 
 }
 .txtbox {
   width: 90%;
@@ -93,9 +93,9 @@ export default {
   cursor: pointer;
 }
 .ul {
-  height: 250px;
-  overflow: hidden;
+  height: 300px;
   margin: 10px auto;
+  overflow: hidden;
 }
 .time {
   width: 50%;
@@ -112,12 +112,12 @@ li {
   line-height: 30px;
   padding: 10px 0 9px 0px;
   border-bottom: 1px dashed #ddd;
-  color: #60b0f4;
+  color: #333;
 }
 a {
   cursor: pointer;
 }
-li a:hover {
+li:hover {
   color: #60b0f4;
 }
 </style>

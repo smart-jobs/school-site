@@ -2,7 +2,7 @@
 <div class="boxone2">
   <div class="boxone fj">
     <!--二级导航菜单-->
-    <sub-nav :data="columns" :activated="column"/>
+    <sub-nav :data="columns" :activated="column" v-if="!$route.params.id"/>
     <!--页面内容-->
     <nuxt-child />
   </div>
@@ -18,7 +18,7 @@ export default {
     SubNav,
   },
   computed: {
-    ...mapState(['menu', 'page', 'column']),
+    ...mapState(['menu', 'page','column']),
     columns() {
       const data = this.menu.find(p => p.key === this.page);
       return data && data.children;

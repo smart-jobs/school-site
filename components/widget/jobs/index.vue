@@ -11,8 +11,7 @@
         >{{item.label}}</div>
       </div>
       <div class="all fd2">
-        <img src="/www/img/z1.jpg" class="icon fd2">
-        <span class="fd2 a" @click="all">MORE</span>
+        <span class="fd2 a" @click="all">更多>></span>
       </div>
     </div>
 
@@ -75,9 +74,8 @@ export default {
 .box {
   width: 841px;
   margin-left: 17px;
-  height: 370px;
-  border-top: 5px solid #60b0f4;
-  border-bottom: 5px solid #60b0f4;
+  height: 373px;
+  border-top: 2px solid #60b0f4;
 }
 .header {
   width: 100%;
@@ -90,9 +88,9 @@ export default {
 .btn {
   width: 33.3%;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 600;
-  line-height: 2.5em;
+  line-height: 3em;
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
@@ -103,9 +101,9 @@ export default {
 .all {
   width: 50%;
   color: #60b0f4;
-  line-height: 2.5em;
+  line-height: 3em;
   border-bottom: 1px solid #ddd;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 .icon {
   margin-top: 4%;

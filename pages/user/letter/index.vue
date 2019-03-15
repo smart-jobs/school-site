@@ -112,7 +112,7 @@ em{
 }
 .box-card {
   width: 80%;
-  margin: 2em auto
+  margin-bottom: 2em;
 }
 .btn{
   padding: 3px 8px;

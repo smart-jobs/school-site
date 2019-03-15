@@ -186,7 +186,7 @@ export default {
 }
 .box-card {
   width: 80%;
-  margin: 5% auto;
+  margin-left: 5%;
 }
 .text {
   font-size: 14px;

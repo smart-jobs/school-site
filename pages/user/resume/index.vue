@@ -1,6 +1,6 @@
 <template>
   <div class="data fd2">
-    <el-button class="btn0" type="text" @click="btn0">新建模板</el-button>
+    <el-button class="btnx" type="text" @click="btn0">新建模板</el-button>
     <br>
     <el-card class="box-card" v-for="(item,index) in userlist" :key="index">
       <div slot="header" class="fj">
@@ -114,17 +114,23 @@ em{
 }
 .box-card {
   width: 80%;
-  margin: 2em auto
+  margin-bottom: 2em;
 }
 .btn{
   padding: 3px 8px;
 }
 .btn0{
   padding: 3px 0;
-  margin-top: 2em;
-  margin-left: 10%;
   display: block;
   text-align: left
+}
+.btnx{
+  padding: 3px 0;
+  display: block;
+  background: linear-gradient(#0097c4,#117bb0);
+  color: #fff;
+  text-align: center;
+  padding: 8px;
 }
 .xq{
   margin-left: 0;

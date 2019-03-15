@@ -23,7 +23,7 @@
       </div>
       <textarea :placeholder="item.content"  class="item"  rows="10" cols="83" maxlength="2000" v-model="content"></textarea >
     </el-card>
-    <el-button class="btn0" type="success" @click="btn">确认提交</el-button>
+    <el-button class="btn0" @click="btn">确认提交</el-button>
   </div>
 </template>
 
@@ -201,7 +201,7 @@ input{
 }
 .box-card {
   width: 80%;
-  margin: 2em auto
+  margin-left: 2em;
 }
 .input1{
   margin-left: 3%
@@ -216,11 +216,12 @@ textarea {
   text-align-last: justify;
 }
 .btn0{
-  padding: 10px;
-  margin-left: 10%;
+  padding: 3px 0;
   display: block;
-  text-align: left;
-  margin-bottom: 5%;
-  font-size: 1.2em;
+  background: linear-gradient(#0097c4,#117bb0);
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  margin-left: 10%;
 }
 </style>

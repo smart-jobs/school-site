@@ -19,7 +19,7 @@ export default {
       columns: [
         {
           label: "企业信息",
-          link: "/corp_user/corp_info",
+          link: "corp_user/corp_info",
           key: "corp_info"
         },
         {

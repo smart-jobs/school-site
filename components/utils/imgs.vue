@@ -1,90 +1,88 @@
 <template>
   <div class="box">
     <div class="fj titlebox">
-      <div class="fd1 title">焦点新闻</div>
-      <div class="fd2 txt">
-        MORE
-        <img src="/www/img/z1.jpg" class="icon">
+      <div class="fd1 title">
+        <img src="img/x.png" class="fd1 g">
+        <em class="fd1 txt">焦点新闻</em>
       </div>
+      <div class="fd2 txt" @click="href">更多>></div>
     </div>
     <ul>
       <li :style="{top:top}" class="fd1" v-for="(item,index) in list" :key="index">
         <img :src="item.uri" class="bj img">
-        <!-- <span>{{item.title}}</span> -->
       </li>
-      <div class="fj number">
-        <em class="fd1" :class="{active: idx == index + 1}" v-for="(item,index) in list" :key="index" @click="btn(index+1)">{{index+1}}</em>
-      </div>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'imgs',
+  name: "imgs",
   data() {
     return {
       idx: 1,
-      top: '',
-      idxx: '',
-      seta: '',
+      top: "",
+      idxx: "",
+      seta: "",
       list: [
         {
-          uri: '/www/img/push_1.jpg',
-          title: '赢在广州”创业大赛我校夺魁 获十万创业资助1'
+          uri: "/www/img/push_1.jpg",
+          title: "赢在广州”创业大赛我校夺魁 获十万创业资助1"
         },
         {
-          uri: '/www/img/push_2.jpg',
-          title: '赢在广州”创业大赛我校夺魁 获十万创业资助2'
+          uri: "/www/img/push_2.jpg",
+          title: "赢在广州”创业大赛我校夺魁 获十万创业资助2"
         },
         {
-          uri: '/www/img/push_3.jpg',
-          title: '赢在广州”创业大赛我校夺魁 获十万创业资助3'
+          uri: "/www/img/push_3.jpg",
+          title: "赢在广州”创业大赛我校夺魁 获十万创业资助3"
         },
         {
-          uri: '/www/img/push_4.jpg',
-          title: '赢在广州”创业大赛我校夺魁 获十万创业资助4'
+          uri: "/www/img/push_4.jpg",
+          title: "赢在广州”创业大赛我校夺魁 获十万创业资助4"
         },
         {
-          uri: '/www/img/push_5.jpg',
-          title: '赢在广州”创业大赛我校夺魁 获十万创业资助5'
+          uri: "/www/img/push_5.jpg",
+          title: "赢在广州”创业大赛我校夺魁 获十万创业资助5"
         }
       ]
-    }
+    };
   },
   methods: {
     set() {
       if (this.idx == 5) {
-        this.idx = 1
+        this.idx = 1;
       } else {
-        this.idx++
+        this.idx++;
       }
-      let he = document.getElementsByClassName('img')[0].height
-      this.top = -(this.idx - 1) * he + 'px'
+      let he = document.getElementsByClassName("img")[0].height;
+      this.top = -(this.idx - 1) * he + "px";
     },
     btn(index) {
-      this.idx = index - 1
-      this.set()
+      this.idx = index - 1;
+      this.set();
+    },
+    href() {
+      location.href = "/www/news/focus";
     }
   },
   mounted() {
-    setInterval(this.set, 5000)
+    setInterval(this.set, 5000);
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .box {
-  width: 474px;
-  border: 1px solid rgb(196, 196, 196);
-  height: 330px;
+  width: 841px;
+  height: 380px;
   overflow: hidden;
   position: relative;
 }
 ul {
   width: 100%;
-  height: 85%;
+  height: 90%;
   position: relative;
   overflow: hidden;
 }
@@ -111,28 +109,22 @@ span {
 }
 .titlebox {
   border-bottom: 1px solid #ddd;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
+  margin-bottom: 0.5em;
+  line-height: 2em;
 }
 .title {
   display: inline-block;
-  font-size: 16px;
+  font-size: 1em;
   vertical-align: middle;
   position: relative;
-  margin-bottom: -1px;
-  padding: 0 0 8px;
   font-weight: 700;
-  line-height: 3em;
 }
 .txt {
-  color: #1e649f;
   position: relative;
-  line-height: 3em;
-  height: 3em;
-  top: 0;
-  right: 0;
-  z-index: 5;
-  cursor: pointer;
+  line-height: 2em;
+  color: #aaaaaa;
 }
 .number {
   position: absolute;
@@ -151,5 +143,13 @@ span {
 }
 .active {
   background: #999 !important;
+}
+.title .g {
+  margin-top: 10%;
+}
+.title .txt {
+  color: #1c68a2;
+  text-indent: 0.5em;
+  font-weight: 600;
 }
 </style>

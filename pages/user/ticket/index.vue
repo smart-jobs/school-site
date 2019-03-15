@@ -88,7 +88,6 @@ export default {
   font-size: 14px;
   width: 50%;
 }
-
 .item {
   margin-bottom: 18px;
 }
@@ -99,11 +98,11 @@ i{
 }
 em{
   display: block;
-  margin-left: 10%
+  margin-left: 10%;
 }
 .box-card {
   width: 80%;
-  margin: 2em auto
+  margin-bottom: 2em;
 }
 .btn{
   padding: 3px 8px;

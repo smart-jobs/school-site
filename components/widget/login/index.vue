@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="titlebox">
-      <div class="title a">
+      <div class="title a" v-show="userinfo && userinfo.role == 'guest' || userinfo == null">
         微信登录
       </div>
     </div>
@@ -55,8 +55,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
 .box {
-  width: 340px;
-  border: 1px solid rgb(196, 196, 196);
+  width: 330px;
+  background: url('~@/static/img/login.png') no-repeat;
+  background-size:100% 100%; 
 }
 .box > div {
   width: 100%;
@@ -68,9 +69,10 @@ export default {
   position: relative;
   font-weight: 700;
   text-align: center;
-  width: 100%;
-  background: #1e649f;
-  color: #fff;
+  width: 70%;
+  margin: 1em 0 0.5em 15%;
+  background: #fff;
+  color: #1e649f;
   line-height: 2.5em;
 }
 .loading {
@@ -90,7 +92,7 @@ export default {
   }
 }
 .bj {
-  width: 50%;
+  width: 90%;
   margin: 0 auto;
 }
 </style>

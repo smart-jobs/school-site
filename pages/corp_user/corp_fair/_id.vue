@@ -1,7 +1,7 @@
 <template>
   <div class="data fd2">
-    <el-button class="fd1 btn0" type="text" @click="handleAdd">添加职位</el-button>
-    <br />
+    <el-button class="fd1 btnx" type="text" @click="handleAdd">添加职位</el-button>
+    <br>
     <el-card class="box-card" v-for="(item, index) in current && current.jobs" :key="index">
       <div slot="header" class="fj">
         <span class="fd1">{{ current && current.corpname }}</span>
@@ -95,7 +95,7 @@ em {
 }
 .box-card {
   width: 80%;
-  margin: 2em auto;
+  margin: 2em;
 }
 .btn {
   padding: 3px 8px;
@@ -112,5 +112,14 @@ em {
 }
 pre {
   font-size: 0.8em;
+}
+.btnx{
+  padding: 3px 0;
+  display: block;
+  background: linear-gradient(#0097c4,#117bb0);
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  margin-left: 3%;
 }
 </style>

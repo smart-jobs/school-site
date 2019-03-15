@@ -1,11 +1,11 @@
 <template>
   <div class="fd2 data">
-    <el-button class="fd1 btn0" type="text" @click="handleAdd">添加宣讲会</el-button>
+    <el-button class="fd1 btnx" type="text" @click="handleAdd">添加宣讲会</el-button>
     <br>
     <ul>
       <li class="fj" v-for="(item,index) in items" :key="index">
         <div class="fd1 fj txtbox">
-          <img src="/www/img/logo1.jpg" class="img fd1">
+          <img src="/www/img/logo1.png" class="img fd1">
           <div class="fd1 titbox">
             <div class="fj">
               <a @click="Obtain(item)" class="fd1">{{item.subject}}</a>
@@ -83,11 +83,13 @@ export default {
 .titbox {
   width: 90%;
 }
-.btn0 {
+.btnx{
   padding: 3px 0;
-  margin-top: 1em;
-  margin-left: 3%;
   display: block;
-  text-align: left;
+  background: linear-gradient(#0097c4,#117bb0);
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  margin-left: 3%;
 }
 </style>

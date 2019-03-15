@@ -70,9 +70,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .txt {
-  color: #1e649f;
-  line-height: 3em;
-  width: 100%;
+  width: 70%;
+  margin: 0 auto;
+  background: #fff;
+  color: #000;
+  line-height: 2em;
   text-align: center;
 }
 .qrimg {
