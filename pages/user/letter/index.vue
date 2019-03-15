@@ -75,15 +75,15 @@ export default {
       if (val !== null) {
         switch (val.status) {
           case '0':
-            return '未接收'
+            return '未处理'
             break;
         
           case '1':
-            return '已接收'
+            return '已处理'
             break;
 
           case '2':
-            return '已回复'
+            return '已拒绝'
             break;
         }
       }
@@ -124,8 +124,8 @@ em{
   display: block;
   text-align: left
 }
-.a1{color:#ff0033}
-.a2{color: #d1e000}
-.a3{color: #11ca00}
+.a3{color:#ff0033}
+.a1{color: #d1e000}
+.a2{color: #11ca00}
 .xq{margin-left: 0;}
 </style>

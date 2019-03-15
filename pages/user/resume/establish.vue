@@ -22,8 +22,8 @@
         <div class="text fd2 fj"><i class="fd1">电子邮件:</i> <input :placeholder="item.contact.email" v-model="email"  class="fd1"/></div>
       </div>
       <textarea :placeholder="item.content"  class="item"  rows="10" cols="83" maxlength="2000" v-model="content"></textarea >
+      <el-button class="btn0" @click="btn">确认提交</el-button>
     </el-card>
-    <el-button class="btn0" @click="btn">确认提交</el-button>
   </div>
 </template>
 
@@ -222,6 +222,5 @@ textarea {
   color: #fff;
   text-align: center;
   padding: 8px;
-  margin-left: 10%;
 }
 </style>
