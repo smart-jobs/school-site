@@ -207,7 +207,6 @@ export default {
     async recruitadd () {
       let fair_id = this.current._id
       let corpid = this.userinfo.corpid;
-      console.log(this.userinfo)
       let jobs = this.jobs
       const res = await this.corp_apply({ corpid: corpid, fair_id: fair_id, jobs });
       this.$checkRes(res, "申请成功")

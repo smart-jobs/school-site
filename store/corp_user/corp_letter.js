@@ -47,7 +47,6 @@ export const mutations = {
   },
   [types.LOADED_DETAIL](state, data) {
     state.currents = data
-    console.log(state.currents)
   },
 };
 
