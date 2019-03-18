@@ -8,7 +8,9 @@ const api = {
   query: '/jobs/jobfair/query_g',
   fetch: '/jobs/jobfair/fetch',
   corp_list: '/jobs/jobfair/corp/list',
-  calendar: '/jobs/jobfair/calendar'
+  calendar: '/jobs/jobfair/calendar',
+  corp_apply: '/jobs/jobfair/corp/apply',
+  user_apply: '/jobs/jobfair/ticket/apply'
 };
 // initial state
 export const state = () => ({
@@ -53,7 +55,18 @@ export const actions = {
   async calendar({ commit }, { month }) {
     const res = await this.$axios.$get(`${api.calendar}?month=${month}`);
     return res;
-  }
+  },
+  async corp_apply({ commit }, {corpid,fair_id,jobs} ) { // 详细查询
+    console.log(fair_id)
+    const params = {corpid:corpid,fair_id:fair_id};
+    const res = await this.$axios.$post(api.corp_apply, { jobs }, { params });
+    return res;
+  },
+  async user_apply({ commit }, {userid,fair_id} ) { // 详细查询
+    const params = {userid:userid,fair_id:fair_id};
+    const res = await this.$axios.$post(api.user_apply, null, { params });
+    return res;
+  },
 };
 
 // mutations

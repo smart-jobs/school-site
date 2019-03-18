@@ -7,8 +7,8 @@
       <p class="text">举办城市：{{current | get('city.name')}}</p>
       <p class="text">举办地址：{{current && current.address}}</p>
       <div class="btn-group">
-        <el-button type="primary" size="medium">学生报名参加</el-button>
-        <el-button type="primary" size="medium">企业预定展位</el-button>
+        <el-button type="primary" size="medium" @click="add2">学生报名参加</el-button>
+        <el-button type="primary" size="medium" @click="add">企业预定展位</el-button>
       </div>
       <p class="text3">温馨提示：为防讯息临时变动,参会前可联系招聘会举办方确认。</p>
       <p class="title">招聘会详情</p>
@@ -55,6 +55,7 @@
           </template>
         </tbody>
       </table>
+      <!-- 简历模板 -->
       <el-dialog
         title="请选择简历模板"
         :visible.sync="dialogVisible"
@@ -75,6 +76,28 @@
           <el-button type="primary" @click="handleClose">确 定</el-button>
         </span>
       </el-dialog>
+      <!-- 招聘信息 -->
+      <el-dialog
+        title="添加职位信息"
+        :visible.sync="recruit"
+        width="30%"
+        :modal-append-to-body="false"
+      >
+        <el-button type="primary" size="medium" @click="addzw">添加职位</el-button>
+        <el-input class="input" type="text" v-model="jobs[0].name" placeholder="请输入职位名称"></el-input>
+        <el-input class="input" type="text" v-model="jobs[0].count" placeholder="请输入招聘人数"></el-input>
+        <el-input class="input" :rows="5" type="textarea" v-model="jobs[0].requirement" placeholder="请输入招聘要求"></el-input>
+        <div class="txtbox" v-for="(item,index) in jobs" :key="index">
+          <h1 v-if="index !== 0">职位{{index}}</h1>
+          <div class="nametxt" v-if="index !== 0">职位名称：{{item.name}}</div>
+          <div class="nametxt" v-if="index !== 0">招聘人数：{{item.count}}</div>
+          <div class="nametxt" v-if="index !== 0">职位详情：{{item.requirement}}</div>
+        </div>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="recruit = false">取 消</el-button>
+          <el-button type="primary" @click="recruitadd">确 定</el-button>
+        </span>
+      </el-dialog>
     </div>
   </div>
 </template>
@@ -92,12 +115,18 @@ export default {
   data() {
     return {
       dialogVisible: false,
+      recruit: false,
       resumeid: "",
-      idx: ""
+      idx: "",
+      corp: "",
+      user: "",
+      jobs:[
+        {name: "", count: "", requirement: ""}
+      ]
     };
   },
   methods: {
-    ...mapActions(["fetch", "corplist"]),
+    ...mapActions(["fetch", "corplist", "corp_apply", "user_apply"]),
     ...resume(["query"]),
     ...actions(["deliver"]),
     btn(item) {
@@ -140,6 +169,42 @@ export default {
           duration: 1000
         });
       }
+    },
+    addzw () {
+      console.log(this.jobs)
+      if (this.jobs[0].name !== '' && this.jobs[0].count !== ''&& this.jobs[0].requirement !== '') {
+        this.jobs.unshift({name: "", count: "", requirement: ""})
+      }else{
+        this.$notify({
+          title: '警告',
+          message: '请先填写完成上一条信息',
+          type: 'warning'
+        });
+      }
+    },
+    add() {
+        this.recruit = true
+    },
+     async add2 () {
+       if (this.userinfo.role == 'user') {
+        let fair_id = this.current._id
+        let userid = this.userinfo.userid;
+        const res = await this.user_apply({ userid: userid, fair_id: fair_id });
+        this.$checkRes(res, "报名成功")
+       }else{
+         this.$notify.error({
+          title: '错误',
+          message: '您不是学生用户',
+        });
+       }
+    },
+    async recruitadd () {
+      let fair_id = this.current._id
+      let corpid = this.userinfo.corpid;
+      let jobs = this.jobs
+      const res = await this.corp_apply({ corpid: corpid, fair_id: fair_id, jobs });
+      this.$checkRes(res, "申请成功")
+      this.recruit = false;
     }
   },
   mounted() {
@@ -164,7 +229,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
-.main{
+.main {
   width: 90%;
   margin: 0 auto;
 }
@@ -210,7 +275,11 @@ b {
   color: #0028aa;
   cursor: pointer;
 }
-.btn-group{
+.btn-group {
   padding: 10px;
 }
+.input{width: 100%;margin: 1em auto;display: block;}
+.txtbox{width: 100%;margin: 1em auto;}
+.txtname{width: 100%;text-align: left;line-height: 1.5em;}
+h1{font-size: 1.2em;font-weight: 600;}
 </style>
