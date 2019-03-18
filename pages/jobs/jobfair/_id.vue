@@ -171,7 +171,6 @@ export default {
       }
     },
     addzw () {
-      console.log(this.jobs)
       if (this.jobs[0].name !== '' && this.jobs[0].count !== ''&& this.jobs[0].requirement !== '') {
         this.jobs.unshift({name: "", count: "", requirement: ""})
       }else{
