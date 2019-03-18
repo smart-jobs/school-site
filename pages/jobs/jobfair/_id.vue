@@ -6,6 +6,10 @@
       <p class="text">举办时间：{{current && current.date+ ' '+current.time}}</p>
       <p class="text">举办城市：{{current | get('city.name')}}</p>
       <p class="text">举办地址：{{current && current.address}}</p>
+      <div class="btn-group">
+        <el-button type="primary" size="medium">学生报名参加</el-button>
+        <el-button type="primary" size="medium">企业预定展位</el-button>
+      </div>
       <p class="text3">温馨提示：为防讯息临时变动,参会前可联系招聘会举办方确认。</p>
       <p class="title">招聘会详情</p>
       <pre class="text2">{{current && current.content}}</pre>
@@ -178,7 +182,7 @@ export default {
 }
 .text3 {
   color: #ff9913;
-  line-height: 5em;
+  line-height: 3em;
 }
 table {
   border: 1px solid #999;
@@ -205,5 +209,8 @@ b {
 .operation {
   color: #0028aa;
   cursor: pointer;
+}
+.btn-group{
+  padding: 10px;
 }
 </style>
