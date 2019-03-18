@@ -37,8 +37,8 @@ export default {
       this.query({ paging: { page: val, size: this.size } });
     },
     Obtain(item) {
-      let _id = item._id;
-      this.$router.push('/jobs/jobfair/'+_id)
+      //跳转地址  前面取分站信息  后面写id
+      location.href = `http://${item.unit}.smart.jilinjobswx.cn/www/jobs/jobfair/${item._id}`;
     },
   },
   mounted() {
