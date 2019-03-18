@@ -56,13 +56,12 @@ export const actions = {
     const res = await this.$axios.$get(`${api.calendar}?month=${month}`);
     return res;
   },
-  async corp_apply({ commit }, {corpid,fair_id,jobs} ) { // 详细查询
-    console.log(fair_id)
+  async corp_apply({ commit }, {corpid,fair_id,jobs} ) { // 
     const params = {corpid:corpid,fair_id:fair_id};
     const res = await this.$axios.$post(api.corp_apply, { jobs }, { params });
     return res;
   },
-  async user_apply({ commit }, {userid,fair_id} ) { // 详细查询
+  async user_apply({ commit }, {userid,fair_id} ) { // 
     const params = {userid:userid,fair_id:fair_id};
     const res = await this.$axios.$post(api.user_apply, null, { params });
     return res;

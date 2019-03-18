@@ -183,7 +183,14 @@ export default {
       }
     },
     add() {
+      if (this.userinfo.role == 'corp') {
         this.recruit = true
+      }else{
+         this.$notify.error({
+          title: '错误',
+          message: '您不是企业用户',
+        });
+       }
     },
      async add2 () {
        if (this.userinfo.role == 'user') {
@@ -201,6 +208,7 @@ export default {
     async recruitadd () {
       let fair_id = this.current._id
       let corpid = this.userinfo.corpid;
+      console.log(this.userinfo)
       let jobs = this.jobs
       const res = await this.corp_apply({ corpid: corpid, fair_id: fair_id, jobs });
       this.$checkRes(res, "申请成功")
