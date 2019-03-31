@@ -1,12 +1,12 @@
 <template>
-  <div class="fd2 data">
+  <div class="right data">
     <ul>
       <el-button class="btnx" type="text" @click="handleadd">新建招聘信息</el-button>
       <br>
       <li class="fj" v-for="(item,index) in items" :key="index">
-        <div class="fd1 fj txtbox">
-          <img src="/www/img/logo2.png" class="img fd1">
-          <div class="fd1 titbox">
+        <div class="left fj txtbox">
+          <img src="/www/img/logo2.png" class="img left">
+          <div class="left titbox">
             <a>{{item.title}}</a>
             <p>招聘人数：{{item.count}}</p>
             <p>学历要求：{{item | get('xlreqs.name')}}</p>

@@ -1,43 +1,43 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <p class="fj btnbox">
-      <span class="fd1 btn1 btn" :class="{b:btn==true}" @click="fair">招聘会</span>
-      <span class="fd1 btn2 btn" :class="{b:btn==false}" @click="info">招聘信息</span>
-      <span class="btn3 fd1"></span>
+      <span class="left btn1 btn" :class="{b:btn==true}" @click="fair">招聘会</span>
+      <span class="left btn2 btn" :class="{b:btn==false}" @click="info">招聘信息</span>
+      <span class="btn3 left"></span>
       <br>
       <el-card class="box-card" v-for="(item, index) in items" :key="index">
         <div slot="header" class="fj">
-          <span class="fd1">{{ item && item.title }}</span>
-          <el-button v-if="!item.reply" class="fd2" type="primary" @click="Reply(item)">查看详情</el-button>
+          <span class="left">{{ item && item.title }}</span>
+          <el-button v-if="!item.reply" class="right" type="primary" @click="Reply(item)">查看详情</el-button>
         </div>
         <div class="item fj">
-          <div class="text fd1 fj">
-            <i class="fd1">姓名:</i>
-            <em class="fd1">{{ item | get('info.xm') }}</em>
+          <div class="text left fj">
+            <i class="left">姓名:</i>
+            <em class="left">{{ item | get('info.xm') }}</em>
           </div>
-          <div class="text fd2 fj">
-            <i class="fd1">性别:</i>
-            <em class="fd1">{{ item | get('info.xb') }}</em>
-          </div>
-        </div>
-        <div class="item fj">
-          <div class="text fd1 fj">
-            <i class="fd1">出生日期:</i>
-            <em class="fd1">{{ item | get('info.csrq') }}</em>
-          </div>
-          <div class="text fd2 fj">
-            <i class="fd1">学历:</i>
-            <em class="fd1">{{ item | get('info.xl') }}</em>
+          <div class="text right fj">
+            <i class="left">性别:</i>
+            <em class="left">{{ item | get('info.xb') }}</em>
           </div>
         </div>
         <div class="item fj">
-          <div class="text fd1 fj">
-            <i class="fd1">学校:</i>
-            <em class="fd1">{{ item | get('info.yxmc') }}</em>
+          <div class="text left fj">
+            <i class="left">出生日期:</i>
+            <em class="left">{{ item | get('info.csrq') }}</em>
           </div>
-          <div class="text fd2 fj">
-            <i class="fd1">专业:</i>
-            <em class="fd1">{{ item | get('info.zymc') }}</em>
+          <div class="text right fj">
+            <i class="left">学历:</i>
+            <em class="left">{{ item | get('info.xl') }}</em>
+          </div>
+        </div>
+        <div class="item fj">
+          <div class="text left fj">
+            <i class="left">学校:</i>
+            <em class="left">{{ item | get('info.yxmc') }}</em>
+          </div>
+          <div class="text right fj">
+            <i class="left">专业:</i>
+            <em class="left">{{ item | get('info.zymc') }}</em>
           </div>
         </div>
       </el-card>

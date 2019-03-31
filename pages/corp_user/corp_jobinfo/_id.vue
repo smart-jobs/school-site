@@ -1,56 +1,56 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <el-card class="box-card">
       <div slot="header" class="fj">
-        <span class="fd1">{{ currents && currents.corpname }}</span>
-        <el-button class="fd2 btn" type="text" v-if="currents && currents.status == 1" @click="handleUpdate(currents._id)">更改</el-button>
+        <span class="left">{{ currents && currents.corpname }}</span>
+        <el-button class="right btn" type="text" v-if="currents && currents.status == 1" @click="handleUpdate(currents._id)">更改</el-button>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">招聘职位:</i> <em class="fd1">{{ currents && currents.title }}</em>
+        <div class="text left fj">
+          <i class="left">招聘职位:</i> <em class="left">{{ currents && currents.title }}</em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">招聘人数:</i> <em class="fd1">{{ currents && currents.count }}</em>
-        </div>
-      </div>
-      <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">学历要求:</i> <em class="fd1">{{ currents | get('xlreqs.name') }}</em>
-        </div>
-        <div class="text fd2 fj">
-          <i class="fd1">专业要求:</i> <em class="fd1">{{ currents && currents.zyreqs }}</em>
+        <div class="text right fj">
+          <i class="left">招聘人数:</i> <em class="left">{{ currents && currents.count }}</em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">薪资待遇:</i> <em class="fd1">{{ currents | get('salary.name') }}</em>
+        <div class="text left fj">
+          <i class="left">学历要求:</i> <em class="left">{{ currents | get('xlreqs.name') }}</em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">职位要求:</i> <em class="fd1">{{ currents | get('nature.name') }}</em>
-        </div>
-      </div>
-      <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">工作地点:</i> <em class="fd1">{{ currents | get('city.name') }}</em>
-        </div>
-        <div class="text fd2 fj">
-          <i class="fd1">招聘结束:</i> <em class="fd1">{{ currents && currents.expired }}</em>
+        <div class="text right fj">
+          <i class="left">专业要求:</i> <em class="left">{{ currents && currents.zyreqs }}</em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">所属行业:</i> <em class="fd1">{{ currents | get('jobcat.name') }}</em>
+        <div class="text left fj">
+          <i class="left">薪资待遇:</i> <em class="left">{{ currents | get('salary.name') }}</em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">分站信息:</i> <em class="fd1">{{ currents && currents.unit }}</em>
+        <div class="text right fj">
+          <i class="left">职位要求:</i> <em class="left">{{ currents | get('nature.name') }}</em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">职位描述:</i> <em class="fd1">{{ currents && currents.jobdesc }}</em>
+        <div class="text left fj">
+          <i class="left">工作地点:</i> <em class="left">{{ currents | get('city.name') }}</em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">详情介绍:</i> <em class="fd1">{{ currents && currents.content }}</em>
+        <div class="text right fj">
+          <i class="left">招聘结束:</i> <em class="left">{{ currents && currents.expired }}</em>
+        </div>
+      </div>
+      <div class="item fj">
+        <div class="text left fj">
+          <i class="left">所属行业:</i> <em class="left">{{ currents | get('jobcat.name') }}</em>
+        </div>
+        <div class="text right fj">
+          <i class="left">分站信息:</i> <em class="left">{{ currents && currents.unit }}</em>
+        </div>
+      </div>
+      <div class="item fj">
+        <div class="text left fj">
+          <i class="left">职位描述:</i> <em class="left">{{ currents && currents.jobdesc }}</em>
+        </div>
+        <div class="text right fj">
+          <i class="left">详情介绍:</i> <em class="left">{{ currents && currents.content }}</em>
         </div>
       </div>
     </el-card>

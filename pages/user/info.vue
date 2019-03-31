@@ -1,20 +1,20 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <el-card class="box-card">
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">姓名:</i> <em class="fd1">{{userinfo | get('reg.info.xm')}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">性别:</i> <em class="fd1">{{userinfo | get('reg.info.xb')}}</em></div>
+        <div class="text left fj"><i class="left">姓名:</i> <em class="left">{{userinfo | get('reg.info.xm')}}</em></div>
+        <div class="text right fj"><i class="left">性别:</i> <em class="left">{{userinfo | get('reg.info.xb')}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">证件名称:</i> <em class="fd1">身份证</em></div>
-        <div class="text fd2 fj"><i class="fd1">证件号码:</i> <em class="fd1">{{userinfo | get('reg.info.sfzh')}}</em></div>
+        <div class="text left fj"><i class="left">证件名称:</i> <em class="left">身份证</em></div>
+        <div class="text right fj"><i class="left">证件号码:</i> <em class="left">{{userinfo | get('reg.info.sfzh')}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd2 fj"><i class="fd1">毕业院校:</i> <em class="fd1">{{userinfo  | get('reg.info.yxmc')}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">专业名称:</i> <em class="fd1">{{userinfo | get('reg.info.zymc')}}</em></div>
+        <div class="text right fj"><i class="left">毕业院校:</i> <em class="left">{{userinfo  | get('reg.info.yxmc')}}</em></div>
+        <div class="text right fj"><i class="left">专业名称:</i> <em class="left">{{userinfo | get('reg.info.zymc')}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">学历:</i> <em class="fd1">{{userinfo | get('reg.info.xl')}}</em></div>
+        <div class="text left fj"><i class="left">学历:</i> <em class="left">{{userinfo | get('reg.info.xl')}}</em></div>
       </div>
     </el-card>
   </div>

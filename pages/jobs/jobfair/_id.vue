@@ -1,5 +1,5 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <div class="main">
       <p class="title">{{current && current.subject}}</p>
       <p class="text">分校信息：{{current && current.unit}}</p>
@@ -62,7 +62,7 @@
         width="30%"
         :modal-append-to-body="false"
       >
-        <el-select v-if="role == 'user'" v-model="resumeid" placeholder="请选择简历" class="fd1 btn">
+        <el-select v-if="role == 'user'" v-model="resumeid" placeholder="请选择简历" class="left btn">
           <el-option
             :label="item.title"
             :value="item._id"

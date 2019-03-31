@@ -1,26 +1,25 @@
 <template>
   <div>
     <div class="fj xwbox">
-      <login class="fd1 login" />
-      <imgs class="fd1 zon" />
+      <login class="left login" />
+      <imgs class="left zon" />
       
     </div>
     <div class="databox fj">
-      <journalism class="fd1 journalism" />
-      <!-- <calendar class="fd1" /> -->
-      <jobs-widget class="fd2" />
+      <news-widget class="left flash" column="flash" label="就业快讯" url="/www/service/guide" :border="true" :limit="6"/>
+      <!-- <calendar class="left" /> -->
+      <jobs-widget class="right" />
     </div>
 
     <div class="databox fj">
-      <news-widget class="fd1 z" column="guide" label="就业指导" url="/www/service/guide"/>
-      <news-widget class="fd1 z z1" column="policy" label="政策文件" url="/www/service/policy"/>
-      <news-widget class="fd2 z" column="faq" label="常见问题" url="/www/service/faq"/>
+      <news-widget class="left z" column="guide" label="就业指导" url="/www/service/guide"/>
+      <news-widget class="left z z1" column="policy" label="政策文件" url="/www/service/policy"/>
+      <news-widget class="right z" column="faq" label="常见问题" url="/www/service/faq"/>
     </div>
   </div>
 </template>
 
 <script>
-import Journalism from '~/components/layout/Journalism';
 import login from '~/components/widget/login';
 import imgs from '~/components/utils/imgs';
 // import calendar from '~/components/utils/calendar';
@@ -32,7 +31,6 @@ export default {
     return {};
   },
   components: {
-    Journalism,
     login,
     imgs,
     // calendar,
@@ -58,7 +56,7 @@ export default {
 .zon {
   margin-left:17px;
 }
-.journalism{height: 373px;}
+.flash{height: 373px;}
 .login {
   height: 380px;
 }

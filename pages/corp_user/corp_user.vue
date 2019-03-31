@@ -1,20 +1,20 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <el-card class="box-card">
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">姓名:</i>
-          <em class="fd1">{{userinfo && userinfo.name}}</em>
+        <div class="text left fj">
+          <i class="left">姓名:</i>
+          <em class="left">{{userinfo && userinfo.name}}</em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">分站信息:</i>
-          <em class="fd1">{{userinfo && userinfo.unit}}</em>
+        <div class="text right fj">
+          <i class="left">分站信息:</i>
+          <em class="left">{{userinfo && userinfo.unit}}</em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">公司名称:</i>
-          <em class="fd1">{{userinfo && userinfo.corpname}}</em>
+        <div class="text left fj">
+          <i class="left">公司名称:</i>
+          <em class="left">{{userinfo && userinfo.corpname}}</em>
         </div>
       </div>
     </el-card>

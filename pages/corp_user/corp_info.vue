@@ -1,86 +1,86 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <el-card class="box-card">
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">公司名称：</i>
-          <em class="fd1">{{corp_info && corp_info.corpname}}</em>
+        <div class="text left fj">
+          <i class="left">公司名称：</i>
+          <em class="left">{{corp_info && corp_info.corpname}}</em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">法人代表：</i>
-          <em class="fd1">{{corp_info | get('info.legalPerson')}}</em>
-        </div>
-      </div>
-      <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">{{corp_info | topeof}}</i>
-          <em class="fd1">{{corp_info | get('info.corpcode')}}</em>
-        </div>
-        <div class="text fd2 fj">
-          <i class="fd1">单位性质：</i>
-          <em class="fd1">{{corp_info | get('info.nature.name')}}</em>
+        <div class="text right fj">
+          <i class="left">法人代表：</i>
+          <em class="left">{{corp_info | get('info.legalPerson')}}</em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">公司地址：</i>
-          <em class="fd1">{{corp_info | get('contact.address')}}</em>
+        <div class="text left fj">
+          <i class="left">{{corp_info | topeof}}</i>
+          <em class="left">{{corp_info | get('info.corpcode')}}</em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">所属行业：</i>
-          <em class="fd1">{{corp_info | get('info.industry.name')}}</em>
-        </div>
-      </div>
-      <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">公司规模：</i>
-          <em class="fd1">{{corp_info | get('info.scale.name')}}</em>
-        </div>
-        <div class="text fd2 fj">
-          <i class="fd1">注册资金：</i>
-          <em class="fd1">{{corp_info | get('info.registerMoney')}}</em>
+        <div class="text right fj">
+          <i class="left">单位性质：</i>
+          <em class="left">{{corp_info | get('info.nature.name')}}</em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">创建时间：</i>
-          <em class="fd1">{{corp_info | get('info.registerTime')}}</em>
+        <div class="text left fj">
+          <i class="left">公司地址：</i>
+          <em class="left">{{corp_info | get('contact.address')}}</em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">所属行业：</i>
-          <em class="fd1">{{corp_info | get('info.industry.name')}}</em>
-        </div>
-      </div>
-
-      <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">固定电话：</i>
-          <em class="fd1">{{corp_info | get('contact.phone')}}</em>
-        </div>
-        <div class="text fd2 fj">
-          <i class="fd1">所属行业：</i>
-          <em class="fd1">{{corp_info | get('info.industry.name')}}</em>
+        <div class="text right fj">
+          <i class="left">所属行业：</i>
+          <em class="left">{{corp_info | get('info.industry.name')}}</em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">邮政编码：</i>
-          <em class="fd1">{{corp_info | get('contact.postcode')}}</em>
+        <div class="text left fj">
+          <i class="left">公司规模：</i>
+          <em class="left">{{corp_info | get('info.scale.name')}}</em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">移动电话：</i>
-          <em class="fd1">{{corp_info | get('contact.mobile')}}</em>
+        <div class="text right fj">
+          <i class="left">注册资金：</i>
+          <em class="left">{{corp_info | get('info.registerMoney')}}</em>
+        </div>
+      </div>
+      <div class="item fj">
+        <div class="text left fj">
+          <i class="left">创建时间：</i>
+          <em class="left">{{corp_info | get('info.registerTime')}}</em>
+        </div>
+        <div class="text right fj">
+          <i class="left">所属行业：</i>
+          <em class="left">{{corp_info | get('info.industry.name')}}</em>
         </div>
       </div>
 
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">邮箱地址：</i>
-          <em class="fd1">{{corp_info | get('contact.email')}}</em>
+        <div class="text left fj">
+          <i class="left">固定电话：</i>
+          <em class="left">{{corp_info | get('contact.phone')}}</em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">公司网址：</i>
-          <em class="fd1">{{corp_info | get('contact.url')}}</em>
+        <div class="text right fj">
+          <i class="left">所属行业：</i>
+          <em class="left">{{corp_info | get('info.industry.name')}}</em>
+        </div>
+      </div>
+      <div class="item fj">
+        <div class="text left fj">
+          <i class="left">邮政编码：</i>
+          <em class="left">{{corp_info | get('contact.postcode')}}</em>
+        </div>
+        <div class="text right fj">
+          <i class="left">移动电话：</i>
+          <em class="left">{{corp_info | get('contact.mobile')}}</em>
+        </div>
+      </div>
+
+      <div class="item fj">
+        <div class="text left fj">
+          <i class="left">邮箱地址：</i>
+          <em class="left">{{corp_info | get('contact.email')}}</em>
+        </div>
+        <div class="text right fj">
+          <i class="left">公司网址：</i>
+          <em class="left">{{corp_info | get('contact.url')}}</em>
         </div>
       </div>
     </el-card>

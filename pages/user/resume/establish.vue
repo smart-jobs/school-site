@@ -1,25 +1,25 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <el-card class="box-card">
       <div slot="header" class="fj">
-        <span class="fd1 title">标题：</span>
-        <input class="fd1 input1" :placeholder="item.title" v-model="title"/>
+        <span class="left title">标题：</span>
+        <input class="left input1" :placeholder="item.title" v-model="title"/>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">姓名:</i> <input :placeholder="item.info.xm" class="fd1" v-model="xm" :disabled="swc"/></div>
-        <div class="text fd2 fj"><i class="fd1">学历:</i> <input class="fd1" :placeholder="item.info.xl" v-model="xl" :disabled="swc"/></div>
+        <div class="text left fj"><i class="left">姓名:</i> <input :placeholder="item.info.xm" class="left" v-model="xm" :disabled="swc"/></div>
+        <div class="text right fj"><i class="left">学历:</i> <input class="left" :placeholder="item.info.xl" v-model="xl" :disabled="swc"/></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">性别:</i> <input :placeholder="item.info.xb" class="fd1" v-model="xb" :disabled="swc"/></div>
-        <div class="text fd2 fj"><i class="fd1">毕业院校:</i> <input :placeholder="item.info.yxmc" class="fd1" v-model="yxmc" :disabled="swc"/></div>
+        <div class="text left fj"><i class="left">性别:</i> <input :placeholder="item.info.xb" class="left" v-model="xb" :disabled="swc"/></div>
+        <div class="text right fj"><i class="left">毕业院校:</i> <input :placeholder="item.info.yxmc" class="left" v-model="yxmc" :disabled="swc"/></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">出生日期:</i> <input :placeholder="item.info.csrq" v-model="csrq" class="fd1"/></div>
-        <div class="text fd2 fj"><i class="fd1">专业名称:</i> <input :placeholder="item.info.zymc" v-model="zymc" class="fd1" :disabled="swc"/></div>
+        <div class="text left fj"><i class="left">出生日期:</i> <input :placeholder="item.info.csrq" v-model="csrq" class="left"/></div>
+        <div class="text right fj"><i class="left">专业名称:</i> <input :placeholder="item.info.zymc" v-model="zymc" class="left" :disabled="swc"/></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">联系方式:</i> <input :placeholder="item.contact.mobile" v-model="mobile" class="fd1"/></div>
-        <div class="text fd2 fj"><i class="fd1">电子邮件:</i> <input :placeholder="item.contact.email" v-model="email"  class="fd1"/></div>
+        <div class="text left fj"><i class="left">联系方式:</i> <input :placeholder="item.contact.mobile" v-model="mobile" class="left"/></div>
+        <div class="text right fj"><i class="left">电子邮件:</i> <input :placeholder="item.contact.email" v-model="email"  class="left"/></div>
       </div>
       <textarea :placeholder="item.content"  class="item"  rows="10" cols="83" maxlength="2000" v-model="content"></textarea >
       <el-button class="btn0" @click="btn">确认提交</el-button>

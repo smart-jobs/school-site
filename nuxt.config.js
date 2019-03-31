@@ -5,6 +5,9 @@ module.exports = {
   server: {
     port: 3400,
   },
+  env: {
+    _AXIOS_BASE_URL_: 'http://localhost:3400/www/api',
+  },
   /*
   ** Headers of the page
   */

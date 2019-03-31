@@ -1,27 +1,27 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <br>
     <el-card class="box-card">
       <div slot="header" class="fj">
-        <span class="fd1">{{current && current.title}}</span>
-        <el-button class="fd2 btn" type="text" @click="btn2(item)">删除</el-button>
-        <el-button class="fd2 btn" type="text" @click="btn1(item)">更改</el-button>
+        <span class="left">{{current && current.title}}</span>
+        <el-button class="right btn" type="text" @click="btn2(item)">删除</el-button>
+        <el-button class="right btn" type="text" @click="btn1(item)">更改</el-button>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">姓名:</i> <em class="fd1">{{current | get('info.xm')}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">学历:</i> <em class="fd1">{{current | get('info.xl')}}</em></div>
+        <div class="text left fj"><i class="left">姓名:</i> <em class="left">{{current | get('info.xm')}}</em></div>
+        <div class="text right fj"><i class="left">学历:</i> <em class="left">{{current | get('info.xl')}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">性别:</i> <em class="fd1">{{current | get('info.xb')}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">毕业院校:</i> <em class="fd1">{{current | get('info.yxmc')}}</em></div>
+        <div class="text left fj"><i class="left">性别:</i> <em class="left">{{current | get('info.xb')}}</em></div>
+        <div class="text right fj"><i class="left">毕业院校:</i> <em class="left">{{current | get('info.yxmc')}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">出生日期:</i> <em class="fd1">{{current | get('info.csrq')}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">专业名称:</i> <em class="fd1">{{current | get('info.zymc')}}</em></div>
+        <div class="text left fj"><i class="left">出生日期:</i> <em class="left">{{current | get('info.csrq')}}</em></div>
+        <div class="text right fj"><i class="left">专业名称:</i> <em class="left">{{current | get('info.zymc')}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">联系方式:</i> <em class="fd1">{{current | get('contact.mobile')}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">电子邮件:</i> <em class="fd1">{{current | get('contact.email')}}</em></div>
+        <div class="text left fj"><i class="left">联系方式:</i> <em class="left">{{current | get('contact.mobile')}}</em></div>
+        <div class="text right fj"><i class="left">电子邮件:</i> <em class="left">{{current | get('contact.email')}}</em></div>
       </div>
       <pre>{{current && current.content}}</pre>
     </el-card>

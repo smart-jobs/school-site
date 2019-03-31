@@ -1,29 +1,29 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <el-card class="box-card">
       <div slot="header" class="fj">
-        <span class="fd1">{{current && current.corpname}}</span>
-        <el-button class="fd2 btn" type="text" @click="btn2(fetch)" v-if="fair_id == ''">提交更改</el-button>
-        <el-button class="fd2 btn" type="text" @click="btn3" v-else>提交新建</el-button>
+        <span class="left">{{current && current.corpname}}</span>
+        <el-button class="right btn" type="text" @click="btn2(fetch)" v-if="fair_id == ''">提交更改</el-button>
+        <el-button class="right btn" type="text" @click="btn3" v-else>提交新建</el-button>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">招聘职位:</i>
-          <em class="fd1">
+        <div class="text left fj">
+          <i class="left">招聘职位:</i>
+          <em class="left">
             <el-input :placeholder="fetch && fetch.name" v-model="name"></el-input>
           </em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">招聘人数:</i>
-          <em class="fd1">
+        <div class="text right fj">
+          <i class="left">招聘人数:</i>
+          <em class="left">
             <el-input :placeholder="fetch && fetch.count" v-model="count"></el-input>
           </em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">应聘要求:</i>
-          <em class="fd1">
+        <div class="text left fj">
+          <i class="left">应聘要求:</i>
+          <em class="left">
             <el-input
               :placeholder="fetch && fetch.requirement"
               type="textarea"

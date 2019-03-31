@@ -1,5 +1,5 @@
 <template>
-  <div class="data fd1">
+  <div class="data left">
     <div class="main">
       <p class="title">{{currents && currents.subject}}</p>
       <p class="text">企业名称：{{currents && currents.corpname}}</p>

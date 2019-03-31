@@ -1,17 +1,17 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <el-card class="box-card" v-for="(item,index) in ticket_list" :key="index">
       <div slot="header" class="fj">
-        <span class="fd1">招聘会入场券</span>
-        <div class="text fd2 fj"><i class="fd1">状态:</i> <em class="fd1" :class="{a1:item.verify.status == '1',a3:item.verify.status == '0'}">{{item.verify | type1}}</em></div>
+        <span class="left">招聘会入场券</span>
+        <div class="text right fj"><i class="left">状态:</i> <em class="left" :class="{a1:item.verify.status == '1',a3:item.verify.status == '0'}">{{item.verify | type1}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">名称:</i> <em class="fd1">{{item && item.subject}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">门票:</i> <em class="fd1">{{item.type | statusy}}</em></div>
+        <div class="text left fj"><i class="left">名称:</i> <em class="left">{{item && item.subject}}</em></div>
+        <div class="text right fj"><i class="left">门票:</i> <em class="left">{{item.type | statusy}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">姓名:</i> <em class="fd1">{{item | get('user.name') }}</em></div>
-        <div class="text fd2 fj"><i class="fd1">学校:</i> <em class="fd1">{{item.origin | origin }}</em></div>
+        <div class="text left fj"><i class="left">姓名:</i> <em class="left">{{item | get('user.name') }}</em></div>
+        <div class="text right fj"><i class="left">学校:</i> <em class="left">{{item.origin | origin }}</em></div>
       </div>
       <info :item="item"/>
     </el-card>

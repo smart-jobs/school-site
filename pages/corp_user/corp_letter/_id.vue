@@ -1,49 +1,49 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <el-card class="box-card">
       <div slot="header" class="fj">
-        <span class="fd1">{{ currents && currents.title }}</span>
-        <el-button v-if="currents && !currents.reply" class="fd2 c" type="primary" @click="Reply(item)">拒绝用户</el-button>
-        <el-button v-if="currents && !currents.reply" class="fd2" type="primary" @click="Reply(item)">回复消息</el-button>
+        <span class="left">{{ currents && currents.title }}</span>
+        <el-button v-if="currents && !currents.reply" class="right c" type="primary" @click="Reply(item)">拒绝用户</el-button>
+        <el-button v-if="currents && !currents.reply" class="right" type="primary" @click="Reply(item)">回复消息</el-button>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">姓名:</i>
-          <em class="fd1">{{ currents | get('info.xm') }}</em>
+        <div class="text left fj">
+          <i class="left">姓名:</i>
+          <em class="left">{{ currents | get('info.xm') }}</em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">性别:</i>
-          <em class="fd1">{{ currents | get('info.xb') }}</em>
-        </div>
-      </div>
-      <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">出生日期:</i>
-          <em class="fd1">{{ currents | get('info.csrq') }}</em>
-        </div>
-        <div class="text fd2 fj">
-          <i class="fd1">学历:</i>
-          <em class="fd1">{{ currents | get('info.xl') }}</em>
+        <div class="text right fj">
+          <i class="left">性别:</i>
+          <em class="left">{{ currents | get('info.xb') }}</em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">学校:</i>
-          <em class="fd1">{{ currents | get('info.yxmc') }}</em>
+        <div class="text left fj">
+          <i class="left">出生日期:</i>
+          <em class="left">{{ currents | get('info.csrq') }}</em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">专业:</i>
-          <em class="fd1">{{ currents | get('info.zymc') }}</em>
+        <div class="text right fj">
+          <i class="left">学历:</i>
+          <em class="left">{{ currents | get('info.xl') }}</em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">联系电话:</i>
-          <em class="fd1">{{ currents | get('contact.mobile') }}</em>
+        <div class="text left fj">
+          <i class="left">学校:</i>
+          <em class="left">{{ currents | get('info.yxmc') }}</em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">联系邮箱:</i>
-          <em class="fd1">{{ currents | get('contact.email') }}</em>
+        <div class="text right fj">
+          <i class="left">专业:</i>
+          <em class="left">{{ currents | get('info.zymc') }}</em>
+        </div>
+      </div>
+      <div class="item fj">
+        <div class="text left fj">
+          <i class="left">联系电话:</i>
+          <em class="left">{{ currents | get('contact.mobile') }}</em>
+        </div>
+        <div class="text right fj">
+          <i class="left">联系邮箱:</i>
+          <em class="left">{{ currents | get('contact.email') }}</em>
         </div>
       </div>
       <el-input v-if="currents && !currents.reply" placeholder="请输入回复信息" type="textarea" :rows="5" v-model="requirement"></el-input>

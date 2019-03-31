@@ -1,86 +1,86 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <el-card class="box-card">
       <div slot="header" class="fj">
-        <span class="fd1">{{dataForm && dataForm.corpname}}</span>
-        <el-button class="fd2 btn" type="text" @click="change" v-if="dataId !== undefined">提交更改</el-button>
-        <el-button class="fd2 btn" type="text" @click="btn3" v-else>提交新建</el-button>
+        <span class="left">{{dataForm && dataForm.corpname}}</span>
+        <el-button class="right btn" type="text" @click="change" v-if="dataId !== undefined">提交更改</el-button>
+        <el-button class="right btn" type="text" @click="btn3" v-else>提交新建</el-button>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">宣讲标题:</i>
-          <em class="fd1">
+        <div class="text left fj">
+          <i class="left">宣讲标题:</i>
+          <em class="left">
             <el-input v-model="dataForm.subject"></el-input>
           </em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">举办地址:</i>
-          <em class="fd1">
+        <div class="text right fj">
+          <i class="left">举办地址:</i>
+          <em class="left">
             <el-input v-model="dataForm.address"></el-input>
           </em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">开始日期:</i>
-          <em class="fd1">
+        <div class="text left fj">
+          <i class="left">开始日期:</i>
+          <em class="left">
             <el-input v-model="dataForm.date"></el-input>
           </em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">开始时间:</i>
-          <em class="fd1">
+        <div class="text right fj">
+          <i class="left">开始时间:</i>
+          <em class="left">
             <el-input v-model="dataForm.time"></el-input>
           </em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">联系电话:</i>
-          <em class="fd1">
+        <div class="text left fj">
+          <i class="left">联系电话:</i>
+          <em class="left">
             <el-input v-model="dataForm.contact"></el-input>
           </em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">联系邮箱:</i>
-          <em class="fd1">
+        <div class="text right fj">
+          <i class="left">联系邮箱:</i>
+          <em class="left">
             <el-input v-model="dataForm.email"></el-input>
           </em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">宣讲内容:</i>
-          <em class="fd1">
+        <div class="text left fj">
+          <i class="left">宣讲内容:</i>
+          <em class="left">
             <el-input type="textarea" :rows="3" v-model="dataForm.content"></el-input>
           </em>
         </div>
       </div>
       <div class="item fj">
-        <h2 class="fd1">招聘职位</h2>
-        <el-button class="fd1 btn h2" type="text" @click="tj">添加职位</el-button>
+        <h2 class="left">招聘职位</h2>
+        <el-button class="left btn h2" type="text" @click="tj">添加职位</el-button>
       </div>
       <div class="item" v-for="(item, index) in dataForm && dataForm.jobs" :key="index">
         <el-button class="bt0" type="text" @click="shanchu(index)">删除职位</el-button>
         <br>
         <div class="item fj">
-          <div class="text fd1 fj">
-            <i class="fd1">职位名称:</i>
-            <em class="fd1">
+          <div class="text left fj">
+            <i class="left">职位名称:</i>
+            <em class="left">
               <el-input v-model="item.name"></el-input>
             </em>
           </div>
-          <div class="text fd2 fj">
-            <i class="fd1">招聘人数:</i>
-            <em class="fd1">
+          <div class="text right fj">
+            <i class="left">招聘人数:</i>
+            <em class="left">
               <el-input v-model="item.count"></el-input>
             </em>
           </div>
         </div>
         <div class="item fj">
-          <div class="text fd1 fj">
-            <i class="fd1">职位需求:</i>
-            <em class="fd1">
+          <div class="text left fj">
+            <i class="left">职位需求:</i>
+            <em class="left">
               <el-input type="textarea" :rows="3" v-model="item.requirement"></el-input>
             </em>
           </div>

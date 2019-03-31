@@ -1,22 +1,22 @@
 <template>
-  <div class="fd2 data">
-    <el-button class="fd1 btnx" type="text" @click="handleAdd">添加宣讲会</el-button>
+  <div class="right data">
+    <el-button class="left btnx" type="text" @click="handleAdd">添加宣讲会</el-button>
     <br>
     <ul>
       <li class="fj" v-for="(item,index) in items" :key="index">
-        <div class="fd1 fj txtbox">
-          <img src="/www/img/logo1.png" class="img fd1">
-          <div class="fd1 titbox">
+        <div class="left fj txtbox">
+          <img src="/www/img/logo1.png" class="img left">
+          <div class="left titbox">
             <div class="fj">
-              <a @click="Obtain(item)" class="fd1">{{item.subject}}</a>
+              <a @click="Obtain(item)" class="left">{{item.subject}}</a>
               <el-button
-                class="fd2 btn"
+                class="right btn"
                 type="text"
                 v-if="item.status == 1"
                 @click="handleUpdate(item)"
               >更改</el-button>
             </div>
-            <p class="fd1">举办单位：{{item.corpname}}</p>
+            <p class="left">举办单位：{{item.corpname}}</p>
             <p>分站信息：{{item.unit}}</p>
             <p>
             </p>

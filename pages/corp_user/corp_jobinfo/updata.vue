@@ -1,57 +1,57 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <el-card class="box-card">
       <div slot="header" class="fj">
-        <span class="fd1">{{ userinfo && userinfo.corpname }}</span>
-        <el-button class="fd2 btn" type="text" v-if="id !== undefined" @click="handleUpdate()">确认更改</el-button>
-        <el-button class="fd2 btn" type="text" v-else @click="handleadd">确认新建</el-button>
+        <span class="left">{{ userinfo && userinfo.corpname }}</span>
+        <el-button class="right btn" type="text" v-if="id !== undefined" @click="handleUpdate()">确认更改</el-button>
+        <el-button class="right btn" type="text" v-else @click="handleadd">确认新建</el-button>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">招聘职位:</i> <em class="fd1"><el-input v-model="dataForm.title"></el-input></em>
+        <div class="text left fj">
+          <i class="left">招聘职位:</i> <em class="left"><el-input v-model="dataForm.title"></el-input></em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">招聘人数:</i> <em class="fd1"><el-input v-model="dataForm.count"></el-input></em>
-        </div>
-      </div>
-      <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">学历要求:</i> <em class="fd1"><code-select v-model="dataForm.xlreqs" category="xlcc" mode="pair"></code-select></em>
-        </div>
-        <div class="text fd2 fj">
-          <i class="fd1">专业要求:</i> <em class="fd1"><el-input v-model="dataForm.zyreqs"></el-input></em>
+        <div class="text right fj">
+          <i class="left">招聘人数:</i> <em class="left"><el-input v-model="dataForm.count"></el-input></em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">薪资待遇:</i> <em class="fd1"><code-select v-model="dataForm.salary" category="xzdy" mode="pair"></code-select></em>
+        <div class="text left fj">
+          <i class="left">学历要求:</i> <em class="left"><code-select v-model="dataForm.xlreqs" category="xlcc" mode="pair"></code-select></em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">职位要求:</i> <em class="fd1"><code-select v-model="dataForm.nature" category="gzxz" mode="pair"></code-select></em>
-        </div>
-      </div>
-      <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">工作地点:</i> <em class="fd1"><code-select v-model="dataForm.city" category="xzqh" mode="pair"></code-select></em>
-        </div>
-        <div class="text fd2 fj">
-          <i class="fd1">招聘结束:</i> <em class="fd1"><el-input v-model="dataForm.expired"></el-input></em>
+        <div class="text right fj">
+          <i class="left">专业要求:</i> <em class="left"><el-input v-model="dataForm.zyreqs"></el-input></em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">所属行业:</i> <em class="fd1"><code-select v-model="dataForm.jobcat" category="hylb" mode="pair"></code-select></em>
+        <div class="text left fj">
+          <i class="left">薪资待遇:</i> <em class="left"><code-select v-model="dataForm.salary" category="xzdy" mode="pair"></code-select></em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">分站信息:</i> <em class="fd1">{{userinfo && userinfo.unit}}</em>
+        <div class="text right fj">
+          <i class="left">职位要求:</i> <em class="left"><code-select v-model="dataForm.nature" category="gzxz" mode="pair"></code-select></em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">职位描述:</i> <em class="fd1"><el-input type="textarea" :rows="3" v-model="dataForm.jobdesc"></el-input></em>
+        <div class="text left fj">
+          <i class="left">工作地点:</i> <em class="left"><code-select v-model="dataForm.city" category="xzqh" mode="pair"></code-select></em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">详情介绍:</i> <em class="fd1"><el-input type="textarea" :rows="3" v-model="dataForm.content"></el-input></em>
+        <div class="text right fj">
+          <i class="left">招聘结束:</i> <em class="left"><el-input v-model="dataForm.expired"></el-input></em>
+        </div>
+      </div>
+      <div class="item fj">
+        <div class="text left fj">
+          <i class="left">所属行业:</i> <em class="left"><code-select v-model="dataForm.jobcat" category="hylb" mode="pair"></code-select></em>
+        </div>
+        <div class="text right fj">
+          <i class="left">分站信息:</i> <em class="left">{{userinfo && userinfo.unit}}</em>
+        </div>
+      </div>
+      <div class="item fj">
+        <div class="text left fj">
+          <i class="left">职位描述:</i> <em class="left"><el-input type="textarea" :rows="3" v-model="dataForm.jobdesc"></el-input></em>
+        </div>
+        <div class="text right fj">
+          <i class="left">详情介绍:</i> <em class="left"><el-input type="textarea" :rows="3" v-model="dataForm.content"></el-input></em>
         </div>
       </div>
     </el-card>

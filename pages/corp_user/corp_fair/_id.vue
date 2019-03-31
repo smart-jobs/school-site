@@ -1,32 +1,32 @@
 <template>
-  <div class="data fd2">
-    <el-button class="fd1 btnx" type="text" @click="handleAdd">添加职位</el-button>
+  <div class="data right">
+    <el-button class="left btnx" type="text" @click="handleAdd">添加职位</el-button>
     <br>
     <el-card class="box-card" v-for="(item, index) in current && current.jobs" :key="index">
       <div slot="header" class="fj">
-        <span class="fd1">{{ current && current.corpname }}</span>
-        <el-button class="fd2 btn" type="text" v-if="current.status == 1" @click="handleDelete(item)">删除</el-button>
-        <el-button class="fd2 btn" type="text" v-if="current.status == 1" @click="handleUpdate(index)">更改</el-button>
+        <span class="left">{{ current && current.corpname }}</span>
+        <el-button class="right btn" type="text" v-if="current.status == 1" @click="handleDelete(item)">删除</el-button>
+        <el-button class="right btn" type="text" v-if="current.status == 1" @click="handleUpdate(index)">更改</el-button>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">招聘会:</i> <em class="fd1">{{ corp_info && corp_info.subject }}</em>
+        <div class="text left fj">
+          <i class="left">招聘会:</i> <em class="left">{{ corp_info && corp_info.subject }}</em>
         </div>
-        <div class="text fd2 fj">
-          <i class="fd1">分站信息:</i> <em class="fd1">{{ corp_info && corp_info.unit }}</em>
-        </div>
-      </div>
-      <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">招聘职位:</i> <em class="fd1">{{ item && item.name }}</em>
-        </div>
-        <div class="text fd2 fj">
-          <i class="fd1">招聘人数:</i> <em class="fd1">{{ item && item.count }}</em>
+        <div class="text right fj">
+          <i class="left">分站信息:</i> <em class="left">{{ corp_info && corp_info.unit }}</em>
         </div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj">
-          <i class="fd1">应聘要求:</i> <em class="fd1">{{ item && item.requirement }}</em>
+        <div class="text left fj">
+          <i class="left">招聘职位:</i> <em class="left">{{ item && item.name }}</em>
+        </div>
+        <div class="text right fj">
+          <i class="left">招聘人数:</i> <em class="left">{{ item && item.count }}</em>
+        </div>
+      </div>
+      <div class="item fj">
+        <div class="text left fj">
+          <i class="left">应聘要求:</i> <em class="left">{{ item && item.requirement }}</em>
         </div>
       </div>
     </el-card>

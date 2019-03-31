@@ -1,12 +1,12 @@
 <template>
   <div class="box">
     <div class="fj btnbox">
-      <img src="/www/img/web_icon_left_dis.png" class="left fd1" @click="up">
-      <div class="fd1 data">
+      <img src="/www/img/web_icon_left_dis.png" class="left" @click="up">
+      <div class="left data">
         <p>招聘日历</p>
         {{this.y}}年{{this.m+1}}月
       </div>
-      <img src="/www/img/web_icon_right_dis.png" class="right fd2" @click="dw">
+      <img src="/www/img/web_icon_right_dis.png" class="right" @click="dw">
     </div>
     <div class="week">
       <span>日</span>
@@ -19,7 +19,7 @@
     </div>
     <div class="week2 fj">
       <span
-        class="fd1 yuan"
+        class="left yuan"
         :class="{a1:item[0] == '今',a2:item[0] == '聘' || item[0] == '宣'}"
         v-for="(item,index) in this.arr"
         :key="index"

@@ -1,25 +1,25 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <el-card class="box-card" v-for="(item,index) in mylist" :key="index">
       <div slot="header" class="fj">
-        <span class="fd1">{{item && item.title}}</span>
-        <div class="text fd2 fj"><i class="fd1">状态:</i> <em class="fd1" :class="{a1:item.status == '0',a2:item.status == '1',a3:item.status == '2'}">{{item | statusy}}</em></div>
+        <span class="left">{{item && item.title}}</span>
+        <div class="text right fj"><i class="left">状态:</i> <em class="left" :class="{a1:item.status == '0',a2:item.status == '1',a3:item.status == '2'}">{{item | statusy}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">企业名称:</i> <em class="fd1">{{item && item.corpname}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">类别:</i> <em class="fd1">{{item | type1}}</em></div>
+        <div class="text left fj"><i class="left">企业名称:</i> <em class="left">{{item && item.corpname}}</em></div>
+        <div class="text right fj"><i class="left">类别:</i> <em class="left">{{item | type1}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">姓名:</i> <em class="fd1">{{userinfo | get('reg.info.xm')}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">学历:</i> <em class="fd1">{{userinfo | get('reg.info.xl')}}</em></div>
+        <div class="text left fj"><i class="left">姓名:</i> <em class="left">{{userinfo | get('reg.info.xm')}}</em></div>
+        <div class="text right fj"><i class="left">学历:</i> <em class="left">{{userinfo | get('reg.info.xl')}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">性别:</i> <em class="fd1">{{userinfo  | get('reg.info.xb')}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">毕业院校:</i> <em class="fd1">{{userinfo  | get('reg.info.yxmc')}}</em></div>
+        <div class="text left fj"><i class="left">性别:</i> <em class="left">{{userinfo  | get('reg.info.xb')}}</em></div>
+        <div class="text right fj"><i class="left">毕业院校:</i> <em class="left">{{userinfo  | get('reg.info.yxmc')}}</em></div>
       </div>
       <div class="item fj">
-        <div class="text fd1 fj"><i class="fd1">身份证号:</i> <em class="fd1">{{userinfo | get('reg.info.sfzh')}}</em></div>
-        <div class="text fd2 fj"><i class="fd1">专业名称:</i> <em class="fd1">{{userinfo | get('reg.info.zymc')}}</em></div>
+        <div class="text left fj"><i class="left">身份证号:</i> <em class="left">{{userinfo | get('reg.info.sfzh')}}</em></div>
+        <div class="text right fj"><i class="left">专业名称:</i> <em class="left">{{userinfo | get('reg.info.zymc')}}</em></div>
       </div>
       <el-button class="btn0 xq" type="text" @click="xq(item)">查看详情</el-button>
     </el-card>

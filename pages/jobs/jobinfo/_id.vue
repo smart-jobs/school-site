@@ -1,8 +1,8 @@
 <template>
-  <div class="data fd2">
+  <div class="data right">
     <div class="main">
       <p class="title fj">
-        <span class="fd1">{{current && current.title}}</span>
+        <span class="left">{{current && current.title}}</span>
         <no-ssr></no-ssr>
       </p>
       <p class="text">企业名称：{{current && current.corpname}}</p>
@@ -17,7 +17,7 @@
       <p class="text">分站信息：{{current && current.unit}}</p>
       <pre class="text2">{{current && current.content}}</pre>
       <br>
-      <el-select v-if="role == 'user'" v-model="resumeid" placeholder="请选择简历" class="fd1 btn">
+      <el-select v-if="role == 'user'" v-model="resumeid" placeholder="请选择简历" class="left btn">
         <el-option
           :label="item.title"
           :value="item._id"
@@ -25,7 +25,7 @@
           :key="index"
         ></el-option>
       </el-select>
-      <el-button class="fd1 btn0" v-if="role == 'user'" @click="delivery">投递简历</el-button>
+      <el-button class="left btn0" v-if="role == 'user'" @click="delivery">投递简历</el-button>
     </div>
   </div>
 </template>
