@@ -60,4 +60,6 @@ export default {
 .login {
   height: 380px;
 }
+.z{width: 32%}
+.z1{margin: 0 2%}
 </style>
