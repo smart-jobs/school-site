@@ -11,7 +11,7 @@ module.exports = {
     "env": {
       "NODE_ENV": "production",  // 环境参数，当前指定为生产环境
       "PORT": 3400,
-      "API_PORT": 8081,
+      "API_PORT": 8083,
       "CONSOLA_LEVEL": 3,
     }
   }]
