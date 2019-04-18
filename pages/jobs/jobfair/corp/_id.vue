@@ -3,7 +3,7 @@
     <loading v-if="loading"/>
     <div class="main" v-else>
       <div class="title">{{ data && data.corpname }}</div>
-      <div class="content" v-html="data && data.description"></div>
+      <pre class="content">{{ data && data.description }}</pre>
     </div>
   </div>
 </template>
@@ -53,7 +53,6 @@ export default {
   }
   .content {
     margin-top: 20px;
-    text-indent: 2em;
     padding-bottom: 1em;
     border-bottom: 1px solid #ddd;
   }
