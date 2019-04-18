@@ -38,6 +38,7 @@ export default {
     },
     Obtain(item) {
       //跳转地址  前面取分站信息  后面写id
+      // this.$router.push({ path: `/jobs/jobfair/${item.id}`});
       location.href = `http://${item.unit}.smart.jilinjobswx.cn/www/jobs/jobfair/${item._id}`;
     },
   },

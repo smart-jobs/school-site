@@ -10,7 +10,8 @@ const api = {
   corp_list: '/jobs/jobfair/corp/list',
   calendar: '/jobs/jobfair/calendar',
   corp_apply: '/jobs/jobfair/corp/apply',
-  user_apply: '/jobs/jobfair/ticket/apply'
+  user_apply: '/jobs/jobfair/ticket/apply',
+  corp_fetch: '/jobs/jobfair/corp/fetch2',
 };
 // initial state
 export const state = () => ({
@@ -48,7 +49,7 @@ export const actions = {
     return res;
   },
   async corplist({ commit }, { id }) {
-    const res = await this.$axios.$get(`${api.corp_list}?fair_id=${id}`);
+    const res = await this.$axios.$get(api.corp_list, { params: { fair_id: id, limit: 500 } });
     if (res.errcode === 0) commit(types.LOADED_CORP_LIST, res.data);
     return res;
   },
@@ -56,14 +57,20 @@ export const actions = {
     const res = await this.$axios.$get(`${api.calendar}?month=${month}`);
     return res;
   },
-  async corp_apply({ commit }, {corpid,fair_id,jobs} ) { // 
-    const params = {corpid:corpid,fair_id:fair_id};
+  async corp_apply({ commit }, { corpid, fair_id, jobs }) {
+    //
+    const params = { corpid: corpid, fair_id: fair_id };
     const res = await this.$axios.$post(api.corp_apply, { jobs }, { params });
     return res;
   },
-  async user_apply({ commit }, {userid,fair_id} ) { // 
-    const params = {userid:userid,fair_id:fair_id};
+  async user_apply({ commit }, { userid, fair_id }) {
+    //
+    const params = { userid: userid, fair_id: fair_id };
     const res = await this.$axios.$post(api.user_apply, null, { params });
+    return res;
+  },
+  async corp_fetch({ commit }, { id }) {
+    const res = await this.$axios.$get(api.corp_fetch, { params: { id } });
     return res;
   },
 };
