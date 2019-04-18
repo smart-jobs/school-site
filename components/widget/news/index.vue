@@ -25,7 +25,7 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
-import Loading from '@/components/utils/loading';
+import Loading from '@components/utils/loading';
 
 const { mapActions } = createNamespacedHelpers('news');
 export default {

@@ -60,7 +60,7 @@
 
 <script>
 import { createNamespacedHelpers, mapGetters } from 'vuex';
-import CodeSelect from '@/components/naf/code-select';
+import CodeSelect from '@components/naf/code-select';
 
 const { mapActions } = createNamespacedHelpers('corp_user/corp_jobinfo');
 

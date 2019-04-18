@@ -2,14 +2,14 @@
   <div class="box">
     <div class="fj titlebox">
       <div class="left title">
-        <img src="img/x.png" class="left g">
+        <img src="img/x.png" class="left g" />
         <em class="left txt">焦点新闻</em>
       </div>
       <div class="right txt" @click="href">更多>></div>
     </div>
-    <ul>
-      <li :style="{top:top}" class="left" v-for="(item,index) in list" :key="index">
-        <img :src="item.uri" class="bj img">
+    <ul ref="slide">
+      <li :style="{ top: top }" class="left" v-for="(item, index) in list" :key="index">
+        <img :src="item.uri" class="bj img" />
       </li>
     </ul>
   </div>
@@ -17,35 +17,35 @@
 
 <script>
 export default {
-  name: "imgs",
+  name: 'imgs',
   data() {
     return {
       idx: 1,
-      top: "",
-      idxx: "",
-      seta: "",
+      top: '',
+      idxx: '',
+      seta: '',
       list: [
         {
-          uri: "/www/img/push_1.jpg",
-          title: "赢在广州”创业大赛我校夺魁 获十万创业资助1"
+          uri: '/www/img/push_1.jpg',
+          title: '',
         },
         {
-          uri: "/www/img/push_2.jpg",
-          title: "赢在广州”创业大赛我校夺魁 获十万创业资助2"
+          uri: '/www/img/push_2.jpg',
+          title: '',
         },
         {
-          uri: "/www/img/push_3.jpg",
-          title: "赢在广州”创业大赛我校夺魁 获十万创业资助3"
+          uri: '/www/img/push_3.jpg',
+          title: '',
         },
         {
-          uri: "/www/img/push_4.jpg",
-          title: "赢在广州”创业大赛我校夺魁 获十万创业资助4"
+          uri: '/www/img/push_4.jpg',
+          title: '',
         },
         {
-          uri: "/www/img/push_5.jpg",
-          title: "赢在广州”创业大赛我校夺魁 获十万创业资助5"
-        }
-      ]
+          uri: '/www/img/push_5.jpg',
+          title: '',
+        },
+      ],
     };
   },
   methods: {
@@ -55,19 +55,18 @@ export default {
       } else {
         this.idx++;
       }
-      let he = document.getElementsByClassName("img")[0].height;
-      this.top = -(this.idx - 1) * he + "px";
-    },
-    btn(index) {
-      this.idx = index - 1;
-      this.set();
+      let he = this.$refs['slide'].clientHeight;
+      this.top = -(this.idx - 1) * he + 'px';
     },
     href() {
-      location.href = "/www/news/focus";
-    }
+      location.href = '/www/news/focus';
+    },
   },
   mounted() {
-    setInterval(this.set, 5000);
+    this.timer = setInterval(this.set, 5000);
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   }
 };
 </script>

@@ -11,7 +11,7 @@
 <script>
 // 企业详情
 import { createNamespacedHelpers } from 'vuex';
-import Loading from '@/components/utils/loading';
+import Loading from '@components/utils/loading';
 
 const { mapActions } = createNamespacedHelpers('jobs/jobfair');
 
