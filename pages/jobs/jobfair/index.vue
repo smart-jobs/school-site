@@ -1,20 +1,26 @@
 <template>
   <div class="right data">
     <ul>
-      <li class="fj" v-for="(item,index) in items" :key="index" @click="Obtain(item)">
+      <li class="fj" v-for="(item, index) in items" :key="index" @click="Obtain(item)">
         <div class="left fj txtbox">
-          <img src="/www/img/logo2.png" class="img left">
+          <img src="/www/img/logo2.png" class="img left" />
           <div class="left titbox">
-            <a>{{item.subject}}</a>
-            <p>举办时间：{{item.date}} {{item.time}}</p>
-            <p>举办地址：{{item.address}}</p>
-            <p>分站信息：{{item.unit}}</p>
+            <a>{{ item.subject }}</a>
+            <p>举办时间：{{ item.date }} {{ item.time }}</p>
+            <p>举办地址：{{ item.address }}</p>
+            <p>举办高校：{{ item.unit | dict('unit') }}</p>
           </div>
         </div>
       </li>
     </ul>
-    <el-pagination class="pv" @current-change="handleCurrentChange" :current-page.sync="page" :page-size="size" layout="prev, pager, next, jumper"
-                   :total="total">
+    <el-pagination
+      class="pv"
+      @current-change="handleCurrentChange"
+      :current-page.sync="page"
+      :page-size="size"
+      layout="prev, pager, next, jumper"
+      :total="total"
+    >
     </el-pagination>
   </div>
 </template>
@@ -33,7 +39,7 @@ export default {
   methods: {
     ...mapActions(['query']),
     handleCurrentChange(val) {
-      this.page = val
+      this.page = val;
       this.query({ paging: { page: val, size: this.size } });
     },
     Obtain(item) {
@@ -42,12 +48,13 @@ export default {
       location.href = `http://${item.unit}.smart.jilinjobswx.cn/www/jobs/jobfair/${item._id}`;
     },
   },
-  mounted() {
-    this.query({ paging: { page: this.page, size: this.size } });
+  async mounted() {
+    await this.$loadDict('unit');
+    await this.query({ paging: { page: this.page, size: this.size } });
   },
   computed: {
-    ...mapState(['items','total']),
-  }
+    ...mapState(['items', 'total']),
+  },
 };
 </script>
 

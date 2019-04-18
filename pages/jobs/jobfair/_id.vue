@@ -2,7 +2,7 @@
   <div class="data right">
     <div class="main">
       <p class="title">{{ current && current.subject }}</p>
-      <p class="text">分校信息：{{ current && current.unit }}</p>
+      <p class="text">举办高校：{{ current && current.unit | dict('unit') }}</p>
       <p class="text">举办时间：{{ current && current.date + ' ' + current.time }}</p>
       <p class="text">举办城市：{{ current | get('city.name') }}</p>
       <p class="text">举办地址：{{ current && current.address }}</p>
@@ -202,7 +202,8 @@ export default {
       this.recruit = false;
     },
   },
-  mounted() {
+  async mounted() {
+    await this.$loadDict('unit');
     let id = this.$route.params.id;
     this.fetch({ id });
     this.corplist({ id });
