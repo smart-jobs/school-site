@@ -38,6 +38,7 @@ export default {
   },
   mounted() {
     this.top({ size: 6 });
+    console.log('$platform:', this.$platform);
   },
   computed: {
     ...mapState(['tops']),

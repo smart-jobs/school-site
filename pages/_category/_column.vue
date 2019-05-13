@@ -2,7 +2,7 @@
   <div class="boxone2">
     <div class="boxone fj">
       <!--二级导航菜单-->
-      <sub-nav :data="columns" :activated="column" />
+      <sub-nav :data="columns || []" :activated="column" />
       <!--页面内容-->
       <nuxt-child />
     </div>
