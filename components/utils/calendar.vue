@@ -22,11 +22,11 @@
       <div class="week2 fj">
         <span class="left yuan" v-for="(item, index) in padding" :key="'pad_' + index"></span>
         <template v-for="(item, index) in dates">
-          <span class="left yuan a2" :key="index" v-if="items_fair[index]">
-            <el-tooltip :content="items_fair[index].subject" effect="light"><span class="inner">聘</span></el-tooltip>
+          <span class="left yuan a2" :key="index" v-if="dates_fair[index]">
+            <el-tooltip :content="dates_fair[index].subject" effect="light"><span class="inner">聘</span></el-tooltip>
           </span>
-          <span class="left yuan a2" :key="index" v-else-if="items_campus[index]">
-            <el-tooltip :content="items_campus[index].subject" effect="light"><span class="inner">宣</span></el-tooltip>
+          <span class="left yuan a2" :key="index" v-else-if="dates_campus[index]">
+            <el-tooltip :content="dates_campus[index].subject" effect="light"><span class="inner">宣</span></el-tooltip>
           </span>
           <span class="left yuan" :key="index" v-else>{{ index + 1 }}</span>
         </template>
@@ -102,13 +102,13 @@ export default {
     },
     dates_fair() {
       return this.items_fair.reduce((p, c) => {
-        p[moment(c.date).date()] = c;
+        p[moment(c.date).date()-1] = c;
         return p;
       }, []);
     },
     dates_campus() {
       return this.items_campus.reduce((p, c) => {
-        p[moment(c.date).date()] = c;
+        p[moment(c.date).date()-1] = c;
         return p;
       }, []);
     },
