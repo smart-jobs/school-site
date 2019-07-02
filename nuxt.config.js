@@ -60,10 +60,10 @@ module.exports = {
     port: API_PORT,
   },
   proxy: [
-    // 'http://99991.smart.jilinjobswx.cn/www/api',
-    // 'http://smart.jilinjobswx.cn/ws',
-    'http://99991.smart.chinahuian.cn/www/api',
-    'http://smart.chinahuian.cn/ws',
+    'http://10201.smart.jilinjobswx.cn/www/api',
+    'http://smart.jilinjobswx.cn/ws',
+    // 'http://99991.smart.chinahuian.cn/www/api',
+    // 'http://smart.chinahuian.cn/ws',
   ],
 
   router: {
